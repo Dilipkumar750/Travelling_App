@@ -20,58 +20,28 @@ const ViewTicket = () => {
     marginRight: '10px',
   };
 
-  const headerStyles = {
-    container: {
-      display: 'flex',
-      alignItems: 'center',
-      marginBottom: '20px',
-    },
-    logoText: {
-      color: 'blue',
-      fontWeight: 'bold',
-      marginRight: '10px',
-    },
-    date: {
-      marginLeft: 'auto',
-      color: 'blue',
-    },
+  const header = {
+    logo: Airindia,
+    logoText: 'Air India',
+    date: '26/May/2023',
   };
 
-  const flightInfoStyles = {
-    container: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      marginBottom: '20px',
-    },
-    time: {
-      color: 'blue',
-    },
-    center: {
-      flex: 1,
-      textAlign: 'center',
-    },
-    right: {
-      textAlign: 'right',
-    },
-  };
+  const flightInfo = [
+    { time: '08:30', location: 'CHENNAI' },
+    { time: '1 hour', location: '' },
+    { time: '09:30', location: 'BANGALORE' }
+  ];
 
-  const detailsStyles = {
-    container: {
-      display: 'flex',
-      gap: '20px',
-      marginBottom: '10px',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    label: {
-      color: 'blue',
-    },
-  };
+  const details = [
+    { label: 'Class', value: 'Economy' },
+    { label: 'Gate', value: '17 D' },
+    { label: 'Terminal', value: '4' },
+    { label: 'Flight', value: 'DJ017' }
+  ];
 
-  const footerStyles = {
-    textAlign: 'center',
-    marginTop: '20px',
+  const passenger = {
+    name: '22 years, Male',
+    seat: '17 D'
   };
 
   return (
@@ -79,9 +49,9 @@ const ViewTicket = () => {
       {/* Back Button and Header (Outside the Card) */}
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px', maxWidth: '600px', margin: '0 auto' }}>
         <Link to="/Homepage">
-          <FaArrowLeft style={{ fontSize: '24px',  color: '#ff5f00' }} />
+          <FaArrowLeft style={{ fontSize: '24px', color: '#ff5f00' }} />
         </Link>
-        <h2 style={{color: 'black', marginRight: '55%'}}>
+        <h2 style={{ color: 'black', marginRight: '55%' }}>
           Flight Ticket
         </h2>
       </div>
@@ -112,35 +82,30 @@ const ViewTicket = () => {
         }}></div>
 
         {/* Header */}
-        <div style={headerStyles.container}>
-          <img src={Airindia} alt="Air India Logo" style={{ width: '40px', height: 'auto', marginRight: '10px' }} />
-          <span style={headerStyles.logoText}>Air India</span>
-          <p style={headerStyles.date}>26/May/2023</p>
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
+          <img src={header.logo} alt="Air India Logo" style={{ width: '40px', height: 'auto', marginRight: '10px' }} />
+          <span style={{ color: 'blue', fontWeight: 'bold', marginRight: '10px' }}>{header.logoText}</span>
+          <p style={{ marginLeft: 'auto', color: 'blue' }}>{header.date}</p>
         </div>
 
         {/* Flight Info */}
-        <div style={flightInfoStyles.container}>
-          <p><strong style={flightInfoStyles.time}>08:30</strong><br />CHENNAI</p>
-          <p style={flightInfoStyles.center}><strong>1 hour</strong></p>
-          <p style={flightInfoStyles.right}><strong style={flightInfoStyles.time}>09:30</strong><br />BANGALORE</p>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+          {flightInfo.map((item, index) => (
+            <div key={index} style={{ textAlign: index === 1 ? 'center' : index === 2 ? 'right' : 'left' }}>
+              <p><strong style={{ color: 'blue' }}>{item.time}</strong><br />{item.location}</p>
+            </div>
+          ))}
         </div>
 
         <hr />
 
         {/* Flight Details */}
-        <div style={detailsStyles.container}>
-          <div>
-            <strong style={detailsStyles.label}>Class:</strong> <p>Economy</p>
-          </div>
-          <div>
-            <strong style={detailsStyles.label}>Gate:</strong> <p>17 D</p>
-          </div>
-          <div>
-            <strong style={detailsStyles.label}>Terminal:</strong> <p>4</p>
-          </div>
-          <div>
-            <strong style={detailsStyles.label}>Flight:</strong> <p>DJ017</p>
-          </div>
+        <div style={{ display: 'flex', gap: '20px', marginBottom: '10px', alignItems: 'center', justifyContent: 'center' }}>
+          {details.map((item, index) => (
+            <div key={index}>
+              <strong style={{ color: 'blue' }}>{item.label}:</strong> <p>{item.value}</p>
+            </div>
+          ))}
         </div>
 
         <hr />
@@ -149,14 +114,14 @@ const ViewTicket = () => {
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
           <FaRegCircleUser style={{ fontSize: '3rem', marginRight: '10px', marginBottom: '10px' }} /><br />
           <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-            <p><strong>Name:</strong><br />22 years, Male</p>
-            <p><strong><GiSofa /></strong> 17 D</p>
+            <p><strong>Name:</strong><br />{passenger.name}</p>
+            <p><strong><GiSofa /></strong> {passenger.seat}</p>
           </div>
         </div>
-        <hr style={{ borderTop: '1px dashed' }} />
+        <hr style={{ borderTop: '3px dashed' }} />
 
         {/* QR Code */}
-        <div style={footerStyles}>
+        <div style={{ textAlign: 'center', marginTop: '20px' }}>
           <img src={QR} alt="QR Code" style={{ width: '60%', height: 'auto' }} />
         </div>
       </div>
