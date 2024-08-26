@@ -5,6 +5,7 @@ import { HiDocumentCheck } from "react-icons/hi2";
 import { BiSolidUserCircle } from "react-icons/bi";
 import { HiOutlineLink } from "react-icons/hi";
 import { HiChatBubbleLeftRight } from "react-icons/hi2";
+import { Link } from 'react-router-dom';
 
 function Footer() {
     // State to track the active icon
@@ -26,22 +27,30 @@ function Footer() {
 
     return (
         <div style={{ backgroundColor: '#ffe3e0', display: 'flex', justifyContent: "space-between", alignItems: 'center', height: '50px', fontSize: '3rem',padding:"2rem",position:'absolute',bottom:0,width:'100%' }}>
-            <AiFillHome
-                style={iconStyle('home')}
-                onClick={() => handleClick('home')}
-            />
-            <HiLocationMarker
-                style={iconStyle('location')}
-                onClick={() => handleClick('location')}
-            />
-            <HiDocumentCheck
-                style={iconStyle('document')}
-                onClick={() => handleClick('document')}
-            />
-            <BiSolidUserCircle
-                style={iconStyle('user')}
-                onClick={() => handleClick('user')}
-            />
+            <Link to='/HomePage'>
+                <AiFillHome
+                    style={iconStyle('home')}
+                    onClick={() => handleClick('home')}
+                />
+            </Link>
+            <Link to='/Travels'>
+                <HiLocationMarker
+                    style={iconStyle('location')}
+                    onClick={() => handleClick('location')}
+                />
+            </Link>
+            <Link to='/BookTickets'>
+                <HiDocumentCheck
+                    style={iconStyle('document')}
+                    onClick={() => handleClick('document')}
+                />
+            </Link>
+            <Link to=''>
+                <BiSolidUserCircle
+                    style={iconStyle('user')}
+                    onClick={() => handleClick('user')}
+                />
+            </Link>
             {/* Uncomment and add styles for these icons as needed */}
             {/* <HiOutlineLink
                 style={iconStyle('link')}
