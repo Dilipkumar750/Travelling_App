@@ -46,6 +46,9 @@ import Profile from './Pages/Profile';
 import Settings from './Pages/Settings';
 import SideBar from './Pages/SideBar';
 import Signup from './Pages/Signup';
+import Header from './Components/header/Header';
+import Footer from './Components/footer/Footer';
+
 
 function App(){
   return (
@@ -96,6 +99,8 @@ function App(){
       <Route path='/Settings' element={<Settings/>}/>
       <Route path='/SideBar' element={<SideBar/>}/>
       <Route path='/Signup' element={<Signup/>}/>
+      <Route path='/Header' element={<Header/>}/>
+      <Route path='/Footer' element={<Footer/>}/>
     </Routes>
     </>
   )
