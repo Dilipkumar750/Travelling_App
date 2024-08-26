@@ -1,13 +1,33 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios'; // Make sure to import axios
 import LoginImage from '../assets/login image.png';
+import { API_URL } from '../constant';
 
 const Login = () => {
   const [isAdmin, setIsAdmin] = useState(false);
+  const [email, setemail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate(); // For navigation after successful login
 
   const toggleAdmin = () => {
     setIsAdmin(!isAdmin);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post(`${API_URL}/user/login`, {
+        email,
+        password
+      });
+      console.log(response)
+      navigate('/HomePage');
+    } catch (err) {
+      setError('Login failed. Please check your credentials and try again.');
+    }
   };
 
   return (
@@ -37,20 +57,37 @@ const Login = () => {
             style={{ width: '170px', display: 'block', margin: 'auto', marginTop: '5%' }} 
           />
           <h2 className="text-left my-4">Login Details</h2>
-          <Form>
-            <Form.Group controlId="username" className="mb-3">
-              <Form.Control type="text" placeholder="Username, email, or phone number" />
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="email" className="mb-3">
+              <Form.Control 
+                type="text" 
+                placeholder="email" 
+                value={email} 
+                onChange={(e) => setemail(e.target.value)} 
+              />
             </Form.Group>
 
             <Form.Group controlId="password" className="mb-3">
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control 
+                type="password" 
+                placeholder="Password" 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+              />
             </Form.Group>
+
+            {error && <div className="text-danger mb-3">{error}</div>}
 
             <div className="mb-3 text-end">
               <Link to="/forgot-password" className="text-decoration-none">Forgot Password?</Link>
             </div>
 
-            <Button variant="primary" type="submit" className="w-100 mb-3" style={{ backgroundColor: '#ff5f00', border: 'none' }}>
+            <Button 
+              variant="primary" 
+              type="submit" 
+              className="w-100 mb-3" 
+              style={{ backgroundColor: '#ff5f00', border: 'none' }}
+            >
               Login
             </Button>
 
