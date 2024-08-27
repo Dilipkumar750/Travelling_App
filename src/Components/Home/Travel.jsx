@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { BsArrowRight } from 'react-icons/bs'; // Importing arrow icon from react-icons
 import experience from '../../assets/experience.jpeg';
+import { Link } from 'react-router-dom';
 
 const Travel = () => {
   return (
@@ -37,23 +38,25 @@ const Travel = () => {
           </Col>
         </Row>
       </div>
-      <Button
-        style={{
-          position: 'absolute',
-          bottom: '40px', 
-          left: '50%',
-          transform: 'translateX(-50%)',
-          borderRadius: '15px',
-          padding: '10px 20px',
-          backgroundColor: '#ff5f00',
-          width: '50%',
-          color: '#fff', // Ensure button text is visible against the background
-          border: 'none',
-        }}
-      >
-        Get Started
-        <BsArrowRight style={{ marginLeft: '10px' }} />
-      </Button>
+      <Link to='/Login'>
+        <Button
+          style={{
+            position: 'absolute',
+            bottom: '40px', 
+            left: '50%',
+            transform: 'translateX(-50%)',
+            borderRadius: '15px',
+            padding: '10px 20px',
+            backgroundColor: '#ff5f00',
+            width: '50%',
+            color: '#fff', // Ensure button text is visible against the background
+            border: 'none',
+          }}
+        >
+          Get Started
+          <BsArrowRight style={{ marginLeft: '10px' }} />
+        </Button>
+      </Link>
     </Container>
   );
 }

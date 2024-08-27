@@ -54,6 +54,7 @@ function App(){
   return (
     <>
     <Routes>
+      <Route path='/' element={<Welcome/>}/>
       <Route path='/BusBookHome' element={<BusBookHome/>}/>
       <Route path='/BusDetails' element={<BusDetails/>}/>
       <Route path='/BusPayment' element={<BusPayment/>}/>
@@ -85,7 +86,6 @@ function App(){
       <Route path='/TrainViewTicket' element={<TrainViewTicket/>}/>
       <Route path='/Plan' element={<Plan/>}/>
       <Route path='/Travel' element={<Travel/>}/>
-      <Route path='/Welcome' element={<Welcome/>}/>
       <Route path='/BookTickets' element={<BookTickets/>}/>
       <Route path='/Explore' element={<Explore/>}/>
       <Route path='/HomePage' element={<HomePage/>}/>

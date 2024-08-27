@@ -22,11 +22,13 @@ function Footer() {
         backgroundColor: activeIcon === icon ? '#ffb3b3' : 'transparent',
         borderRadius: '20%',
         padding: '10px',
-        transition: 'background-color 0.3s ease'
+        transition: 'background-color 0.3s ease',
+        textDecoration:'none',
+        color:'black'
     });
 
     return (
-        <div style={{ backgroundColor: '#ffe3e0', display: 'flex', justifyContent: "space-between", alignItems: 'center', height: '50px', fontSize: '3rem',padding:"2rem",position:'absolute',bottom:0,width:'100%' }}>
+        <div style={{ backgroundColor: '#ffe3e0', display: 'flex', justifyContent: "space-between", alignItems: 'center', height: '50px', fontSize: '3rem',padding:"2rem",position:'absolute',bottom:0,width:'100%', }}>
             <Link to='/HomePage'>
                 <AiFillHome
                     style={iconStyle('home')}
