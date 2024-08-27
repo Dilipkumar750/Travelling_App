@@ -4,7 +4,7 @@ import Footer from '../../Components/footer/Footer';
 import { Form, Button, Container, Card } from 'react-bootstrap';
 import plus from '../../assets/plus.png';
 
-const Services = () => {
+const Addaccomadation = () => {
   // Define transport options with images
   const transportOptions = [
     { image: plus },
@@ -18,7 +18,7 @@ const Services = () => {
         <Form>
           {/* City of Landmark */}
           <Form.Group controlId="formCity">
-            <Form.Label><h6>Service Name</h6></Form.Label>
+            <Form.Label><h6>Hotel Name</h6></Form.Label>
             <Form.Control
               type="text"
               className="bg-light border-dark rounded-3 mb-2"
@@ -75,4 +75,4 @@ const Services = () => {
   );
 }
 
-export default Services;
+export default Addaccomadation;

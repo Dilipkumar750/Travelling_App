@@ -28,7 +28,7 @@ function Footer() {
     });
 
     return (
-        <div style={{ backgroundColor: '#ffe3e0', display: 'flex', justifyContent: "space-between", alignItems: 'center', height: '50px', fontSize: '3rem',padding:"2rem",position:'absolute',bottom:0,width:'100%', }}>
+        <div style={{ backgroundColor: '#ffe3e0', display: 'flex', justifyContent: "space-between", alignItems: 'center', height: '50px', fontSize: '3rem',padding:"2rem",width:'100%', }}>
             <Link to='/HomePage'>
                 <AiFillHome
                     style={iconStyle('home')}
