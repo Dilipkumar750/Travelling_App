@@ -1,0 +1,17 @@
+.cardTop:before,
+.cardTop:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+  background: gainsboro;
+  border-radius: 50%;
+  bottom: 30%;
+}
+.cardTop:before {
+  left: -10px;
+}
+.cardTop:after {
+  right: -10px;
+}
