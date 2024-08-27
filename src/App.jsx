@@ -48,6 +48,9 @@ import SideBar from './Pages/SideBar';
 import Signup from './Pages/Signup';
 import Header from './Components/header/Header';
 import Footer from './Components/footer/Footer';
+import PendingRequests from './Pages/Admin/PendingRequests';
+import Done from './Components/Done';
+import AddAccomadation from './Pages/User/AddAccomadation';
 
 
 function App(){
@@ -101,6 +104,9 @@ function App(){
       <Route path='/Signup' element={<Signup/>}/>
       <Route path='/Header' element={<Header/>}/>
       <Route path='/Footer' element={<Footer/>}/>
+      <Route path='/PendingRequests' element={<PendingRequests/>}/>
+      <Route path='/Done' element={<Done/>}/>
+      <Route path='/AddAccomadation' element={<AddAccomadation/>}/>
     </Routes>
     </>
   )
