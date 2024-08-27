@@ -23,7 +23,7 @@ const Login = () => {
         email,
         password
       });
-      console.log(response)
+      localStorage.setItem('user', JSON.stringify(response.data.user));
       navigate('/HomePage');
     } catch (err) {
       setError('Login failed. Please check your credentials and try again.');

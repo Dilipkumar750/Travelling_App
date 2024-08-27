@@ -6,13 +6,14 @@ import flight from '../../assets/flight.png';
 import hotel from '../../assets/hotel.png';
 import Header from '../../Components/header/Header';
 import Footer from '../../Components/footer/Footer';
+import { Link } from 'react-router-dom';
 
 const BookTickets = () => {
   const transportOptions = [
-    { image: flight, title: 'Flights' },
-    { image: hotel, title: 'Hotels' },
-    { image: train, title: 'Trains' },
-    { image: buses, title: 'Buses' },
+    { image: flight, title: 'Flights',link:'/FlightBookHome' },
+    { image: hotel, title: 'Hotels',link:'/HotelBookHome' },
+    { image: train, title: 'Trains',link:'/TrainBookHome' },
+    { image: buses, title: 'Buses',link:'/BusBookHome' },
   ];
 
   return (
@@ -47,16 +48,18 @@ const BookTickets = () => {
         <Row>
           {transportOptions.map((option, index) => (
             <Col key={index} xs={6} className="mb-3">
-              <Card style={{ borderRadius: '15px', textAlign: 'center', backgroundColor: '#F3E8D6' }}>
-                <Card.Img
-                  variant="top"
-                  src={option.image}
-                  style={{ width: '50%', height: 'auto', borderRadius: '15px', margin: 'auto', marginTop: '10%' }}
-                />
-                <Card.Body>
-                  <Card.Title>{option.title}</Card.Title>
-                </Card.Body>
-              </Card>
+              <Link to={option.link}>
+                <Card style={{ borderRadius: '15px', textAlign: 'center', backgroundColor: '#F3E8D6' }}>
+                  <Card.Img
+                    variant="top"
+                    src={option.image}
+                    style={{ width: '50%', height: 'auto', borderRadius: '15px', margin: 'auto', marginTop: '10%' }}
+                  />
+                  <Card.Body>
+                    <Card.Title>{option.title}</Card.Title>
+                  </Card.Body>
+                </Card>
+              </Link>
             </Col>
           ))}
         </Row>

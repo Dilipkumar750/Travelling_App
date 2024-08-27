@@ -51,6 +51,7 @@ import Footer from './Components/footer/Footer';
 import PendingRequests from './Pages/Admin/PendingRequests';
 import Done from './Components/Done';
 import AddAccomadation from './Pages/User/AddAccomadation';
+import 'swiper/css';
 
 
 function App(){
