@@ -1,103 +1,102 @@
 import React from 'react';
 import { Card, Button, Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa';
 import visa from "../../assets/visa.png";
 import mastercard from "../../assets/maestro.png";
 import paypal from "../../assets/paypal.png";
 import phonepe from "../../assets/phonepe.png";
+import Ticketcards from "../TicketCard";
+import trainColor from "../../assets/train color.png";
+
+const paymentMethods = [
+  { img: visa, alt: "Visa" },
+  { img: paypal, alt: "PayPal" },
+  { img: mastercard, alt: "Maestro" },
+  { img: phonepe, alt: "PhonePe" },
+];
 
 const TrainPayment = () => {
   return (
-    <Container className="mt-4 mb-4">
-      {/* Train Details Card */}
-      <Row className="justify-content-center">
-        <Col md={6}>
-          <Card className="mb-4">
-            <Card.Body>
-              <Row className="d-flex align-items-center">
-                <Col>
-                  <h5>09:30 AM</h5>
-                  <p>12 hrs</p>
-                  <h5>09:30 PM</h5>
-                </Col>
-                <Col className="text-center">
-                  <p><strong>CHE</strong></p>
-                  <p><strong>KL</strong></p>
-                </Col>
-                <Col className="text-end">
-                  <p><strong>WAG 7</strong></p>
-                  <p><strong>₹ 1,500</strong></p>
-                </Col>
-              </Row>
-              <Row className="mt-4">
-                <Col className="text-end">
-                  <h5>Total</h5>
-                  <p><strong>₹ 1,500</strong></p>
-                </Col>
-              </Row>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
+    <div>
+      <Container className="mt-1 mb-4" style={{ padding: '25px', backgroundColor: '#F3E8D6' }}>
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
+          <Link to="/Homepage">
+            <FaArrowLeft style={{ fontSize: '24px', marginRight: '15px', color: '#ff5f00' }} />
+          </Link>
+          <h2 className="text-right" style={{ color: 'black' }}>
+            Payment
+          </h2>
+        </div>
+        
+        {/* Ticket Card Section */}
+        <Row className="mt-4 justify-content-center">
+          <Col md={8}>
+            <Ticketcards color='red' image={trainColor} width='150px' /> {/* Fixed width prop syntax */}
+          </Col>
+        </Row>
 
-      {/* Payment Methods Section */}
-      <Row className="justify-content-center">
-        <Col md={8}>
-          <Row className="g-3">
-            <Col md={6}>
-              <Card className="bg-lightblue mb-3">
-                <Card.Body className="d-flex justify-content-between align-items-center">
-                  <img src={visa} alt="Visa" style={{ width: '50px' }} />
-                  <p>*********0017</p>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={6}>
-              <Card className="bg-lightblue mb-3">
-                <Card.Body className="d-flex justify-content-between align-items-center">
-                  <img src={paypal} alt="PayPal" style={{ width: '50px' }} />
-                  <p>*********0017</p>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={6}>
-              <Card className="bg-lightblue mb-3">
-                <Card.Body className="d-flex justify-content-between align-items-center">
-                  <img src={mastercard} alt="Maestro" style={{ width: '50px' }} />
-                  <p>*********0017</p>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={6}>
-              <Card className="bg-lightblue mb-3">
-                <Card.Body className="d-flex justify-content-between align-items-center">
-                  <img src={phonepe} alt="PhonePe" style={{ width: '50px' }} />
-                  <p>*********0017</p>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
+        {/* Total Amount */}
+        <Row className="mt-4 justify-content-center">
+          <Col md={8}>
+            <Card className="mb-2" style={{ backgroundColor: '#FAD1D1', padding: '15px' }}>
+              <Row className="d-flex justify-content-between align-items-center">
+                <Col><strong>Total</strong></Col>
+                <Col className="text-end"><strong>₹ 1,500</strong></Col>
+              </Row>
+            </Card>
+          </Col>
+        </Row>
 
-      {/* Continue Button */}
-      <Row className="justify-content-center">
-        <Col md={6} className="text-center">
-          <Button
-            style={{
-              backgroundColor: '#f08e2d',
-              border: 'none',
-              color: '#fff',
-              fontSize: '16px',
-              fontWeight: 'bold',
-              padding: '10px 20px'
-            }}
-          >
-            Continue
-          </Button>
-        </Col>
-      </Row>
-    </Container>
+        <h4 className="mt-4 text-left">Payment</h4>
+
+        {/* Payment Methods Section */}
+        <Row className="justify-content-center mt-4">
+          <Col md={8}>
+            <Row className="g-0">
+              {paymentMethods.map((method, index) => (
+                <Col md={6} key={index}>
+                  <Card className="bg-lightblue mb-2">
+                    <Card.Body
+                      className="d-flex justify-content-between align-items-center"
+                      style={{
+                        backgroundColor: 'lightblue',
+                        height: '60px',
+                        padding: '10px',
+                        borderRadius: '8px',
+                        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+                      }}
+                    >
+                      <img src={method.img} alt={method.alt} style={{ width: '50px' }} />
+                      <p>*********0017</p>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          </Col>
+        </Row>
+
+        {/* Continue Button */}
+        <Row className="justify-content-center mt-5">
+          <Col md={6} className="text-center">
+            <Button
+              style={{
+                backgroundColor: '#f08e2d',
+                width: '100%',
+                height: '40px',
+                padding: '10px',
+                borderRadius: '10px',
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+              }}
+            >
+              Continue
+            </Button>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
-}
+};
 
 export default TrainPayment;
