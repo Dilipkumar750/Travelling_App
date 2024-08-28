@@ -7,7 +7,7 @@ import bus from "../../assets/bus-color.png"; // Replace with your image path
 
 const BusDetails = () => {
   return (
-    <Container className="mt-1 mb-1" style={{ backgroundColor: '#ffe6e6', padding: '20px', borderRadius: '10px' }}>
+    <Container className="mt-1 mb-1" style={{ backgroundColor: '#fdf6ea', padding: '20px', borderRadius: '10px',height:'100vh' }}>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px',  }}>
         <Link to="/Homepage">
           <FaArrowLeft style={{ fontSize: '24px', marginRight: '15px', color: '#ff5f00' }} />
