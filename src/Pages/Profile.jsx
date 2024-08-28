@@ -7,7 +7,7 @@ import profile from '../assets/profile.webp'
 const Profile = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <Header />
+     <Header title='Profile' arrow={false}/>
       <Container className="mt-4 mb-4 flex-grow-1">
         {/* Centered Profile Information */}
         <Row className="justify-content-center text-center mb-4">

@@ -1,23 +1,57 @@
-import React from 'react'
-import { AiOutlineArrowLeft } from "react-icons/ai";
-import { AiOutlineUser } from "react-icons/ai";
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { AiOutlineArrowLeft, AiOutlineUser } from "react-icons/ai";
+import { IoMenu } from "react-icons/io5";
+import { useNavigate, Link } from 'react-router-dom';
+import { Offcanvas } from 'react-bootstrap';
 
-function Header() {
+function Header({ title, arrow }) {
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const goBack = () => {
-    navigate(-1); 
+    navigate(-1);
   };
+
   return (
-    <header style={{backgroundColor:'#f08e2d' , height:'100px',display:'flex',justifyContent:'center',alignItems:'center',borderRadius:'0 0 70px 70px'}}>
-        <div style={{width:'80%',display:'flex',justifyContent:'space-between'}}>
-        <AiOutlineArrowLeft style={{color:'white',fontSize:'1.5rem',fontWeight:'500',marginTop:'8px'}} onClick={goBack} />
-        <p style={{flexBasis:'80%',color:'white',fontSize:'1.5rem',fontWeight:'500'}}>Header</p>
-        <AiOutlineUser style={{color:'white',fontSize:'1.5rem',fontWeight:'500',marginTop:'8px'}} />
-        </div>
+    <header style={{ backgroundColor: '#f08e2d', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '0 0 70px 70px' }}>
+      <div style={{ width: '80%', display: 'flex', justifyContent: 'space-between' }}>
+        {arrow ? (
+          <AiOutlineArrowLeft style={{ color: 'white', fontSize: '1.5rem', fontWeight: '500', marginTop: '8px' }} onClick={goBack} />
+        ) : (
+          <IoMenu style={{ color: 'white', fontSize: '1.5rem', fontWeight: '500', marginTop: '8px' }} onClick={handleShow} />
+        )}
+        <p style={{ flexBasis: '80%', color: 'white', fontSize: '1.5rem', fontWeight: '500' }}>{title}</p>
+        <AiOutlineUser style={{ color: 'white', fontSize: '1.5rem', fontWeight: '500', marginTop: '8px' }} />
+      </div>
+
+      {/* Offcanvas Sidebar */}
+      <Offcanvas show={show} onHide={handleClose} placement="start" style={{ backgroundColor: '#f08e2d', width: '70%' }}>
+        <Offcanvas.Header closeButton />
+        <Offcanvas.Body>
+          <ul style={{ padding: 0, listStyleType: 'none' }}>
+            <h1 style={{ fontFamily: 'cursive', color: 'white' }}>Journey Joy</h1>
+            <p style={{ fontFamily: 'cursive', color: 'white' }}>Your Travel Companion, Anytime, Anywhere.</p>
+            {[
+              { name: 'Notifications', path: '/Notifications' },
+              { name: 'My Profile', path: '/Profile' },
+              { name: 'Settings', path: '/Settings' },
+              { name: 'Logout', path: '/login' }
+            ].map((item, index) => (
+              <li key={index} style={{ color: 'white', marginBottom: '1rem' }}>
+                <Link to={item.path} style={{ color: 'inherit', textDecoration: 'none' }}>
+                  {item.name}
+                </Link>
+                <hr style={{ borderColor: 'white' }} />
+              </li>
+            ))}
+          </ul>
+        </Offcanvas.Body>
+      </Offcanvas>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;

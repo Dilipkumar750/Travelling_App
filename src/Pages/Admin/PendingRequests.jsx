@@ -25,7 +25,7 @@ const PendingRequests = () => {
 
   return (
     <div>
-      <Header />
+      <Header title='Requests' arrow={false} />
       <Container className="py-4">
           <>
             <Row className="mb-4">
