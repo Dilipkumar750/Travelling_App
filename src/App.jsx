@@ -76,7 +76,7 @@ function App(){
       <Route path='/FlightList' element={<FlightList/>}/>
       <Route path='/FlightBusiness' element={<FlightBusiness/>}/>
       <Route path='/FlightTicket' element={<FlightTicket/>}/>
-      <Route path='/FlightDetails' element={<FlightDetails/>}/>
+      <Route path='/FlightDetails/:id' element={<FlightDetails/>}/>
       <Route path='/FlightEconomy' element={<FlightEconomy/>}/>
       <Route path='/FlightPayment' element={<FlightPayment/>}/>
       <Route path='/FlightViewTicket' element={<FlightViewTicket/>}/>

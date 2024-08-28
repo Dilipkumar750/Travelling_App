@@ -38,11 +38,11 @@ const FlightBusiness = () => {
         <Link to="/Homepage">
           <FaArrowLeft className="fs-4 me-3 text-warning" />
         </Link>
-        <h2 className="text-dark">Flight Details</h2>
+        <h2 className="text-dark">Select Seats</h2>
       </div>
       <section style={{ padding: '0 2rem' }}>
         <img src={ecomonyseat} alt="" style={{ width: '100%' }} />
-        <h3><b>Economy Class Seat</b></h3>
+        <h3><b>Bussiness Class Seat</b></h3>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div style={{ width: '18px', height: '18px', backgroundColor: '#5de953', borderRadius: '50%' }}></div>
           <span>selected</span>
