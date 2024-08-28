@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import indiangate from "../../assets/indiangate.jpeg";
 import bengalurupalace from "../../assets/bengalurupalace.jpg";
 import marinabeach from "../../assets/marinabeach.jpg";
+import { Link } from "react-router-dom";
 import fortkochi from "../../assets/fortkochi.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Button } from "react-bootstrap";
@@ -108,7 +109,9 @@ function HotelBookHome() {
           />
         </div>
         <br />
+        <Link to='/HotelViewTicket'>
         <Button style={{ width: '100%', backgroundColor: "#f08e2d", border: '0', borderRadius: '10px', color: 'black' }}>View Ticket</Button>
+        </Link>
       </section>
     </div>
   );

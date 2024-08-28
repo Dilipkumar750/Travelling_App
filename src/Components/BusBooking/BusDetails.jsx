@@ -100,6 +100,7 @@ const BusDetails = () => {
 
       {/* Continue and Cancel Buttons */}
       <div className="d-flex justify-content-center gap-3 mt-3">
+        <Link to='/Buslist'>
         <Button
           style={{
             width: '100%',
@@ -114,6 +115,8 @@ const BusDetails = () => {
         >
           Cancel
         </Button>
+        </Link>
+        <Link to='/Busseats'>
         <Button
           style={{
             backgroundColor: '#f08e2d',
@@ -126,6 +129,7 @@ const BusDetails = () => {
         >
           Continue
         </Button>
+        </Link>
       </div>
     </Container>
   );

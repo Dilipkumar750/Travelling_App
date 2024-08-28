@@ -61,8 +61,9 @@ const HotelPayment = () => {
         <p>If you have a promo code, please enter it below:</p>
         <Form.Control type="text" placeholder="Enter Promo code" style={{ marginBottom: '10px' }} />
       </div>
-
+      <Link to='/payment'>
       <Button variant="warning" style={{ width: '100%', backgroundColor: '#f08e2d', color: 'black' }}>Confirm Order</Button>
+      </Link>
     </div>
   );
 }

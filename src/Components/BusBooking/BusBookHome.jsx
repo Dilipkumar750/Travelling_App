@@ -139,7 +139,7 @@ const BusBookHome = () => {
                 </select>
               </div>
             </div>
-            <Link to='/'>
+            <Link to='/BusList'>
             <Button style={{ backgroundColor: '#f08e2d', width: '100%', marginTop: '1rem' }}>Search</Button>
             </Link>
           </form>
