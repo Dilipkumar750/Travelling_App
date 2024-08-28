@@ -7,7 +7,7 @@ import flight from "../../assets/flight-color.png";
 
 const FlightDetails = () => {
   return (
-<Container className="mt-1 mb-1 p-4 rounded" style={{ backgroundColor: '#F3E8D6' }}>
+<Container className="mt-1 mb-1 p-4 rounded" style={{ backgroundColor: '#F3E8D6',height:"100vh" }}>
 <div className="d-flex align-items-center mb-4">
         <Link to="/Homepage">
           <FaArrowLeft className="fs-4 me-3 text-warning" />

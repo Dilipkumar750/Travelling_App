@@ -51,8 +51,11 @@ import Footer from './Components/footer/Footer';
 import PendingRequests from './Pages/Admin/PendingRequests';
 import Done from './Components/Done';
 import AddAccomadation from './Pages/User/AddAccomadation';
+import 'swiper/css';
+import FlightList from './Components/Flight_Booking/FlightList';
+import TrainList from './Components/TrainBooking/TrainList';
 
-
+ 
 function App(){
   return (
     <>
@@ -65,6 +68,7 @@ function App(){
       <Route path='/BusTicket' element={<BusTicket/>}/>
       <Route path='/BusViewTicket' element={<BusViewTicket/>}/>
       <Route path='/FlightBookHome' element={<FlightBookHome/>}/>
+      <Route path='/FlightList' element={<FlightList/>}/>
       <Route path='/FlightBusiness' element={<FlightBusiness/>}/>
       <Route path='/FlightTicket' element={<FlightTicket/>}/>
       <Route path='/FlightDetails' element={<FlightDetails/>}/>
@@ -79,6 +83,7 @@ function App(){
       <Route path='/Payment' element={<Payment/>}/>
       <Route path='/RoomsAvailability' element={<RoomsAvailability/>}/>
       <Route path='/TrackTrain' element={<TrackTrain/>}/>
+      <Route path='/TrainList' element={<TrainList/>}/>
       <Route path='/TrainBookHome' element={<TrainBookHome/>}/>
       <Route path='/TrainDate' element={<TrainDate/>}/>
       <Route path='/TrainDetails' element={<TrainDetails/>}/>
