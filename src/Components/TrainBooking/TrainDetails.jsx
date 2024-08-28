@@ -3,7 +3,7 @@ import { Card, Button, Container, Row, Col, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import Ticketcards from "../TicketCard";
-import train from "../../assets/train color.png" // Replace with your train image path
+import train from "../../assets/train color.png";
 
 const TrainDetails = () => {
   return (
