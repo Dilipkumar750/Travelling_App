@@ -56,6 +56,8 @@ import FlightList from './Components/Flight_Booking/FlightList';
 import TrainList from './Components/TrainBooking/TrainList';
 import BusList from './Components/BusBooking/BusList';
 import JourneyJoyHome from './Components/Home/JourneyJoyHome';
+import Approve from './Pages/Admin/Approved';
+import Reject from './Pages/Admin/Reject';
 
 
 function App(){
@@ -116,6 +118,8 @@ function App(){
       <Route path='/Done' element={<Done/>}/>
       <Route path='/AddAccomadation' element={<AddAccomadation/>}/>
       <Route path='/JourneyJoyHome' element={<JourneyJoyHome/>}/>
+      <Route path='/Approve' element={<Approve/>}/>
+      <Route path='/Reject' element={<Reject/>}/>
     </Routes>
     </>
   )
