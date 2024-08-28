@@ -20,18 +20,28 @@ function FlightList() {
       <section>
         <div style={{borderTop:"1px dashed black",borderRadius:'60%',width:'100%',height:'100px',position:'relative'}}>
           <div style={{display:'flex',justifyContent:'space-between',position:'absolute',width:'100%',bottom:'50%'}}>
-            <div>CHE</div>
-            <div>CHE</div>
+          <Button
+                  variant="link"
+                  className="text-danger border-2 border-white rounded-pill p-2 shadow-sm"
+                >
+                  CHE
+                </Button>
+                <Button
+                  variant="link"
+                  className="text-danger border-2 border-white rounded-pill p-2 shadow-sm"
+                >
+                  BLR
+                </Button>
           </div>
         </div>
       </section>
       <section>
         <div className="row g-3">
           <div className="col-6">
-            <Button style={{width:'100%',backgroundColor:"white",color:'black',border:'0'}}>gfdgf</Button>
+            <Button style={{width:'100%',backgroundColor:"white",color:'black',border:'0'}}>16-12-2023</Button>
           </div>
           <div className="col-6">
-            <Button style={{width:'100%',backgroundColor:"white",color:'black',border:'0'}}>gfdgf</Button>
+            <Button style={{width:'100%',backgroundColor:"white",color:'black',border:'0'}}>1 passenger</Button>
           </div>
           <div className="col-6">
             <Button style={{width:'100%',backgroundColor:"#f08e2d",border:'0'}}>Business</Button>

@@ -7,8 +7,8 @@ import flight from "../../assets/flight-color.png";
 
 const FlightDetails = () => {
   return (
-<Container className="mt-1 mb-1 p-4 rounded" style={{ backgroundColor: '#F3E8D6',height:"100vh" }}>
-<div className="d-flex align-items-center mb-4">
+    <Container className="mt-1 mb-1 p-4 rounded" style={{ backgroundColor: '#F3E8D6', height: "100%" }}>
+      <div className="d-flex align-items-center mb-4">
         <Link to="/Homepage">
           <FaArrowLeft className="fs-4 me-3 text-warning" />
         </Link>
@@ -77,19 +77,23 @@ const FlightDetails = () => {
         </Col>
       </Row>
 
-      <div className="d-flex justify-content-center gap-3 mt-3">
+      <div className="d-flex justify-content-center gap-4 mt-3">
+        <Link to='/Flightlist'>
+          <Button
+            className="w-100 py-2 rounded-pill"
+            style={{ backgroundColor: 'transparent', color: 'orange', border: '2px solid #f08e2d' }}
+          >
+            Cancel
+          </Button>
+        </Link>
+        <Link to='/FlightEconomy'>
         <Button
           className="w-100 py-2 rounded-pill"
-          style={{backgroundColor: 'transparent', color: 'orange', border: '2px solid #f08e2d'}}
-        >
-          Cancel
-        </Button>
-        <Button
-          className="w-100 py-2 rounded-pill"
-          style={{backgroundColor: '#f08e2d'}}
+          style={{ backgroundColor: '#f08e2d', color: 'white' }}
         >
           Continue
         </Button>
+        </Link>
       </div>
     </Container>
   );
