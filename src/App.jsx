@@ -54,14 +54,17 @@ import AddAccomadation from './Pages/User/AddAccomadation';
 import 'swiper/css';
 import FlightList from './Components/Flight_Booking/FlightList';
 import TrainList from './Components/TrainBooking/TrainList';
+import BusList from './Components/BusBooking/BusList';
+import JourneyJoyHome from './Components/Home/JourneyJoyHome';
 
- 
+
 function App(){
   return (
     <>
     <Routes>
       <Route path='/' element={<Welcome/>}/>
       <Route path='/BusBookHome' element={<BusBookHome/>}/>
+      <Route path='/BusList' element={<BusList/>}/>
       <Route path='/BusDetails' element={<BusDetails/>}/>
       <Route path='/BusPayment' element={<BusPayment/>}/>
       <Route path='/BusSeats' element={<BusSeats/>}/>
@@ -112,6 +115,7 @@ function App(){
       <Route path='/PendingRequests' element={<PendingRequests/>}/>
       <Route path='/Done' element={<Done/>}/>
       <Route path='/AddAccomadation' element={<AddAccomadation/>}/>
+      <Route path='/JourneyJoyHome' element={<JourneyJoyHome/>}/>
     </Routes>
     </>
   )
