@@ -37,7 +37,7 @@ const FlightEconomy = () => {
         <Link to="/Homepage">
           <FaArrowLeft className="fs-4 me-3 text-warning" />
         </Link>
-        <h2 className="text-dark">Flight Details</h2>
+        <h2 className="text-dark">Select Seats</h2>
       </div>
       <section style={{padding:'0 2rem'}}>
         <img src={ecomonyseat} alt="" style={{ width: '100%' }} />
