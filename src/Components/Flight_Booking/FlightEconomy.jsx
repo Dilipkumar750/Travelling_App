@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import ecomonyseat from '../../assets/ecomonyseat.png'
+import { IoIosInformationCircleOutline } from "react-icons/io";
+
 
 const FlightEconomy = () => {
 
@@ -29,16 +31,15 @@ const FlightEconomy = () => {
     });
   };
 
-  console.log(selectedSeats)
   return (
-    <div style={{backgroundColor:'#fdf6ea',height:'100vh'}}>
-      <div className="d-flex align-items-center mb-4">
+    <div style={{backgroundColor:'#fdf6ea',height:'100vh',paddingTop:'3rem'}}>
+      <div className="d-flex align-items-center mb-4 ps-4">
         <Link to="/Homepage">
           <FaArrowLeft className="fs-4 me-3 text-warning" />
         </Link>
         <h2 className="text-dark">Flight Details</h2>
       </div>
-      <section>
+      <section style={{padding:'0 2rem'}}>
         <img src={ecomonyseat} alt="" style={{ width: '100%' }} />
         <h3><b>Economy Class Seat</b></h3>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -52,8 +53,12 @@ const FlightEconomy = () => {
       </section>
       {/* seat */}
       <section>
+        <div style={{ display: 'flex', gap:"1rem",width:'70%',margin:'0 auto',backgroundColor:'white',padding:'5px 1rem' }}>
+          <IoIosInformationCircleOutline />
+          <span>Exit Row</span>
+        </div>
         {/* row 6 */}
-        <div style={{ display: 'flex', justifyContent: 'space-between',width:'70%',margin:'0 auto',backgroundColor:'white',padding:'1rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between',width:'70%',margin:'0 auto',backgroundColor:'white',padding:'5px 1rem' }}>
           <button 
             disabled={isNumberOccupied(21, reservedSeats)}
             onClick={() => toggleNumber(21)}
@@ -87,7 +92,7 @@ const FlightEconomy = () => {
           </button>
         </div>
         {/* row 7 */}
-        <div style={{ display: 'flex', justifyContent: 'space-between',width:'70%',margin:'0 auto',backgroundColor:'white',padding:'1rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between',width:'70%',margin:'0 auto',backgroundColor:'white',padding:'5px 1rem' }}>
           <button 
             disabled={isNumberOccupied(27, reservedSeats)}
             onClick={() => toggleNumber(27)}
@@ -121,7 +126,7 @@ const FlightEconomy = () => {
           </button>
         </div>
         {/* row 8 */}
-        <div style={{ display: 'flex', justifyContent: 'space-between',width:'70%',margin:'0 auto',backgroundColor:'white',padding:'1rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between',width:'70%',margin:'0 auto',backgroundColor:'white',padding:'5px 1rem' }}>
           <button 
             disabled={isNumberOccupied(33, reservedSeats)}
             onClick={() => toggleNumber(33)}
@@ -155,7 +160,7 @@ const FlightEconomy = () => {
           </button>
         </div>
         {/* row 9 */}
-        <div style={{ display: 'flex', justifyContent: 'space-between',width:'70%',margin:'0 auto',backgroundColor:'white',padding:'1rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between',width:'70%',margin:'0 auto',backgroundColor:'white',padding:'5px 1rem' }}>
           <button 
             disabled={isNumberOccupied(39, reservedSeats)}
             onClick={() => toggleNumber(39)}
@@ -189,7 +194,7 @@ const FlightEconomy = () => {
           </button>
         </div>
         {/* row 10 */}
-        <div style={{ display: 'flex', justifyContent: 'space-between',width:'70%',margin:'0 auto',backgroundColor:'white',padding:'1rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between',width:'70%',margin:'0 auto',backgroundColor:'white',padding:'5px 1rem' }}>
           <button 
             disabled={isNumberOccupied(45, reservedSeats)}
             onClick={() => toggleNumber(45)}
@@ -223,7 +228,7 @@ const FlightEconomy = () => {
           </button>
         </div>
         {/* row 11 */}
-        <div style={{ display: 'flex', justifyContent: 'space-between',width:'70%',margin:'0 auto',backgroundColor:'white',padding:'1rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between',width:'70%',margin:'0 auto',backgroundColor:'white',padding:'5px 1rem' }}>
           <button 
             disabled={isNumberOccupied(51, reservedSeats)}
             onClick={() => toggleNumber(51)}
@@ -257,7 +262,7 @@ const FlightEconomy = () => {
           </button>
         </div>
         {/* row 12 */}
-        <div style={{ display: 'flex', justifyContent: 'space-between',width:'70%',margin:'0 auto',backgroundColor:'white',padding:'1rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between',width:'70%',margin:'0 auto',backgroundColor:'white',padding:'5px 1rem' }}>
           <button 
             disabled={isNumberOccupied(57, reservedSeats)}
             onClick={() => toggleNumber(57)}
@@ -291,7 +296,7 @@ const FlightEconomy = () => {
           </button>
         </div>
         {/* row 13 */}
-        <div style={{ display: 'flex', justifyContent: 'space-between',width:'70%',margin:'0 auto',backgroundColor:'white',padding:'1rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between',width:'70%',margin:'0 auto',backgroundColor:'white',padding:'5px 1rem' }}>
           <button 
             disabled={isNumberOccupied(63, reservedSeats)}
             onClick={() => toggleNumber(63)}
@@ -324,8 +329,12 @@ const FlightEconomy = () => {
             style={{ backgroundColor: isNumberOccupied(68, reservedSeats)|| selectedSeats.includes(68) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
           </button>
         </div>
+        <div style={{ display: 'flex', gap:"1rem",width:'70%',margin:'0 auto',backgroundColor:'white',padding:'5px 1rem' }}>
+          <IoIosInformationCircleOutline />
+          <span>Exit Row</span>
+        </div>
         {/* row 14 */}
-        <div style={{ display: 'flex', justifyContent: 'space-between',width:'70%',margin:'0 auto',backgroundColor:'white',padding:'1rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between',width:'70%',margin:'0 auto',backgroundColor:'white',padding:'5px 1rem' }}>
           <button 
             disabled={isNumberOccupied(69, reservedSeats)}
             onClick={() => toggleNumber(69)}
@@ -343,46 +352,131 @@ const FlightEconomy = () => {
           </button>
           <div style={{ width: "40px", height: '40px', border: 0, borderRadius: "8px",display:'flex',justifyContent:'center',alignItems:'center' }}>14</div>
           <button 
-            disabled={isNumberOccupied(66, reservedSeats)}
-            onClick={() => toggleNumber(66)}
-            style={{ backgroundColor: isNumberOccupied(66, reservedSeats) ||  selectedSeats.includes(66) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
+            disabled={isNumberOccupied(72, reservedSeats)}
+            onClick={() => toggleNumber(72)}
+            style={{ backgroundColor: isNumberOccupied(72, reservedSeats) ||  selectedSeats.includes(72) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
           </button>
           <button 
-            disabled={isNumberOccupied(67, reservedSeats)}
-            onClick={() => toggleNumber(67)}
-            style={{ backgroundColor: isNumberOccupied(67, reservedSeats) ||  selectedSeats.includes(67) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
+            disabled={isNumberOccupied(73, reservedSeats)}
+            onClick={() => toggleNumber(73)}
+            style={{ backgroundColor: isNumberOccupied(73, reservedSeats) ||  selectedSeats.includes(73) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
           </button>
           <button 
-            disabled={isNumberOccupied(68, reservedSeats)}
-            onClick={() => toggleNumber(68)}
-            style={{ backgroundColor: isNumberOccupied(68, reservedSeats)|| selectedSeats.includes(68) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
+            disabled={isNumberOccupied(74, reservedSeats)}
+            onClick={() => toggleNumber(74)}
+            style={{ backgroundColor: isNumberOccupied(74, reservedSeats)|| selectedSeats.includes(74) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
+          </button>
+        </div>
+        {/* row 15 */}
+        <div style={{ display: 'flex', justifyContent: 'space-between',width:'70%',margin:'0 auto',backgroundColor:'white',padding:'5px 1rem' }}>
+          <button 
+            disabled={isNumberOccupied(75, reservedSeats)}
+            onClick={() => toggleNumber(75)}
+            style={{ backgroundColor: isNumberOccupied(75, reservedSeats) || selectedSeats.includes(75) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
+          </button>
+          <button 
+            disabled={isNumberOccupied(76, reservedSeats)}
+            onClick={() => toggleNumber(76)}
+            style={{ backgroundColor: isNumberOccupied(76, reservedSeats) ||  selectedSeats.includes(76) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
+          </button>
+          <button 
+            disabled={isNumberOccupied(77, reservedSeats)}
+            onClick={() => toggleNumber(77)}
+            style={{ backgroundColor: isNumberOccupied(77, reservedSeats) ||  selectedSeats.includes(77) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
+          </button>
+          <div style={{ width: "40px", height: '40px', border: 0, borderRadius: "8px",display:'flex',justifyContent:'center',alignItems:'center' }}>15</div>
+          <button 
+            disabled={isNumberOccupied(78, reservedSeats)}
+            onClick={() => toggleNumber(78)}
+            style={{ backgroundColor: isNumberOccupied(78, reservedSeats) ||  selectedSeats.includes(78) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
+          </button>
+          <button 
+            disabled={isNumberOccupied(79, reservedSeats)}
+            onClick={() => toggleNumber(79)}
+            style={{ backgroundColor: isNumberOccupied(79, reservedSeats) ||  selectedSeats.includes(79) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
+          </button>
+          <button 
+            disabled={isNumberOccupied(80, reservedSeats)}
+            onClick={() => toggleNumber(80)}
+            style={{ backgroundColor: isNumberOccupied(80, reservedSeats)|| selectedSeats.includes(80) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
+          </button>
+        </div>
+        {/* row 16 */}
+        <div style={{ display: 'flex', justifyContent: 'space-between',width:'70%',margin:'0 auto',backgroundColor:'white',padding:'5px 1rem' }}>
+          <button 
+            disabled={isNumberOccupied(81, reservedSeats)}
+            onClick={() => toggleNumber(81)}
+            style={{ backgroundColor: isNumberOccupied(81, reservedSeats) || selectedSeats.includes(81) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
+          </button>
+          <button 
+            disabled={isNumberOccupied(82, reservedSeats)}
+            onClick={() => toggleNumber(82)}
+            style={{ backgroundColor: isNumberOccupied(82, reservedSeats) ||  selectedSeats.includes(82) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
+          </button>
+          <button 
+            disabled={isNumberOccupied(83, reservedSeats)}
+            onClick={() => toggleNumber(83)}
+            style={{ backgroundColor: isNumberOccupied(83, reservedSeats) ||  selectedSeats.includes(83) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
+          </button>
+          <div style={{ width: "40px", height: '40px', border: 0, borderRadius: "8px",display:'flex',justifyContent:'center',alignItems:'center' }}>16</div>
+          <button 
+            disabled={isNumberOccupied(84, reservedSeats)}
+            onClick={() => toggleNumber(84)}
+            style={{ backgroundColor: isNumberOccupied(84, reservedSeats) ||  selectedSeats.includes(84) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
+          </button>
+          <button 
+            disabled={isNumberOccupied(85, reservedSeats)}
+            onClick={() => toggleNumber(85)}
+            style={{ backgroundColor: isNumberOccupied(85, reservedSeats) ||  selectedSeats.includes(85) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
+          </button>
+          <button 
+            disabled={isNumberOccupied(86, reservedSeats)}
+            onClick={() => toggleNumber(86)}
+            style={{ backgroundColor: isNumberOccupied(86, reservedSeats)|| selectedSeats.includes(86) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
+          </button>
+        </div>
+        {/* row 17 */}
+        <div style={{ display: 'flex', justifyContent: 'space-between',width:'70%',margin:'0 auto',backgroundColor:'white',padding:'5px 1rem' }}>
+          <button 
+            disabled={isNumberOccupied(87, reservedSeats)}
+            onClick={() => toggleNumber(87)}
+            style={{ backgroundColor: isNumberOccupied(87, reservedSeats) || selectedSeats.includes(87) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
+          </button>
+          <button 
+            disabled={isNumberOccupied(88, reservedSeats)}
+            onClick={() => toggleNumber(88)}
+            style={{ backgroundColor: isNumberOccupied(88, reservedSeats) ||  selectedSeats.includes(88) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
+          </button>
+          <button 
+            disabled={isNumberOccupied(89, reservedSeats)}
+            onClick={() => toggleNumber(89)}
+            style={{ backgroundColor: isNumberOccupied(89, reservedSeats) ||  selectedSeats.includes(89) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
+          </button>
+          <div style={{ width: "40px", height: '40px', border: 0, borderRadius: "8px",display:'flex',justifyContent:'center',alignItems:'center' }}>17</div>
+          <button 
+            disabled={isNumberOccupied(90, reservedSeats)}
+            onClick={() => toggleNumber(90)}
+            style={{ backgroundColor: isNumberOccupied(90, reservedSeats) ||  selectedSeats.includes(90) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
+          </button>
+          <button 
+            disabled={isNumberOccupied(91, reservedSeats)}
+            onClick={() => toggleNumber(91)}
+            style={{ backgroundColor: isNumberOccupied(91, reservedSeats) ||  selectedSeats.includes(91) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
+          </button>
+          <button 
+            disabled={isNumberOccupied(92, reservedSeats)}
+            onClick={() => toggleNumber(92)}
+            style={{ backgroundColor: isNumberOccupied(92, reservedSeats)|| selectedSeats.includes(92) ? '#7881f2' : '#e9e8fc',width: "30px", height: '40px',borderRadius: "8px" }}>
           </button>
         </div>
       </section>
-
-      {/* <div>
-        <h3>Numbers: {selectedSeats.join(', ')}</h3>
-        <button disabled={isNumberOccupied(5, reservedSeats)} onClick={() => addNumber(5)}>Add 5</button>
-        <button onClick={() => addNumber(10)}>Add 10</button>
-      </div>
-
-      <div>
-        <h3>Numbers: {selectedSeats.join(', ')}</h3>
-        <button disabled={isNumberOccupied(5, reservedSeats)} onClick={() => toggleNumber(5)}>
-          {selectedSeats.includes(5) ? 'Remove 5' : 'Add 5'}
-        </button>
-        <button disabled={isNumberOccupied(10, reservedSeats)} onClick={() => toggleNumber(10)}
-          style={{ backgroundColor: selectedSeats.includes(10) ? '#7881f2' : 'white' }}
-        >
-          {numbers.includes(10) ? 'Remove 10' : 'Add 10'}
-          10
-        </button>
-      </div> */}
+      <Link to='/FlightBusiness'>
+        <button style={{ backgroundColor: '#f08e2d', width: '60px', height: '60px',color:'black',borderRadius:'50%' , position:'fixed' , right:'1rem',bottom:'1rem'}}>BS</button>
+      </Link>
+  
     </div>
   )
 }
-const blueSeat = {
-  width: "30px", height: '40px', backgroundColor: '#7881f2', border: 0, borderRadius: "8px"
-}
+
 
 export default FlightEconomy
