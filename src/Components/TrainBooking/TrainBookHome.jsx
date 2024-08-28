@@ -20,7 +20,7 @@ const TrainBookHome = () => {
 
   return (
     <div>
-      <Header />
+      <Header title='Trains Booking' arrow={true} />
       <section>
         <div style={{ margin: '0.5rem 2rem', padding: '1rem', backgroundColor: '#fef8d8', borderRadius: '1rem' }}>
           <form>

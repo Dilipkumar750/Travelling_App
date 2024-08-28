@@ -18,7 +18,7 @@ const BookTickets = () => {
 
   return (
     <>
-      <Header />
+      <Header title='Book Tickets' arrow={false}/>
       <Container style={{ padding: '20px', maxWidth: '600px', }}>
         {/* Search Bar */}
         <Form.Control style={{backgroundColor: '#F3E8D6'}}

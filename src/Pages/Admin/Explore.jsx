@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 function Explore() {
   return (
     <div>
-      <Header />
+      <Header title='Explore' arrow={true}/>
       <Form.Control type="text" placeholder="Search" style={{width:'90%',margin:'10px 0 0 10px'}} />
       <Swiper
         slidesPerView={3}

@@ -19,7 +19,7 @@ const JourneyJoyHome = () => {
         minHeight: '100vh',
       }}
     >
-      <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+      <Link to="/welcome" style={{ textDecoration: 'none', color: 'inherit' }}>
         <Row className="justify-content-center" style={{ backdropFilter: 'blur(70px)', marginTop: '-50%' }}>
           <Col md={6}>
             <h4 className="mb-3" style={{ fontFamily: 'Shojumaru', boxShadow: 'black' }}>

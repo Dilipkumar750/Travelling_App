@@ -10,7 +10,7 @@ import BookTickets from './BookTickets'
 const HomePage = () => {
   return (
     <div>
-      <Header/>
+      <Header title='Home' arrow={false}/>
       <section style={{padding:"0 10px"}}>
       <h3>Recommend For You </h3>
       <Link to='/Travels' style={{ textDecoration: 'none' }}>

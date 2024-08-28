@@ -1,10 +1,35 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import Header from '../../Components/header/Header';
 import Footer from '../../Components/footer/Footer';
 import { Form, Button, Container, Card } from 'react-bootstrap';
 import plus from '../../assets/plus.png';
 
-const Services = () => {
+const Addservices = () => {
+  // Use state to store selected images
+  const [selectedImages, setSelectedImages] = useState([]);
+  const fileInputRefs = useRef([]);
+
+  // Handle file input click
+  const handleCardClick = (index) => {
+    fileInputRefs.current[index].click();
+  };
+
+  // Handle file selection
+  const handleFileChange = (index, event) => {
+    const file = event.target.files[0];
+    if (file) {
+      // Create a URL for the selected file
+      const fileUrl = URL.createObjectURL(file);
+      
+      // Update state with the selected image
+      setSelectedImages((prevImages) => {
+        const updatedImages = [...prevImages];
+        updatedImages[index] = fileUrl;
+        return updatedImages;
+      });
+    }
+  };
+
   // Define transport options with images
   const transportOptions = [
     { image: plus },
@@ -13,11 +38,11 @@ const Services = () => {
 
   return (
     <div>
-      <Header />
+      <Header title='Add Services' arrow={false} />
       <Container className="mt-2 mb-2">
         <Form>
-          {/* City of Landmark */}
-          <Form.Group controlId="formCity">
+          {/* Service Name */}
+          <Form.Group controlId="formServiceName">
             <Form.Label><h6>Service Name</h6></Form.Label>
             <Form.Control
               type="text"
@@ -45,16 +70,28 @@ const Services = () => {
             />
           </Form.Group>
 
-          {/* Transport Options Cards */}
-          <h6>Add   Images</h6>
+          {/* Image Upload Cards */}
+          <h6>Add Images</h6>
           <div className="d-grid gap-4 mb-2 mt-2" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
             {transportOptions.map((option, index) => (
-              <Card key={index} className="border-2 border-warning rounded-3 p-4" style={{ backgroundColor: '#F3E8D6'}}>
-                <Card.Img
+              <Card
+                key={index}
+                className="border-2 border-warning rounded-3 p-4"
+                style={{ backgroundColor: '#F3E8D6', cursor: 'pointer' }}
+                onClick={() => handleCardClick(index)}
+              >
+                <Card.Img 
                   variant="top"
-                  src={option.image}
+                  src={selectedImages[index] || option.image}
                   className="img-fluid rounded-3"
                   style={{ width: '100%', height: 'auto', backgroundColor: '#f08e2d' }}
+                />
+                {/* Hidden file input */}
+                <input
+                  type="file"
+                  ref={(el) => fileInputRefs.current[index] = el}
+                  style={{ display: 'none' }}
+                  onChange={(e) => handleFileChange(index, e)} 
                 />
               </Card>
             ))}
@@ -75,4 +112,4 @@ const Services = () => {
   );
 }
 
-export default Services;
+export default Addservices;

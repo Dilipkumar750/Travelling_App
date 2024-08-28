@@ -21,7 +21,7 @@ const BusBookHome = () => {
 
   return (
     <div>
-      <Header />
+      <Header title='Book Tickets' arrow={true} />
       <section>
         <div style={{ margin: '0.5rem 2rem', padding: '1rem', backgroundColor: '#fef8d8', borderRadius: '1rem' }}>
           <form>
