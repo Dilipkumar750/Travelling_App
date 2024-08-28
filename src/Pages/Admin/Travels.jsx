@@ -1,21 +1,20 @@
-import React from 'react'
-import Header from '../../Components/header/Header'
+import React from 'react';
+import Header from '../../Components/header/Header';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Footer from '../../Components/footer/Footer';
 import { Link } from 'react-router-dom';
 
-
 const Travels = () => {
   return (
-    <div>
-      <Header/>
-      <div style={{ width: '100%', height: '200px', border: '0',display:'grid',gap:'1rem',padding:"1rem 2rem" }}>
-      <Form.Control
-        type="text"
-        placeholder="Search"
-        className=" mr-sm-2"
-      />
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <Header />
+      <div style={{ flex: '1', padding: '1rem 2rem', display: 'grid', gap: '1rem' }}>
+        <Form.Control
+          type="text"
+          placeholder="Search"
+          className="mr-sm-2"
+        />
         <h5>View Map</h5>
         <iframe
           title="Google Map"
@@ -26,14 +25,20 @@ const Travels = () => {
           allowFullScreen=""
           loading="lazy"
         ></iframe>
-      <h5>Quick Links</h5>
-        <Link to='/Explore'><Button style={{backgroundColor:'#f08e2d',color:'black',width:'100%'}}>Explore</Button></Link>
-        <Link to=''><Button style={{backgroundColor:'#f08e2d',color:'black',width:'100%'}}>Book Tickets</Button></Link>
-        <Link to=''><Button style={{backgroundColor:'#f08e2d',color:'black',width:'100%'}}>Accomodations</Button></Link>
+        <h5>Quick Links</h5>
+        <Link to='/Explore'>
+          <Button style={{ backgroundColor: '#f08e2d', color: 'black', width: '100%' }}>Explore</Button>
+        </Link>
+        <Link to='/Booktickets'>
+          <Button style={{ backgroundColor: '#f08e2d', color: 'black', width: '100%' }}>Book Tickets</Button>
+        </Link>
+        <Link to='/HotelBookHome'>
+          <Button style={{ backgroundColor: '#f08e2d', color: 'black', width: '100%' }}>Accommodations</Button>
+        </Link>
       </div>
-      <Footer/>
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Travels
+export default Travels;

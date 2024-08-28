@@ -51,7 +51,7 @@ const ViewTicket = () => {
         <Link to="/Homepage">
           <FaArrowLeft style={{ fontSize: '24px', color: '#ff5f00' }} />
         </Link>
-        <h2 style={{ color: 'black', marginRight: '55%' }}>
+        <h2 style={{ color: 'black', marginRight: '45%' }}>
           Flight Ticket
         </h2>
       </div>

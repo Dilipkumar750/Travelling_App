@@ -73,18 +73,20 @@ const BusPayment = () => {
 
       <Row className="justify-content-center mt-5">
         <Col md={6} className="text-center">
-          <Button
-            style={{
-              backgroundColor: '#f08e2d',
-              width: '100%',
-              height: '40px',
-              padding: '10px',
-              borderRadius: '10px',
-              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-            }}
-          >
-            Continue
-          </Button>
+        <Link to='/Done'>
+            <Button
+              style={{
+                backgroundColor: '#f08e2d',
+                width: '100%',
+                height: '40px',
+                padding: '10px',
+                borderRadius: '10px',
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+              }}
+            >
+              Continue
+            </Button>
+            </Link>
         </Col>
       </Row>
     </Container>

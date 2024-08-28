@@ -135,6 +135,7 @@ const FlightBookHome = () => {
                 <select id="inputState" class="form-control" style={{ backgroundColor: 'transparent' }}>
                   <option selected>Choose...</option>
                   <option>Economy</option>
+                  <option>Business</option>
                 </select>
               </div>
             </div>
@@ -182,7 +183,9 @@ const FlightBookHome = () => {
               </div>
             </SwiperSlide>
           </Swiper>
+          <Link to='/flightviewticket'>
         <Button style={{ backgroundColor: '#f08e2d', width: '100%',color:'black'}}>View Ticket</Button>
+        </Link>
        </section>
       </section>
     </div>

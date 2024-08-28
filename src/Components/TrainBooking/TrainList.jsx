@@ -27,7 +27,7 @@ function TrainList() {
                             CHE
                         </div>
                         <div style={{ backgroundColor: 'white', width: '50px', height: '50px', borderRadius: '50%', display: 'grid', alignItems: 'center', textAlign: 'center', boxShadow: 'rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px' }} >
-                            CHE
+                            BLR
                         </div>
                     </div>
                 </div>

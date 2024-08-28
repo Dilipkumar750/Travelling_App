@@ -3,8 +3,9 @@ import Header from "../header/Header";
 import { LuPlaneTakeoff, LuPlaneLanding, LuCalendarDays } from "react-icons/lu";
 import { Button } from "react-bootstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
-import fifteen from '../../assets/fifteenoffer.svg'
-import twintythreeoffer from '../../assets/twintythreeoffer.svg'
+import { Link } from "react-router-dom";
+import fifteen from '../../assets/fifteenoffer.svg';
+import twintythreeoffer from '../../assets/twintythreeoffer.svg';
 
 const TrainBookHome = () => {
   const [fromLocation, setFromLocation] = useState("");
@@ -24,13 +25,13 @@ const TrainBookHome = () => {
         <div style={{ margin: '0.5rem 2rem', padding: '1rem', backgroundColor: '#fef8d8', borderRadius: '1rem' }}>
           <form>
             {/* From Select */}
-            <div class="col-auto">
-              <label class="sr-only" for="inlineFormInputGroup">
+            <div className="col-auto">
+              <label className="sr-only" htmlFor="fromSelect">
                 From
               </label>
-              <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
+              <div className="input-group mb-2">
+                <div className="input-group-prepend">
+                  <div className="input-group-text">
                     <LuPlaneTakeoff />
                   </div>
                 </div>
@@ -54,13 +55,13 @@ const TrainBookHome = () => {
             </div>
 
             {/* To Select */}
-            <div class="col-auto">
-              <label class="sr-only" for="inlineFormInputGroup">
+            <div className="col-auto">
+              <label className="sr-only" htmlFor="toSelect">
                 To
               </label>
-              <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
+              <div className="input-group mb-2">
+                <div className="input-group-prepend">
+                  <div className="input-group-text">
                     <LuPlaneLanding />
                   </div>
                 </div>
@@ -84,81 +85,79 @@ const TrainBookHome = () => {
               </div>
             </div>
 
-            {/*  */}
+            {/* Date and Traveller Inputs */}
             <div className="row">
               <div className="col-6">
-                <label class="sr-only" for="inlineFormInputGroup">
+                <label className="sr-only" htmlFor="departureDate">
                   Departure
                 </label>
-                <div class="input-group mb-2">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">
+                <div className="input-group mb-2">
+                  <div className="input-group-prepend">
+                    <div className="input-group-text">
                       <LuCalendarDays />
                     </div>
                   </div>
                   <input
                     type="date"
-                    class="form-control"
-                    id="inlineFormInputGroup"
-                    placeholder="Username"
+                    className="form-control"
+                    id="departureDate"
                     style={{ backgroundColor: 'transparent' }}
                   />
                 </div>
               </div>
               <div className="col-6">
-                <label class="sr-only" for="inlineFormInputGroup">
+                <label className="sr-only" htmlFor="returnDate">
                   Return
                 </label>
                 <input
                   type="date"
-                  class="form-control"
-                  id="inlineFormInputGroup"
+                  className="form-control"
+                  id="returnDate"
                   placeholder="Add return date"
                   style={{ backgroundColor: 'transparent' }}
                 />
               </div>
               <div className="col-6">
-                <label class="sr-only" for="inlineFormInputGroup">
+                <label className="sr-only" htmlFor="travellersCount">
                   Traveller
                 </label>
                 <input
                   type="number"
-                  class="form-control"
-                  id="inlineFormInputGroup"
-                  placeholder="no of travellers"
+                  className="form-control"
+                  id="travellersCount"
+                  placeholder="Number of travellers"
                   style={{ backgroundColor: 'transparent' }}
                 />
               </div>
               <div className="col-6">
-                <label for="inputState">Class</label>
-                <select id="inputState" class="form-control" style={{ backgroundColor: 'transparent' }}>
-                  <option selected>Choose...</option>
+                <label htmlFor="classSelect">Class</label>
+                <select id="classSelect" className="form-control" style={{ backgroundColor: 'transparent' }}>
+                  <option defaultValue>Choose...</option>
                   <option>Economy</option>
                 </select>
               </div>
             </div>
-            <Button style={{ backgroundColor: '#f08e2d', width: '100%', marginTop: '1rem' }}>Search</Button>
+            <Link to='/TrainList'>
+              <Button style={{ backgroundColor: '#f08e2d', width: '100%', marginTop: '1rem' }}>Search</Button>
+            </Link>
           </form>
         </div>
-       <section style={{ padding: "0 1rem" }}>
-        <div style={{display:'flex',justifyContent:'space-between'}}>
-          <h6><b>Hot Offer</b></h6>
-          <p style={{ color: "red" }} >See all</p>
-        </div>
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={20}
-            className="mySwiper"
-          >
+
+        <section style={{ padding: "0 1rem" }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <h6><b>Hot Offer</b></h6>
+            <p style={{ color: "red" }}>See all</p>
+          </div>
+          <Swiper slidesPerView={1} spaceBetween={20} className="mySwiper">
             <SwiperSlide>
-              <div className="card mb-3" style={{width:'100%'}}>
+              <div className="card mb-3" style={{ width: '100%' }}>
                 <div className="row g-0">
                   <div className="col-4">
-                    <img src={fifteen} className="img-fluid rounded-start" alt="..." style={{height:'100%'}}/>
+                    <img src={fifteen} className="img-fluid rounded-start" alt="..." style={{ height: '100%' }} />
                   </div>
                   <div className="col-8">
                     <div className="card-body">
-                      <h5 className="card-title">15% discount with mastercard</h5>
+                      <h5 className="card-title">15% discount with Mastercard</h5>
                       <p className="card-text">Lorem ipsum dolor sit amet consectetur</p>
                     </div>
                   </div>
@@ -166,23 +165,25 @@ const TrainBookHome = () => {
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="card mb-3" style={{width:'100%'}}>
+              <div className="card mb-3" style={{ width: '100%' }}>
                 <div className="row g-0">
                   <div className="col-4">
-                    <img src={twintythreeoffer} className="img-fluid rounded-start" alt="..." style={{height:'100%'}}/>
+                    <img src={twintythreeoffer} className="img-fluid rounded-start" alt="..." style={{ height: '100%' }} />
                   </div>
                   <div className="col-8">
                     <div className="card-body">
-                      <h5 className="card-title">23% discount in visa credit card</h5>
-                      <p className="card-text">Lorem ipsum dolor sit am etet adip</p>
+                      <h5 className="card-title">23% discount with Visa Credit Card</h5>
+                      <p className="card-text">Lorem ipsum dolor sit amet et adip</p>
                     </div>
                   </div>
                 </div>
               </div>
             </SwiperSlide>
           </Swiper>
-        <Button style={{ backgroundColor: '#f08e2d', width: '100%',color:'black'}}>View Ticket</Button>
-       </section>
+          <Link to='/TrainViewTicket'>
+          <Button style={{ backgroundColor: '#f08e2d', width: '100%', color: 'black' }}>View Ticket</Button>
+          </Link>
+        </section>
       </section>
     </div>
   );

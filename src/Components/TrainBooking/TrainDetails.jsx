@@ -91,18 +91,22 @@ const TrainDetails = () => {
       </Row>
 
       <div className="d-flex justify-content-center gap-3 mt-3">
+        <Link to='/Trainlist'>
         <Button
           className="w-100 py-2 rounded-pill"
           style={{backgroundColor: 'transparent', color: 'orange', border: '2px solid #f08e2d'}}
         >
           Cancel
         </Button>
+        </Link>
+        <Link to='/Trainseat'>
         <Button
           className="w-100 py-2 rounded-pill"
           style={{backgroundColor: '#f08e2d'}}
         >
           Continue
         </Button>
+        </Link>
       </div>
     </Container>
   );

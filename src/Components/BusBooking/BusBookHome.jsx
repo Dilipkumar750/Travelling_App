@@ -4,7 +4,9 @@ import { LuPlaneTakeoff, LuPlaneLanding, LuCalendarDays } from "react-icons/lu";
 import { Button } from "react-bootstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
 import fifteen from '../../assets/fifteenoffer.svg'
-import twintythreeoffer from '../../assets/twintythreeoffer.svg'
+import twintythreeoffer from '../../assets/twintythreeoffer.svg';
+import { Link } from 'react-router-dom';
+
 
 const BusBookHome = () => {
   const [fromLocation, setFromLocation] = useState("");
@@ -137,7 +139,9 @@ const BusBookHome = () => {
                 </select>
               </div>
             </div>
+            <Link to='/'>
             <Button style={{ backgroundColor: '#f08e2d', width: '100%', marginTop: '1rem' }}>Search</Button>
+            </Link>
           </form>
         </div>
        <section style={{ padding: "0 1rem" }}>
@@ -181,7 +185,9 @@ const BusBookHome = () => {
               </div>
             </SwiperSlide>
           </Swiper>
+          <Link to='/BusViewTicket'>
         <Button style={{ backgroundColor: '#f08e2d', width: '100%',color:'black'}}>View Ticket</Button>
+        </Link>
        </section>
       </section>
     </div>
