@@ -1,12 +1,63 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import QR from '../../assets/qr.png';
 import TrainLogo from '../../assets/train_color.jpeg';
 import train from '../../assets/train color.png'; // Ensure the path is correct
 import { GiSofa } from "react-icons/gi";
 import { FaRegCircleUser, FaArrowLeft } from "react-icons/fa6";
+import { API_URL } from '../../constant';
+import axios from 'axios';
 
 const TrainViewTicket = () => {
+
+  const storedData = JSON.parse(localStorage.getItem("user"));
+  const [vihicleid, setVihicleid] = useState()
+  const [details, setDetails] = useState()
+// console.log(details)
+  useEffect(() => {
+    handleSubmit()
+    if(setVihicleid){
+      handleGetBooking()
+    }
+  }, [storedData,setVihicleid])
+
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/user/getUser/${storedData.email}`);
+      const lastItem = response?.data.booking[response?.data.booking.length - 1];
+      setVihicleid(lastItem)
+
+    } catch (err) {
+      console.log('something went wrong , try again');
+    }
+  };
+  const handleGetBooking = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/booking/getBookingById/get/${vihicleid}`);
+      setDetails(response.data)
+    } catch (err) {
+      console.log('something went wrong , try again');
+    }
+  };
+
+  const formatDate = (isoDateString) => {
+    // Convert ISO string to Date object
+    const date = new Date(isoDateString);
+  
+    // Extract day, month, and year
+    const day = date.getUTCDate();
+    const month = date.getUTCMonth() + 1; // Months are zero-based
+    const year = date.getUTCFullYear();
+  
+    // Format day and month to always be two digits
+    const formattedDay = day < 10 ? `0${day}` : day;
+    const formattedMonth = month < 10 ? `0${month}` : month;
+  
+    // Combine into desired format
+    return `${formattedDay}/${formattedMonth}/${year}`;
+  };
+
+
   const commonStyles = {
     padding: '20px',
     fontFamily: 'Arial, sans-serif',
@@ -31,7 +82,7 @@ const TrainViewTicket = () => {
     { time: '09:30AM', location: 'KERALA' }
   ];
 
-  const details = [
+  const detailss = [
     { label: 'Quota', value: 'GN' },
     { label: 'Coach', value: 'S2' },
     { label: 'Seat no', value: '17' },
@@ -83,35 +134,39 @@ const TrainViewTicket = () => {
         {/* Header */}
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
           <img src={header.logo} alt="Train Logo" style={{ width: '40px', height: 'auto', marginRight: '10px' }} />
-          <span style={{ color: 'blue', fontWeight: 'bold', marginRight: '10px' }}>{header.logoText}</span>
-          <p style={{ marginLeft: 'auto', color: 'blue' }}>{header.date}</p>
+          <span style={{ color: 'blue', fontWeight: 'bold', marginRight: '10px' }}>{details?.vehicleName}</span>
+          <p style={{ marginLeft: 'auto', color: 'blue' }}>{formatDate(details?.createdAt)}</p>
         </div>
 
         {/* Train Info */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-          {trainInfo.map((item, index) => (
-            <div key={index} style={{ textAlign: index === 1 ? 'center' : index === 2 ? 'right' : 'left' }}>
-              {index === 1 ? (
-                <>
-                  <img src={train} alt="Train Icon" style={{ width: '40%', height: 'auto' }} /><br />
-                  <p style={{ textAlign: 'center' }}><strong>{item.time}</strong></p>
-                </>
-              ) : (
-                <p><strong style={{ color: 'blue' }}>{item.time}</strong><br />{item.location}</p>
-              )}
+        <div style={{ textAlign:'right'}}>
+              <p><strong style={{ color: 'blue' }}>{details?.departureTime}</strong><br />{details?.from}</p>
             </div>
-          ))}
+            <div style={{ textAlign:'center'}}>
+              <p><strong style={{ color: 'blue' }}>{details?.duration}</strong><br /></p>
+            </div>
+            <div style={{ textAlign:'left'}}>
+              <p><strong style={{ color: 'blue' }}>{details?.returnTime}</strong><br />{details?.to}</p>
+            </div>
         </div>
 
         <hr />
 
         {/* Train Details */}
         <div style={{ display: 'flex', gap: '20px', marginBottom: '10px', alignItems: 'center', justifyContent: 'center' }}>
-          {details.map((item, index) => (
-            <div key={index}>
-              <strong style={{ color: 'blue' }}>{item.label}:</strong> <p>{item.value}</p>
+          <div>
+              <strong style={{ color: 'blue' }}>Quota:</strong> <p>{details?.classType}</p>
             </div>
-          ))}
+          <div>
+              <strong style={{ color: 'blue' }}>Coach</strong> <p>S2</p>
+            </div>
+          <div>
+              <strong style={{ color: 'blue' }}>Seat no</strong> <p>{details?.selectedSeats}</p>
+            </div>
+          <div>
+              <strong style={{ color: 'blue' }}>Train No</strong> <p>DJ017</p>
+            </div>
         </div>
 
         <hr />
@@ -120,8 +175,8 @@ const TrainViewTicket = () => {
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
           <FaRegCircleUser style={{ fontSize: '3rem', marginRight: '10px', marginBottom: '10px' }} />
           <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-            <p><strong>Name:</strong><br />{passenger.name}</p>
-            <p><strong><GiSofa /></strong> {passenger.seat}</p>
+            <p><strong>Name:</strong><br />{details?.username}</p>
+            <p><strong><GiSofa /></strong>{details?.selectedSeats}</p>
           </div>
         </div>
         <hr style={{ borderTop: '1px dashed' }} />

@@ -2,8 +2,17 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaSearch, FaTrain, FaArrowLeft } from 'react-icons/fa';
 import { LuArrowDownUp } from 'react-icons/lu';
+import { LuPlaneTakeoff, LuPlaneLanding, LuCalendarDays } from "react-icons/lu";
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const TrackTrain = () => {
+  const navigate = useNavigate()
+
+  const [fromLocation, setFromLocation] = useState("");
+  const [toLocation, setToLocation] = useState("");
+
+
   const customColor = '#f08e2d'; // Orange color
   const whiteBorder = '#ffffff'; // White border color
 
@@ -12,6 +21,26 @@ const TrackTrain = () => {
     { name: 'KUMBAKONAM', code: 'KMU' },
     { name: 'THANJAVUR', code: 'TJ' }
   ]);
+
+  const locations = ["Chennai", "Bengaluru", "Kochi", "Delhi"];
+  const filteredLocations = locations.filter(
+    (location) => location !== fromLocation
+  );
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Collect form values
+    const formData = {
+      fromLocation,
+      toLocation,
+    };
+
+    // Store form values in localStorage
+    localStorage.setItem("trainSearchData", JSON.stringify(formData));
+    navigate('/TrainDate')
+  };
+
 
   return (
     <div className="d-flex flex-column align-items-center" style={{ backgroundColor: '#F3E8D6', minHeight: '100vh' }}>
@@ -25,28 +54,78 @@ const TrackTrain = () => {
       </div>
       
       {/* Card for City Selection */}
-      <div className="p-4 mb-5 rounded" style={{ width: '90%', backgroundColor: customColor, color: 'white', height: '200px', border: `2px solid ${whiteBorder}`, borderRadius: '40px', marginTop: '15%' }}>
-        <div className="d-flex flex-column align-items-center justify-content-center h-100">
-          {cities.map((city, index) => (
-            <React.Fragment key={index}>
-              {/* City Box */}
-              <h6 className="mt-2">{index === 0 ? 'From' : 'To'}</h6>
-              <div className="text-center mb-3" style={{ border: `2px solid ${whiteBorder}`, borderRadius: '10px', width: '80%' }}>
-                <p className="m-0">{city.name}</p>
-                <p className="h6 m-0">{city.code}</p>
+      <div className="p-4 mb-5 rounded" style={{ width: '90%', backgroundColor: customColor, color: 'white', border: `2px solid ${whiteBorder}`, borderRadius: '40px', marginTop: '15%' }}>
+        <div className="d-flex flex-column align-items-center justify-content-center ">
+         <form onSubmit={handleSubmit} >
+            {/* From Select */}
+            <div className="col-auto">
+              <label className="sr-only" htmlFor="fromSelect">
+                From
+              </label>
+              <div className="input-group mb-2">
+                <div className="input-group-prepend">
+                  <div className="input-group-text">
+                    <LuPlaneTakeoff />
+                  </div>
+                </div>
+                <select
+                  className="form-control"
+                  id="fromSelect"
+                  value={fromLocation}
+                  onChange={(e) => setFromLocation(e.target.value)}
+                  style={{ backgroundColor: 'transparent' }}
+                >
+                  <option value="" disabled>
+                    Select Departure
+                  </option>
+                  {locations.map((location, index) => (
+                    <option key={index} value={location}>
+                      {location}
+                    </option>
+                  ))}
+                </select>
               </div>
-              
-              {/* Arrows */}
-              {index === 0 && <LuArrowDownUp />}
-            </React.Fragment>
-          ))}
+            </div>
+
+            {/* To Select */}
+            <div className="col-auto">
+              <label className="sr-only" htmlFor="toSelect">
+                To
+              </label>
+              <div className="input-group mb-2">
+                <div className="input-group-prepend">
+                  <div className="input-group-text">
+                    <LuPlaneLanding />
+                  </div>
+                </div>
+                <select
+                  className="form-control"
+                  id="toSelect"
+                  value={toLocation}
+                  onChange={(e) => setToLocation(e.target.value)}
+                  disabled={!fromLocation}
+                  style={{ backgroundColor: 'transparent' }}
+                >
+                  <option value="" disabled>
+                    Select Destination
+                  </option>
+                  {filteredLocations.map((location, index) => (
+                    <option key={index} value={location}>
+                      {location}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+              <Button type="submit" style={{ backgroundColor: '#f08e2d', width: '100%', marginTop: '1rem' }}>Search</Button>
+          </form>
         </div>
       </div>
 
       {/* Search Button */}
-      <button className="btn" style={{ backgroundColor: customColor, color: 'white', width: '70%', marginBottom: '1rem', borderRadius: '50px' }}>
+      {/* <button className="btn" style={{ backgroundColor: customColor, color: 'white', width: '70%', marginBottom: '1rem', borderRadius: '50px' }}>
         Search TRAIN
-      </button>
+      </button> */}
       
       {/* Blue Line */}
       <hr style={{ color: '#007bff', backgroundColor: '#007bff', height: '2px', width: '80%', border: 'none' }} />

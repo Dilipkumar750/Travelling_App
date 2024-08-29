@@ -170,6 +170,7 @@ const TrainBookHome = () => {
             </div>
               <Button type="submit" style={{ backgroundColor: '#f08e2d', width: '100%', marginTop: '1rem' }}>Search</Button>
           </form>
+              <Link to='/TrackTrain'><Button style={{ backgroundColor: '#f08e2d', width: '100%', marginTop: '1rem' }}>Track Train</Button></Link>
         </div>
 
         <section style={{ padding: "0 1rem" }}>

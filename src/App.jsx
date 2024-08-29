@@ -115,7 +115,7 @@ function App(){
       <Route path='/Header' element={<Header/>}/>
       <Route path='/Footer' element={<Footer/>}/>
       <Route path='/PendingRequests' element={<PendingRequests/>}/>
-      <Route path='/Done' element={<Done/>}/>
+      <Route path='/Done/:title' element={<Done/>}/>
       <Route path='/AddAccomadation' element={<AddAccomadation/>}/>
       <Route path='/' element={<JourneyJoyHome/>}/>
       <Route path='/Approve' element={<Approve/>}/>
