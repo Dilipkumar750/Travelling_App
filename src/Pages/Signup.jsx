@@ -16,7 +16,7 @@ const Signup = () => {
   const handleSubmit = async (event) => {
 
     if (conformPassword!==password) {
-      return alert('wrong conform password')
+      return console.log('wrong conform password')
     }
 
     event.preventDefault();

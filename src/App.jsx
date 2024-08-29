@@ -9,7 +9,6 @@ import BusTicket from './Components/BusBooking/BusTicket';
 import BusViewTicket from './Components/BusBooking/BusViewTicket';
 import FlightBookHome from './Components/Flight_Booking/FlightBookHome';
 import FlightBusiness from './Components/Flight_Booking/FlightBusiness';
-import FlightTicket from './Components/Flight_Booking/FlightTicket';
 import FlightDetails from './Components/Flight_Booking/FlightDetails';
 import FlightEconomy from './Components/Flight_Booking/FlightEconomy';
 import FlightPayment from './Components/Flight_Booking/Payment';
@@ -75,7 +74,6 @@ function App(){
       <Route path='/FlightBookHome' element={<FlightBookHome/>}/>
       <Route path='/FlightList' element={<FlightList/>}/>
       <Route path='/FlightBusiness/:id' element={<FlightBusiness/>}/>
-      <Route path='/FlightTicket' element={<FlightTicket/>}/>
       <Route path='/FlightDetails/:id' element={<FlightDetails/>}/>
       <Route path='/FlightEconomy/:id' element={<FlightEconomy/>}/>
       <Route path='/FlightPayment/:id' element={<FlightPayment/>}/>

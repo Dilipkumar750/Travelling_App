@@ -48,7 +48,7 @@ const FlightBusiness = () => {
       const response = await axios.get(`${API_URL}/booking/flight/get/${id}`);
       setFlightData(response?.data[0])
     } catch (err) {
-      alert('something went wrong , try again');
+      console.log('something went wrong , try again');
     }
   };
 
@@ -76,12 +76,12 @@ console.log(flightData)
     //   console.log(response)
     // } catch (err) {
     //   console.log(err)
-    //   alert('something went wrong , try again');
+    //   console.log('something went wrong , try again');
     // }
   };
 
   return (
-    <div style={{ backgroundColor: '#F3E8D6', height: '100vh',paddingTop:'3rem' }}>
+    <div style={{ backgroundColor: '#F3E8D6', height: '100%',paddingTop:'3rem' }}>
       <div className="d-flex align-items-center mb-4 ps-4">
           <FaArrowLeft className="fs-4 me-3 text-warning" onClick={goBack} />
         <h2 className="text-dark">Select Seats</h2>

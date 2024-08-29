@@ -17,7 +17,7 @@ const TrainDate = () => {
   const from = storedData.fromLocation
   const to = storedData.toLocation
   if (!storedData) {
-    alert("something went wrong try again");
+    console.log("something went wrong try again");
     return null;
   }
 
@@ -30,7 +30,7 @@ const TrainDate = () => {
         const response = await axios.post(`${API_URL}/booking/train/get`, { from, to });
         setArray(response.data)
       } catch (err) {
-        alert('something went wrong , try again');
+        console.log('something went wrong , try again');
       }
   };
 

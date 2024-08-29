@@ -14,7 +14,7 @@ function FlightList() {
   const from = storedData.fromLocation
   const to = storedData.toLocation
   if (!storedData) {
-    alert("something went wrong try again");
+    console.log("something went wrong try again");
     return null;
   }
 // console.log(array)
@@ -27,7 +27,7 @@ function FlightList() {
       const response = await axios.post(`${API_URL}/booking/flight/get`, { from, to });
       setArray(response.data)
     } catch (err) {
-      alert('something went wrong , try again');
+      console.log('something went wrong , try again');
     }
   };
 
@@ -36,7 +36,7 @@ function FlightList() {
   };
 
   return (
-    <div style={{ backgroundColor: "#F3E8D6", padding: '1rem', height: "100vh" }}>
+    <div style={{ backgroundColor: "#F3E8D6", padding: '1rem', height: "100%" }}>
       <div className="d-flex align-items-center mb-4 pt-4">
         <FaArrowLeft className="fs-4 me-3 text-warning" onClick={goBack} />
         <h2 className="text-dark">Select Your Flight</h2>

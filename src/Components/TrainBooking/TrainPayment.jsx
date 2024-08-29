@@ -34,7 +34,7 @@ const TrainPayment = () => {
       const response = await axios.get(`${API_URL}/booking/train/get/${id}`);
       setFlightData(response?.data[0])
     } catch (err) {
-      alert('something went wrong , try again');
+      console.log('something went wrong , try again');
     }
   };
 
@@ -61,10 +61,11 @@ const TrainPayment = () => {
       storedData.fromLocation = '';
       storedData.toLocation = '';
       localStorage.setItem('user', JSON.stringify(storedData));
+      localStorage.removeItem('trainSearchData');
       navigate('/Done')
     } catch (err) {
       console.log(err)
-      alert('something went wrong , try again');
+      console.log('something went wrong , try again');
     }
   };
 

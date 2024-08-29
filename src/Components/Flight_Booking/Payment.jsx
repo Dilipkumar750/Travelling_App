@@ -33,7 +33,7 @@ const Payment = () => {
       const response = await axios.get(`${API_URL}/booking/flight/get/${id}`);
       setFlightData(response?.data[0])
     } catch (err) {
-      alert('something went wrong , try again');
+      console.log('something went wrong , try again');
     }
   };
 
@@ -60,10 +60,11 @@ const Payment = () => {
       storedData.fromLocation = '';
       storedData.toLocation = '';
       localStorage.setItem('user', JSON.stringify(storedData));
+      localStorage.removeItem('flightSearchData');
       navigate('/Done')
     } catch (err) {
       console.log(err)
-      alert('something went wrong , try again');
+      console.log('something went wrong , try again');
     }
   };
 
@@ -72,7 +73,7 @@ const Payment = () => {
   };
   return (
     <div>
-      <Container className="mt-1 mb-4" style={{ padding: '25px', backgroundColor: '#F3E8D6',height:'100vh' }}>
+      <Container className="mt-1 mb-4" style={{ padding: '25px', backgroundColor: '#F3E8D6',height:'100%' }}>
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
             <FaArrowLeft style={{ fontSize: '24px', marginRight: '15px', color: '#ff5f00' }} onClick={goBack} />
           <h2 className="text-right" style={{ color: 'black' }}>

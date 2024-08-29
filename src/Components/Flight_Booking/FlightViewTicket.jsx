@@ -76,29 +76,13 @@ const ViewTicket = () => {
     date: '26/May/2023',
   };
 
-  const flightInfo = [
-    { time: '08:30', location: 'CHENNAI' },
-    { time: '1 hour', location: '' },
-    { time: '09:30', location: 'BANGALORE' }
-  ];
 
-  const detailss = [
-    { label: 'Class', value: 'Economy' },
-    { label: 'Gate', value: '17 D' },
-    { label: 'Terminal', value: '4' },
-    { label: 'Flight', value: 'DJ017' }
-  ];
-
-  const passenger = {
-    name: '22 years, Male',
-    seat: '17 D'
-  };
 
   return (
     <div style={{ padding: '20px', textAlign: 'center', marginTop: '10px', backgroundColor: '#F3E8D6', }}>
       {/* Back Button and Header (Outside the Card) */}
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px', maxWidth: '600px', margin: '0 auto' }}>
-        <Link to="/Homepage">
+        <Link to="/BookTickets">
           <FaArrowLeft style={{ fontSize: '24px', color: '#ff5f00' }} />
         </Link>
         <h2 style={{ color: 'black', marginRight: '45%' }}>

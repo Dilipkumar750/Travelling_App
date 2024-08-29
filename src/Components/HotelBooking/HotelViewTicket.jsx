@@ -42,7 +42,7 @@ const HotelTicket = () => {
     <div style={{ padding: '20px', textAlign: 'center', marginTop: '10px', backgroundColor: '#F3E8D6', }}>
       {/* Back Button and Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '600px', margin: '0 auto', marginBottom: '10px' }}>
-        <Link to="/Homepage">
+        <Link to="/BookTickets">
           <FaArrowLeft style={{ fontSize: '24px', color: '#ff5f00' }} />
         </Link>
         <h2 style={{ color: 'black', marginRight: '45%' }}>Hotel Ticket</h2>

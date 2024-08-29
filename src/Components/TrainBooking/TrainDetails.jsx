@@ -21,7 +21,7 @@ const TrainDetails = () => {
       const response = await axios.get(`${API_URL}/booking/train/get/${id}`);
       setArray(response?.data[0])
     } catch (err) {
-      alert('something went wrong , try again');
+      console.log('something went wrong , try again');
     }
   };
 

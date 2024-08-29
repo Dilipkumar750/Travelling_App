@@ -14,7 +14,7 @@ function BusList() {
   
     const storedData = JSON.parse(localStorage.getItem("BusSearchData"));
     if (!storedData) {
-      alert("something went wrong try again");
+      console.log("something went wrong try again");
       return null;
     }
     const from = storedData?.fromLocation
@@ -29,7 +29,7 @@ function BusList() {
         const response = await axios.post(`${API_URL}/booking/bus/get`, { from, to });
         setArray(response.data)
       } catch (err) {
-        alert('something went wrong , try again');
+        console.log('something went wrong , try again');
       }
     };
   
