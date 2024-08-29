@@ -59,9 +59,9 @@ const PendingRequests = () => {
                     <Row className="justify-content-end">
                       <Col xs="auto">
                       <Link to='/reject'>
-                        <Button variant="danger" className="me-2" style={{ height: '35px' }}>Reject</Button></Link>
+                        <Button variant="danger" className="me-2 rounded-5" style={{ height: '35px' }}>Reject</Button></Link>
                         <Link to='/Approve'>
-                        <Button variant="success" style={{ height: '35px' }}>Approve</Button></Link>
+                        <Button variant="success" className="rounded-5" style={{ height: '35px' }}>Approve</Button></Link>
                       </Col>
                     </Row>
                   </Card>

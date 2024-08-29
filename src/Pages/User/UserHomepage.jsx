@@ -31,17 +31,17 @@ const UserHomepage = () => {
         <Row className="mb-3">
           <Col md={4} className="mb-2">
             <Link to='/addExplore'>
-              <Button style={{ backgroundColor: '#ff5f00' }} className="w-100 rounded-3">Add Explore</Button>
+              <Button style={{ backgroundColor: '#ff5f00' }} className="w-100 rounded-4">Add Explore</Button>
             </Link>
           </Col>
           <Col md={4} className="mb-2">
             <Link to='/Services'>
-              <Button style={{ backgroundColor: '#ff5f00' }} className="w-100 rounded-3">Add Services</Button>
+              <Button style={{ backgroundColor: '#ff5f00' }} className="w-100 rounded-4">Add Services</Button>
             </Link>
           </Col>
           <Col md={4} className="mb-2">
             <Link to='/AddAccomadation'>
-              <Button style={{ backgroundColor: '#ff5f00' }} className="w-100 rounded-3">Add Accommodations</Button>
+              <Button style={{ backgroundColor: '#ff5f00' }} className="w-100 rounded-4">Add Accommodations</Button>
             </Link>
           </Col>
         </Row>
@@ -70,15 +70,24 @@ const UserHomepage = () => {
               </Row>
               <Row className="justify-content-end">
                 <Col xs="auto">
-                  <Button variant="danger" className="me-2" style={{ height: '35px' }}>Reject</Button>
-                  <Button variant="success" style={{ height: '35px' }}>Approve</Button>
+                  <Button variant="danger" className="me-2 rounded-5" style={{ height: '35px' }}>Reject</Button>
+                  <Button variant="success" className='rounded-5' style={{ height: '35px' }}>Approve</Button>
                 </Col>
               </Row>
             </Card>
+            <Row className="mb-3">
+          <Col md={4} className="mt-4">
+            <Link to='/pendingrequests'>
+              <Button style={{ backgroundColor: '#ff5f00' }} className="w-100 rounded-4">Pending Requests</Button>
+            </Link>
+          </Col>
+          </Row>
           </Col>
         </Row>
       </Container>
-      <Footer />
+      <div style={{bottom: 0, position:'absolute', width: '100%'}}>
+        <Footer/> 
+        </div>
     </div>
   );
 }
