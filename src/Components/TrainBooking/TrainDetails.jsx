@@ -1,22 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react'
 import { Card, Button, Container, Row, Col, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useParams,useNavigate} from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import Ticketcards from "../TicketCard";
 import train from "../../assets/train color.png";
+import { API_URL } from '../../constant';
+import axios from 'axios';
 
 const TrainDetails = () => {
+  const { id } = useParams();
+  const [array, setArray] = useState([])
+  const navigate = useNavigate();
+// console.log(array)
+  useEffect(() => {
+    handleSubmit()
+  }, [])
+
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/booking/train/get/${id}`);
+      setArray(response?.data[0])
+    } catch (err) {
+      alert('something went wrong , try again');
+    }
+  };
+
+  const goBack = () => {
+    navigate(-1);
+  };
   return (
-    <Container className="mt-1 mb-1 p-4 rounded" style={{ backgroundColor: '#F3E8D6' }}>
+    <Container className="mt-1 mb-1 p-4 rounded" style={{ backgroundColor: '#F3E8D6',height: "100vh" }}>
       <div className="d-flex align-items-center mb-4">
-        <Link to="/Homepage">
-          <FaArrowLeft className="fs-4 me-3 text-warning" />
-        </Link>
+          <FaArrowLeft className="fs-4 me-3 text-warning" onClick={goBack} />
         <h2 className="text-dark">Train Details</h2>
       </div>
       <Row className="justify-content-center">
         <Col md={8}>
-          <Ticketcards color="red" width="100%" borderRadius="15%" />
+          <Ticketcards color="red" width="100%" borderRadius="15%" data={array} />
 
           <Card className="p-3 mt-3 shadow-sm bg-white">
             <Row className="align-items-center mb-1">
@@ -25,9 +45,9 @@ const TrainDetails = () => {
                   variant="link"
                   className="text-danger border-2 border-white rounded-pill p-2 shadow-sm"
                 >
-                  CHE
+                  {array.fromcode}
                 </Button>
-                <p className="fs-6 mt-2">(Central Railway Station)</p>
+                <p className="fs-6 mt-2">{array.fromaddress}</p>
               </Col>
 
               <Col className="text-center position-relative">
@@ -42,9 +62,9 @@ const TrainDetails = () => {
                   variant="link"
                   className="text-danger border-2 border-white rounded-pill p-2 shadow-sm"
                 >
-                  KL
+                  {array.tocode}
                 </Button>
-                <p className="fs-6 mt-2">(Trivandrum Central Station)</p>
+                <p className="fs-6 mt-2">{array.toaddress}</p>
               </Col>
             </Row>
 
@@ -78,7 +98,7 @@ const TrainDetails = () => {
 
             <Row className="mb-2">
               <Col><strong>Price</strong></Col>
-              <Col className="text-end"><strong className="text-danger">₹ 1,500</strong></Col>
+              <Col className="text-end"><strong className="text-danger">{array.price}</strong></Col>
             </Row>
           </Card>
         </Col>
@@ -99,7 +119,7 @@ const TrainDetails = () => {
           Cancel
         </Button>
         </Link>
-        <Link to='/Trainseat'>
+        <Link to={`/TrainSeat/${id}`}>
         <Button
           className="w-100 py-2 rounded-pill"
           style={{backgroundColor: '#f08e2d'}}

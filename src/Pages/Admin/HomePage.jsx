@@ -43,7 +43,7 @@ const HomePage = () => {
         </div>
         </Link>
       </section>
-      <Footer/>
+      <div style={{position:'absolute',bottom:'10px',width:'100%'}}><Footer/></div>
     </div>
   )
 }
