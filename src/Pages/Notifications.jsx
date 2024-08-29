@@ -1,9 +1,9 @@
-import React from 'react';
+// Notifications.js
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { FaArrowLeft } from 'react-icons/fa'; // Importing the arrow icon
+import { FaArrowLeft } from 'react-icons/fa';
 
-// Combined notifications array
 const notifications = [
   { id: 1, title: 'New Request', time: '30 Min', text: 'User has requested your service' },
   { id: 2, title: 'Cash Received', time: '30 Min', text: 'Received ₹10,000.00 from User.' },
@@ -12,6 +12,11 @@ const notifications = [
 ];
 
 const Notifications = () => {
+  const [notificationsEnabled, setNotificationsEnabled] = useState(() => {
+    const saved = localStorage.getItem('notificationsEnabled');
+    return saved !== null ? JSON.parse(saved) : true;
+  });
+
   return (
     <Container className="mt-4">
       <Row className="justify-content-center">
@@ -24,25 +29,31 @@ const Notifications = () => {
               Notifications
             </h2>
           </div>
-          
-          {notifications.map(notification => (
-            <div 
-              key={notification.id} 
-              style={{
-                backgroundColor: 'gray',
-                borderRadius: '10px',
-                padding: '15px',
-                marginBottom: '10px',
-                color: 'white'
-              }}
-            >
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
-                <div style={{ fontWeight: 'bold' }}>{notification.title}</div>
-                <div>{notification.time}</div>
-              </div>
-              <div>{notification.text}</div>
+
+          {notificationsEnabled ? (
+            <div>
+              {notifications.map((notification) => (
+                <div
+                  key={notification.id}
+                  style={{
+                    backgroundColor: 'gray',
+                    borderRadius: '10px',
+                    padding: '15px',
+                    marginBottom: '10px',
+                    color: 'white',
+                  }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
+                    <div style={{ fontWeight: 'bold' }}>{notification.title}</div>
+                    <div>{notification.time}</div>
+                  </div>
+                  <div>{notification.text}</div>
+                </div>
+              ))}
             </div>
-          ))}
+          ) : (
+            <p style={{ textAlign: 'center', color: 'red', marginTop: '20px' }}>Notifications are Off</p>
+          )}
         </Col>
       </Row>
     </Container>
