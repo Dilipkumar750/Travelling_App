@@ -16,7 +16,7 @@ const HotelRooms = () => {
   const [fromLocation] = useState("");
 
   return (
-    <div>
+    <div style={{backgroundColor: '#F3E8D6',}}>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '2%' }}>
         <FaArrowLeft 
           style={{ color: '#ff5f00', fontSize: '20px', marginRight: '15px', marginTop: '4%' }} 

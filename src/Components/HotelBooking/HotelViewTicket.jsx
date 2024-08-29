@@ -39,7 +39,7 @@ const HotelTicket = () => {
   };
 
   return (
-    <div style={{ padding: '2px', textAlign: 'center', marginTop: '10px' }}>
+    <div style={{ padding: '20px', textAlign: 'center', marginTop: '10px', backgroundColor: '#F3E8D6', }}>
       {/* Back Button and Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '600px', margin: '0 auto', marginBottom: '10px' }}>
         <Link to="/Homepage">

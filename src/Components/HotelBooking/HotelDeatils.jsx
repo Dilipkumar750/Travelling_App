@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 
 const HotelDetails = () => {
   return (
-    <div style={{ padding: '10%' }}>
-      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20%' }}>
+    <div style={{ padding: '5%', backgroundColor: '#F3E8D6', }}>
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10%' }}>
         <FaArrowLeft 
-          style={{ color: '#ff5f00', fontSize: '20px', marginRight: '15px', marginTop: '14%' }} 
+          style={{ color: '#ff5f00', fontSize: '20px', marginRight: '15px', marginTop: '10%' }} 
         />
-        <h3 style={{ color: 'black', marginTop: '15%' }}>Hotel Details</h3>
+        <h3 style={{ color: 'black', marginTop: '11%' }}>Hotel Details</h3>
       </div>
       
       <Form>

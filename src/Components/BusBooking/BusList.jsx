@@ -12,7 +12,7 @@ function BusList() {
         navigate(-1);
     };
     return (
-        <div style={{ backgroundColor: "#fdf6ea", padding: '1rem', height: "100vh" }}>
+        <div style={{ backgroundColor: "#F3E8D6", padding: '1rem', height: "100vh" }}>
             <div className="d-flex align-items-center mb-4">
                 <FaArrowLeft className="fs-4 me-3 text-warning" onClick={goBack} />
                 <h2 className="text-dark">Select Your Bus</h2>

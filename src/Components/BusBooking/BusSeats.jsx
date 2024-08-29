@@ -33,7 +33,7 @@ const BusSeats = () => {
   };
 
   return (
-    <div style={{backgroundColor:'#fdf6ea',height:'100vh',paddingTop:'3rem'}}>
+    <div style={{backgroundColor:'#F3E8D6',height:'100%',paddingTop:'3rem'}}>
       <div className="d-flex align-items-center mb-4 ps-4">
         <Link to="/Homepage">
           <FaArrowLeft className="fs-4 me-3 text-warning" />
