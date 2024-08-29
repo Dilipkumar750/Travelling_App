@@ -3,13 +3,19 @@ import Header from "../header/Header";
 import { LuPlaneTakeoff, LuPlaneLanding, LuCalendarDays } from "react-icons/lu";
 import { Button } from "react-bootstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import fifteen from '../../assets/fifteenoffer.svg';
 import twintythreeoffer from '../../assets/twintythreeoffer.svg';
 
 const TrainBookHome = () => {
+  const navigate = useNavigate()
   const [fromLocation, setFromLocation] = useState("");
   const [toLocation, setToLocation] = useState("");
+  const [departureDate, setDepartureDate] = useState("");
+  const [returnDate, setReturnDate] = useState("");
+  const [travellers, setTravellers] = useState("");
+  const [trainClass, setTrainClass] = useState("");
+
 
   const locations = ["Chennai", "Bengaluru", "Kochi", "Delhi"];
 
@@ -18,12 +24,32 @@ const TrainBookHome = () => {
     (location) => location !== fromLocation
   );
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Collect form values
+    const formData = {
+      fromLocation,
+      toLocation,
+      departureDate,
+      returnDate,
+      travellers,
+      trainClass,
+    };
+
+    // Store form values in localStorage
+    localStorage.setItem("trainSearchData", JSON.stringify(formData));
+    navigate('/TrainList')
+    // Optionally navigate to another page or perform another action
+    // e.g., history.push("/FlightList");
+  };
+
   return (
     <div>
       <Header title='Trains Booking' arrow={true} />
       <section>
         <div style={{ margin: '0.5rem 2rem', padding: '1rem', backgroundColor: '#fef8d8', borderRadius: '1rem' }}>
-          <form>
+          <form onSubmit={handleSubmit}>
             {/* From Select */}
             <div className="col-auto">
               <label className="sr-only" htmlFor="fromSelect">
@@ -101,6 +127,7 @@ const TrainBookHome = () => {
                     type="date"
                     className="form-control"
                     id="departureDate"
+                    onChange={(e) => setDepartureDate(e.target.value)}
                     style={{ backgroundColor: 'transparent' }}
                   />
                 </div>
@@ -114,6 +141,7 @@ const TrainBookHome = () => {
                   className="form-control"
                   id="returnDate"
                   placeholder="Add return date"
+                  onChange={(e) => setReturnDate(e.target.value)}
                   style={{ backgroundColor: 'transparent' }}
                 />
               </div>
@@ -126,20 +154,21 @@ const TrainBookHome = () => {
                   className="form-control"
                   id="travellersCount"
                   placeholder="Number of travellers"
+                  onChange={(e) => setTravellers(e.target.value)}
                   style={{ backgroundColor: 'transparent' }}
                 />
               </div>
               <div className="col-6">
                 <label htmlFor="classSelect">Class</label>
-                <select id="classSelect" className="form-control" style={{ backgroundColor: 'transparent' }}>
+                <select id="classSelect" className="form-control" style={{ backgroundColor: 'transparent' }}
+                onChange={(e) => setTrainClass(e.target.value)}>
                   <option defaultValue>Choose...</option>
-                  <option>Economy</option>
+                  <option>General Quota</option>
+                  <option>Sleeper</option>
                 </select>
               </div>
             </div>
-            <Link to='/TrainList'>
-              <Button style={{ backgroundColor: '#f08e2d', width: '100%', marginTop: '1rem' }}>Search</Button>
-            </Link>
+              <Button type="submit" style={{ backgroundColor: '#f08e2d', width: '100%', marginTop: '1rem' }}>Search</Button>
           </form>
         </div>
 

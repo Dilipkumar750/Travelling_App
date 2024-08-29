@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { FaArrowLeft } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link,useNavigate,useParams } from 'react-router-dom';
 import ecomonyseat from '../../assets/flightBusinessSeat.png'
 import flightBody from '../../assets/flightBodycroped.png'
 import { IoIosInformationCircleOutline } from "react-icons/io";
-
+import { API_URL } from '../../constant';
+import axios from 'axios';
+import { Button } from 'react-bootstrap';
 
 const FlightBusiness = () => {
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const [flightData, setFlightData] = useState()
+  const storedData = JSON.parse(localStorage.getItem("user"));
 
-  const reservedSeats = [5, 7, 12, 26];
+  const reservedSeats = flightData?.seats || [];
 
   const [selectedSeats, setSelectedseats] = useState([]); // Initialize the state as an empty array
 
@@ -32,12 +38,52 @@ const FlightBusiness = () => {
     });
   };
 
+  
+  useEffect(() => {
+    handleSubmit()
+  }, [])
+
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/booking/flight/get/${id}`);
+      setFlightData(response?.data[0])
+    } catch (err) {
+      alert('something went wrong , try again');
+    }
+  };
+
+  const goBack = () => {
+    navigate(-1);
+  };
+console.log(flightData)
+  const handleSeatBook = async () => {
+    storedData.selectedSeats = selectedSeats;
+    storedData.vehicleId = flightData._id;
+    storedData.vehicleName = flightData.name;
+    storedData.duration = flightData.duration;
+
+    localStorage.setItem('user', JSON.stringify(storedData));
+    navigate(`/FlightPayment/${id}`)
+    // try {
+    //   const response = await axios.post(`${API_URL}/booking/flight/book`, {
+    //     travelerCount:selectedSeats.length,
+    //     classType:'Economy',
+    //     selectedSeats,
+    //     userName: storedData.username,
+    //     userEmail:storedData.email,
+    //     id
+    //   });
+    //   console.log(response)
+    // } catch (err) {
+    //   console.log(err)
+    //   alert('something went wrong , try again');
+    // }
+  };
+
   return (
     <div style={{ backgroundColor: '#fdf6ea', height: '100vh',paddingTop:'3rem' }}>
       <div className="d-flex align-items-center mb-4 ps-4">
-        <Link to="/Homepage">
-          <FaArrowLeft className="fs-4 me-3 text-warning" />
-        </Link>
+          <FaArrowLeft className="fs-4 me-3 text-warning" onClick={goBack} />
         <h2 className="text-dark">Select Seats</h2>
       </div>
       <section style={{ padding: '0 2rem' }}>
@@ -190,7 +236,7 @@ const FlightBusiness = () => {
           </button>
         </div>
       </section>
-
+      <Button style={{ backgroundColor: '#f08e2d', width: '100%', height: '60px', color: 'black',marginTop:"1rem" }} onClick={handleSeatBook}>Continue</Button>
     </div>
   )
 }

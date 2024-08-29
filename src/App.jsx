@@ -74,11 +74,11 @@ function App(){
       <Route path='/BusViewTicket' element={<BusViewTicket/>}/>
       <Route path='/FlightBookHome' element={<FlightBookHome/>}/>
       <Route path='/FlightList' element={<FlightList/>}/>
-      <Route path='/FlightBusiness' element={<FlightBusiness/>}/>
+      <Route path='/FlightBusiness/:id' element={<FlightBusiness/>}/>
       <Route path='/FlightTicket' element={<FlightTicket/>}/>
       <Route path='/FlightDetails/:id' element={<FlightDetails/>}/>
-      <Route path='/FlightEconomy' element={<FlightEconomy/>}/>
-      <Route path='/FlightPayment' element={<FlightPayment/>}/>
+      <Route path='/FlightEconomy/:id' element={<FlightEconomy/>}/>
+      <Route path='/FlightPayment/:id' element={<FlightPayment/>}/>
       <Route path='/FlightViewTicket' element={<FlightViewTicket/>}/>
       <Route path='/HotelBookHome' element={<HotelBookHome/>}/>
       <Route path='/HotelDeatils' element={<HotelDeatils/>}/>
@@ -91,9 +91,9 @@ function App(){
       <Route path='/TrainList' element={<TrainList/>}/>
       <Route path='/TrainBookHome' element={<TrainBookHome/>}/>
       <Route path='/TrainDate' element={<TrainDate/>}/>
-      <Route path='/TrainDetails' element={<TrainDetails/>}/>
-      <Route path='/TrainPayment' element={<TrainPayment/>}/>
-      <Route path='/TrainSeat' element={<TrainSeat/>}/>
+      <Route path='/TrainDetails/:id' element={<TrainDetails/>}/>
+      <Route path='/TrainPayment/:id' element={<TrainPayment/>}/>
+      <Route path='/TrainSeat/:id' element={<TrainSeat/>}/>
       <Route path='/TrainTicket' element={<TrainTicket/>}/>
       <Route path='/TrainUpdate' element={<TrainUpdate/>}/>
       <Route path='/TrainViewTicket' element={<TrainViewTicket/>}/>

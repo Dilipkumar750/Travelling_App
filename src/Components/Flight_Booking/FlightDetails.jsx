@@ -108,7 +108,7 @@ const FlightDetails = () => {
             Cancel
           </Button>
         </Link>
-        <Link to='/FlightEconomy'>
+        <Link to={`/FlightEconomy/${id}`}>
         <Button
           className="w-100 py-2 rounded-pill"
           style={{ backgroundColor: '#f08e2d', color: 'white' }}
