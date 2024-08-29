@@ -35,14 +35,6 @@ const TrainDate = () => {
   };
 
 
-
-  const trainData = [
-    { number: '16751', startTime: '12:30 am', endTime: '01:00 am', name: 'Pamban Express', frequency: 'Run Daily' },
-    { number: '22623', startTime: '03:15 am', endTime: '04:00 am', name: 'Uzhavan Express', frequency: 'Run Daily' },
-    { number: '16811', startTime: '07:15 am', endTime: '08:00 am', name: 'Salem Express', frequency: 'Run Daily' },
-    { number: '17315', startTime: '01:15 pm', endTime: '02:00 pm', name: 'Mysuru Express', frequency: 'S M T W T F S' }
-  ];
-
   const customColor = '#f08e2d';
   
 

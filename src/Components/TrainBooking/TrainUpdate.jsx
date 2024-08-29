@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaTrain, FaArrowLeft, FaRedoAlt } from 'react-icons/fa'; // Import icons
+import { useNavigate } from 'react-router-dom';
 
 
 const chennaiToKochi = [
@@ -60,10 +61,42 @@ const kochitoBengaluru = [
 const Bengalurutokochi = [
   { arrival: '12:30 PM', place: 'Salem Junction', distance: '-', platform: '-', departure: '-' },
   { arrival: '12:40 PM', place: 'Salem Junction ', distance: '130 km', platform: '1', departure: '12:42 PM' },
-  { arrival: '12:45 PM', place: 'Palakkad Junction', distance: '350  km', platform: '1', departure: '12:47 PM' },
-  { arrival: '12:55 PM', place: 'Coimbatore Junction', distance: '415  km', platform: '2', departure: '12:57 PM' },
+  { arrival: '12:45 PM', place: 'Coimbatore Junction', distance: '350  km', platform: '1', departure: '12:47 PM' },
+  { arrival: '12:55 PM', place: 'Palakkad Junction', distance: '415  km', platform: '2', departure: '12:57 PM' },
   { arrival: '13:55 PM', place: 'Aluva', distance: '515  km', platform: '2', departure: '12:57 PM' },
   { arrival: '14:55 PM', place: 'Ernakulam Junction', distance: '615  km', platform: '2', departure: '12:57 PM' },
+];
+const kochitoDelhi = [
+  { arrival: '12:30 PM', place: 'Ernakulam Junction', distance: '-', platform: '-', departure: '-' },
+  { arrival: '12:40 PM', place: 'Kozhikode ', distance: '130 km', platform: '1', departure: '12:42 PM' },
+  { arrival: '12:45 PM', place: 'Mangaluru Junction', distance: '350  km', platform: '1', departure: '12:47 PM' },
+  { arrival: '12:55 PM', place: 'Madgaon Junction', distance: '415  km', platform: '2', departure: '12:57 PM' },
+  { arrival: '13:55 PM', place: 'Pune Junction', distance: '515  km', platform: '2', departure: '12:57 PM' },
+  { arrival: '14:55 PM', place: 'Hazrat Nizamuddin ', distance: '615  km', platform: '2', departure: '12:57 PM' },
+];
+const Delhitokochi = [
+  { arrival: '12:30 PM', place: 'Hazrat Nizamuddin', distance: '-', platform: '-', departure: '-' },
+  { arrival: '12:40 PM', place: 'Pune Junction ', distance: '130 km', platform: '1', departure: '12:42 PM' },
+  { arrival: '12:45 PM', place: 'Madgaon Junction', distance: '350  km', platform: '1', departure: '12:47 PM' },
+  { arrival: '12:55 PM', place: 'Mangaluru Junction', distance: '415  km', platform: '2', departure: '12:57 PM' },
+  { arrival: '13:55 PM', place: 'Kozhikode', distance: '515  km', platform: '2', departure: '12:57 PM' },
+  { arrival: '14:55 PM', place: 'Ernakulam Junction ', distance: '615  km', platform: '2', departure: '12:57 PM' },
+];
+const BengaluruToDelhi = [
+  { arrival: '12:30 PM', place: 'Bengaluru City Junction', distance: '-', platform: '-', departure: '-' },
+  { arrival: '12:40 PM', place: 'Dharmavaram Junction', distance: '130 km', platform: '1', departure: '12:42 PM' },
+  { arrival: '12:45 PM', place: 'Guntakal Junction', distance: '350  km', platform: '1', departure: '12:47 PM' },
+  { arrival: '12:55 PM', place: 'Bhopal Junction', distance: '415  km', platform: '2', departure: '12:57 PM' },
+  { arrival: '13:55 PM', place: 'Jhansi Junction', distance: '515  km', platform: '2', departure: '12:57 PM' },
+  { arrival: '14:55 PM', place: 'Hazrat Nizamuddin', distance: '615  km', platform: '2', departure: '12:57 PM' },
+];
+const DelhiToBengaluru = [
+  { arrival: '12:30 PM', place: 'Hazrat Nizamuddin', distance: '-', platform: '-', departure: '-' },
+  { arrival: '12:40 PM', place: 'Jhansi Junction', distance: '130 km', platform: '1', departure: '12:42 PM' },
+  { arrival: '12:45 PM', place: 'Bhopal Junction', distance: '350  km', platform: '1', departure: '12:47 PM' },
+  { arrival: '12:55 PM', place: 'Guntakal Junction', distance: '415  km', platform: '2', departure: '12:57 PM' },
+  { arrival: '13:55 PM', place: 'Dharmavaram Junction', distance: '515  km', platform: '2', departure: '12:57 PM' },
+  { arrival: '14:55 PM', place: 'Bengaluru City Junction', distance: '615  km', platform: '2', departure: '12:57 PM' },
 ];
 
 const tableStyle = {
@@ -98,6 +131,7 @@ const TrainUpdate = () => {
   const storedData = JSON.parse(localStorage.getItem("trainSearchData"));
   const from = storedData.fromLocation
   const to = storedData.toLocation
+  const navigate = useNavigate();
 
   const [Array, setArray] = useState([])
 
@@ -120,15 +154,41 @@ const TrainUpdate = () => {
     else if(from=="Delhi" && to=="Chennai") {
       setArray(DelhiToChennai)
     }
+    else if(from=="Kochi" && to=="Bengaluru") {
+      setArray(kochitoBengaluru)
+    }
+    else if(from=="Bengaluru" && to=="Kochi") {
+      setArray(Bengalurutokochi)
+    }
+    else if(from=="Kochi" && to=="Delhi") {
+      setArray(kochitoDelhi)
+    }
+    else if(from=="Delhi" && to=="Kochi") {
+      setArray(Delhitokochi)
+    }
+    else if(from=="Bengaluru" && to=="Delhi") {
+      setArray(BengaluruToDelhi)
+    }
+    else if(from=="Delhi" && to=="Bengaluru") {
+      setArray(DelhiToBengaluru)
+    }else{
+      setArray(DelhiToBengaluru)
+    }
  
   }, [])
   
+  const goback =()=>{
+    storedData.fromLocation=''
+    storedData.toLocation=''
+    localStorage.setItem('trainSearchData', JSON.stringify(storedData));
+    navigate('/TrainBookHome')
+  }
 
   return (
     <Container className="mt-4" >
       <div className="d-flex align-items-center w-100" style={{ backgroundColor: '#f08e2d', height: '10vh' }}>
         <button className="btn" style={{ color: 'white', border: 'none', height: '90%', width: '60px' }}>
-          <FaArrowLeft size={24} />
+          <FaArrowLeft size={24} onClick={goback} />
         </button>
         <h1 className="text-white mx-auto mb-0">Train Details</h1>
       </div>
