@@ -57,6 +57,8 @@ const Payment = () => {
       storedData.vehicleId = '';
       storedData.vehicleName = '';
       storedData.duration = '';
+      storedData.fromLocation = '';
+      storedData.toLocation = '';
       localStorage.setItem('user', JSON.stringify(storedData));
       navigate('/Done')
     } catch (err) {

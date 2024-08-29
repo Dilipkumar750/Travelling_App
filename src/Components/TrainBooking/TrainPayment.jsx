@@ -44,7 +44,7 @@ const TrainPayment = () => {
     try {
       const response = await axios.post(`${API_URL}/booking/train/book`, {
         travelerCount:storedData?.selectedSeats.length,
-        classType:'Economy',
+        classType:'GN',
         selectedSeats:storedData?.selectedSeats,
         userName: storedData.username,
         userEmail:storedData.email,
@@ -58,8 +58,10 @@ const TrainPayment = () => {
       storedData.vehicleId = '';
       storedData.vehicleName = '';
       storedData.duration = '';
+      storedData.fromLocation = '';
+      storedData.toLocation = '';
       localStorage.setItem('user', JSON.stringify(storedData));
-      navigate('/Done')
+      navigate('/Done/train')
     } catch (err) {
       console.log(err)
       alert('something went wrong , try again');

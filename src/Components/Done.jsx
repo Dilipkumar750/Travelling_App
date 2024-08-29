@@ -1,14 +1,22 @@
 import DoneImg from "../assets/done.png";
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 
 const Done = () => {
   const navigate = useNavigate();
+  const { title } = useParams();
 
   useEffect(() => {
-    // Set a timeout to redirect to the Home page after 2 seconds
     const timer = setTimeout(() => {
-      navigate("/FlightViewTicket"); // Replace '/home' with the actual path to your Home page
+      if (title==='flight') {
+        navigate("/FlightViewTicket");
+      }
+      else if(title==='train'){
+        navigate("/TrainViewTicket");
+      }
+      else{
+        
+      }
     }, 2000);
 
     // Clear the timeout if the component unmounts to prevent memory leaks

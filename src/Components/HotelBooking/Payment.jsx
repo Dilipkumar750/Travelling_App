@@ -80,7 +80,7 @@ const Payment = () => {
         {/* Continue Button */}
         <Row className="justify-content-center mt-5">
           <Col md={6} className="text-center">
-          <Link to='/Done'>
+          <Link to='/Done/flight'>
             <Button
               style={{
                 backgroundColor: '#f08e2d',

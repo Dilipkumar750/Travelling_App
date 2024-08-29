@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -6,13 +6,64 @@ import Col from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaTrain, FaArrowLeft, FaRedoAlt } from 'react-icons/fa'; // Import icons
 
-const trainData = [
-  { arrival: '12:30 PM', place: 'Kumbakonam', distance: '-', platform: '-', departure: '-' },
-  { arrival: '12:40 PM', place: 'Darasuram', distance: '4 km', platform: '1', departure: '12:42 PM' },
-  { arrival: '12:45 PM', place: 'Swamimalai', distance: '8 km', platform: '1', departure: '12:47 PM' },
-  { arrival: '12:55 PM', place: 'Sundaraperumal Kovil', distance: '18 km', platform: '2', departure: '12:57 PM' },
-  { arrival: '1:00 AM', place: 'Papanasam', distance: '23 km', platform: '1', departure: '1:20 AM' },
-  { arrival: '1:30 AM', place: 'Thanjavur', distance: '23 km', platform: '1', departure: '1:32 AM' }
+
+const chennaiToKochi = [
+  { arrival: '12:30 PM', place: 'Chennai Central ', distance: '-', platform: '-', departure: '-' },
+  { arrival: '12:40 PM', place: 'Katpadi Junction', distance: '130 km', platform: '1', departure: '12:42 PM' },
+  { arrival: '12:45 PM', place: 'Salem Junction', distance: '350  km', platform: '1', departure: '12:47 PM' },
+  { arrival: '12:55 PM', place: 'Erode Junction', distance: '415  km', platform: '2', departure: '12:57 PM' },
+  { arrival: '1:00 AM', place: 'Palakkad Junction', distance: '565  km', platform: '1', departure: '1:20 AM' },
+  { arrival: '1:30 AM', place: 'Kochi', distance: '23 km', platform: '700 Km', departure: '1:32 AM' }
+];
+const KochiToChennai = [
+  { arrival: '12:30 PM', place: 'Kochi', distance: '-', platform: '-', departure: '-' },
+  { arrival: '12:40 PM', place: 'Palakkad Junction', distance: '130 km', platform: '1', departure: '12:42 PM' },
+  { arrival: '12:45 PM', place: 'Erode Junction', distance: '350  km', platform: '1', departure: '12:47 PM' },
+  { arrival: '12:55 PM', place: 'Salem Junction', distance: '415  km', platform: '2', departure: '12:57 PM' },
+  { arrival: '1:00 AM', place: 'Katpadi Junction', distance: '565  km', platform: '1', departure: '1:20 AM' },
+  { arrival: '1:30 AM', place: 'Chennai Central', distance: '23 km', platform: '700 Km', departure: '1:32 AM' }
+];
+const ChennaiToBengaluru = [
+  { arrival: '12:30 PM', place: 'Chennai Central', distance: '-', platform: '-', departure: '-' },
+  { arrival: '12:40 PM', place: 'Katpadi Junction', distance: '130 km', platform: '1', departure: '12:42 PM' },
+  { arrival: '12:45 PM', place: 'Jolarpettai Junction', distance: '350  km', platform: '1', departure: '12:47 PM' },
+  { arrival: '12:55 PM', place: 'Bengaluru City Junction', distance: '415  km', platform: '2', departure: '12:57 PM' },
+];
+const BengaluruToChennai = [
+  { arrival: '12:30 PM', place: 'Bengaluru City Junction', distance: '-', platform: '-', departure: '-' },
+  { arrival: '12:40 PM', place: 'Jolarpettai Junction', distance: '130 km', platform: '1', departure: '12:42 PM' },
+  { arrival: '12:45 PM', place: 'Katpadi Junction', distance: '350  km', platform: '1', departure: '12:47 PM' },
+  { arrival: '12:55 PM', place: 'Chennai Central', distance: '415  km', platform: '2', departure: '12:57 PM' },
+];
+const ChennaiToDelhi = [
+  { arrival: '12:30 PM', place: 'Chennai Central', distance: '-', platform: '-', departure: '-' },
+  { arrival: '12:40 PM', place: 'Nagpur Junction ', distance: '130 km', platform: '1', departure: '12:42 PM' },
+  { arrival: '12:45 PM', place: 'Bhopal Junction ', distance: '350  km', platform: '1', departure: '12:47 PM' },
+  { arrival: '12:55 PM', place: 'Jhansi Junction', distance: '415  km', platform: '2', departure: '12:57 PM' },
+  { arrival: '13:55 PM', place: 'New Delhi', distance: '515  km', platform: '2', departure: '12:57 PM' },
+];
+const DelhiToChennai = [
+  { arrival: '12:30 PM', place: 'New Delhi', distance: '-', platform: '-', departure: '-' },
+  { arrival: '12:40 PM', place: 'Jhansi Junction ', distance: '130 km', platform: '1', departure: '12:42 PM' },
+  { arrival: '12:45 PM', place: 'Bhopal Junction ', distance: '350  km', platform: '1', departure: '12:47 PM' },
+  { arrival: '12:55 PM', place: 'Nagpur Junction', distance: '415  km', platform: '2', departure: '12:57 PM' },
+  { arrival: '13:55 PM', place: 'Chennai Central', distance: '515  km', platform: '2', departure: '12:57 PM' },
+];
+const kochitoBengaluru = [
+  { arrival: '12:30 PM', place: 'Ernakulam Junction', distance: '-', platform: '-', departure: '-' },
+  { arrival: '12:40 PM', place: 'Aluva ', distance: '130 km', platform: '1', departure: '12:42 PM' },
+  { arrival: '12:45 PM', place: 'Palakkad Junction', distance: '350  km', platform: '1', departure: '12:47 PM' },
+  { arrival: '12:55 PM', place: 'Coimbatore Junction', distance: '415  km', platform: '2', departure: '12:57 PM' },
+  { arrival: '13:55 PM', place: 'Salem Junction', distance: '515  km', platform: '2', departure: '12:57 PM' },
+  { arrival: '14:55 PM', place: 'Salem Junction', distance: '615  km', platform: '2', departure: '12:57 PM' },
+];
+const Bengalurutokochi = [
+  { arrival: '12:30 PM', place: 'Salem Junction', distance: '-', platform: '-', departure: '-' },
+  { arrival: '12:40 PM', place: 'Salem Junction ', distance: '130 km', platform: '1', departure: '12:42 PM' },
+  { arrival: '12:45 PM', place: 'Palakkad Junction', distance: '350  km', platform: '1', departure: '12:47 PM' },
+  { arrival: '12:55 PM', place: 'Coimbatore Junction', distance: '415  km', platform: '2', departure: '12:57 PM' },
+  { arrival: '13:55 PM', place: 'Aluva', distance: '515  km', platform: '2', departure: '12:57 PM' },
+  { arrival: '14:55 PM', place: 'Ernakulam Junction', distance: '615  km', platform: '2', departure: '12:57 PM' },
 ];
 
 const tableStyle = {
@@ -43,6 +94,36 @@ const verticalLineStyle = {
 };
 
 const TrainUpdate = () => {
+
+  const storedData = JSON.parse(localStorage.getItem("trainSearchData"));
+  const from = storedData.fromLocation
+  const to = storedData.toLocation
+
+  const [Array, setArray] = useState([])
+
+  useEffect(() => {
+    if (from=="Chennai" && to=="Kochi" ) {
+      setArray(chennaiToKochi)
+    } 
+    else if(from=="Kochi" && to=="Chennai") {
+      setArray(KochiToChennai)
+    }
+    else if(from=="Chennai" && to=="Bengaluru") {
+      setArray(ChennaiToBengaluru)
+    }
+    else if(from=="Bengaluru" && to=="Chennai") {
+      setArray(BengaluruToChennai)
+    }
+    else if(from=="Chennai" && to=="Delhi") {
+      setArray(ChennaiToDelhi)
+    }
+    else if(from=="Delhi" && to=="Chennai") {
+      setArray(DelhiToChennai)
+    }
+ 
+  }, [])
+  
+
   return (
     <Container className="mt-4" >
       <div className="d-flex align-items-center w-100" style={{ backgroundColor: '#f08e2d', height: '10vh' }}>
@@ -63,7 +144,7 @@ const TrainUpdate = () => {
               </tr>
             </thead>
             <tbody>
-              {trainData.map((train, index) => (
+              {Array.map((train, index) => (
                 <tr key={index}>
                   <td style={cellStyle}>
                     <div style={{color: 'red'}}>{train.arrival}</div>
