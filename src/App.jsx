@@ -67,9 +67,9 @@ function App(){
       <Route path='/welcome' element={<Welcome/>}/>
       <Route path='/BusBookHome' element={<BusBookHome/>}/>
       <Route path='/BusList' element={<BusList/>}/>
-      <Route path='/BusDetails' element={<BusDetails/>}/>
-      <Route path='/BusPayment' element={<BusPayment/>}/>
-      <Route path='/BusSeats' element={<BusSeats/>}/>
+      <Route path='/BusDetails/:id' element={<BusDetails/>}/>
+      <Route path='/BusPayment/:id' element={<BusPayment/>}/>
+      <Route path='/BusSeats/:id' element={<BusSeats/>}/>
       <Route path='/BusTicket' element={<BusTicket/>}/>
       <Route path='/BusViewTicket' element={<BusViewTicket/>}/>
       <Route path='/FlightBookHome' element={<FlightBookHome/>}/>
@@ -115,7 +115,7 @@ function App(){
       <Route path='/Header' element={<Header/>}/>
       <Route path='/Footer' element={<Footer/>}/>
       <Route path='/PendingRequests' element={<PendingRequests/>}/>
-      <Route path='/Done/:title' element={<Done/>}/>
+      <Route path='/Done' element={<Done/>}/>
       <Route path='/AddAccomadation' element={<AddAccomadation/>}/>
       <Route path='/' element={<JourneyJoyHome/>}/>
       <Route path='/Approve' element={<Approve/>}/>

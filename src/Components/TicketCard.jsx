@@ -17,7 +17,7 @@ function TicketCard({image='',color='black',data=''}) {
                 </div>
             </div>
             <div style={{display:'grid', gridTemplateColumns:'auto auto auto', justifyContent:'space-between',borderTop:'1px dotted black',padding:'0.5rem'}}>
-                <b style={{color}}>{data.name || data.WAG}</b>
+                <b style={{color}}>{data.name || data.WAG || data.bus_name}</b>
                 <img src={image} alt="" style={{width:"100%",height:'40%'}} />
                 <b style={{color}}>${data.price}</b>
             </div>

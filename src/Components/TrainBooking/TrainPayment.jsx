@@ -61,7 +61,7 @@ const TrainPayment = () => {
       storedData.fromLocation = '';
       storedData.toLocation = '';
       localStorage.setItem('user', JSON.stringify(storedData));
-      navigate('/Done/train')
+      navigate('/Done')
     } catch (err) {
       console.log(err)
       alert('something went wrong , try again');

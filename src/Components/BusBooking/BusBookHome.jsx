@@ -5,12 +5,17 @@ import { Button } from "react-bootstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
 import fifteen from '../../assets/fifteenoffer.svg'
 import twintythreeoffer from '../../assets/twintythreeoffer.svg';
-import { Link } from 'react-router-dom';
+import { Link ,useNavigate} from 'react-router-dom';
 
 
 const BusBookHome = () => {
+  const navigate = useNavigate()
   const [fromLocation, setFromLocation] = useState("");
   const [toLocation, setToLocation] = useState("");
+  const [departureDate, setDepartureDate] = useState("");
+  const [returnDate, setReturnDate] = useState("");
+  const [travellers, setTravellers] = useState("");
+  const [flightClass, setFlightClass] = useState("");
 
   const locations = ["Chennai", "Bengaluru", "Kochi", "Delhi"];
 
@@ -19,12 +24,33 @@ const BusBookHome = () => {
     (location) => location !== fromLocation
   );
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Collect form values
+    const formData = {
+      fromLocation,
+      toLocation,
+      departureDate,
+      returnDate,
+      travellers,
+      flightClass,
+    };
+
+    // Store form values in localStorage
+    localStorage.setItem("BusSearchData", JSON.stringify(formData));
+    navigate('/BusList')
+    // Optionally navigate to another page or perform another action
+    // e.g., history.push("/FlightList");
+  };
+
+
   return (
     <div>
       <Header title='Book Tickets' arrow={true} />
       <section>
         <div style={{ margin: '0.5rem 2rem', padding: '1rem', backgroundColor: '#fef8d8', borderRadius: '1rem' }}>
-          <form>
+          <form onSubmit={handleSubmit}>
             {/* From Select */}
             <div class="col-auto">
               <label class="sr-only" for="inlineFormInputGroup">
@@ -103,6 +129,8 @@ const BusBookHome = () => {
                     class="form-control"
                     id="inlineFormInputGroup"
                     placeholder="Username"
+                    value={departureDate}
+                    onChange={(e) => setDepartureDate(e.target.value)}
                     style={{ backgroundColor: 'transparent' }}
                   />
                 </div>
@@ -117,6 +145,8 @@ const BusBookHome = () => {
                   id="inlineFormInputGroup"
                   placeholder="Add return date"
                   style={{ backgroundColor: 'transparent' }}
+                  value={returnDate}
+                  onChange={(e) => setReturnDate(e.target.value)}
                 />
               </div>
               <div className="col-6">
@@ -129,19 +159,21 @@ const BusBookHome = () => {
                   id="inlineFormInputGroup"
                   placeholder="no of travellers"
                   style={{ backgroundColor: 'transparent' }}
+                  value={travellers}
+                onChange={(e) => setTravellers(e.target.value)}
                 />
               </div>
               <div className="col-6">
                 <label for="inputState">Class</label>
-                <select id="inputState" class="form-control" style={{ backgroundColor: 'transparent' }}>
+                <select id="inputState" class="form-control" style={{ backgroundColor: 'transparent' }}
+                value={flightClass}
+                onChange={(e) => setFlightClass(e.target.value)}>
                   <option selected>Choose...</option>
                   <option>Economy</option>
                 </select>
               </div>
             </div>
-            <Link to='/BusList'>
-            <Button style={{ backgroundColor: '#f08e2d', width: '100%', marginTop: '1rem' }}>Search</Button>
-            </Link>
+            <Button type="submit" style={{ backgroundColor: '#f08e2d', width: '100%', marginTop: '1rem' }}>Search</Button>
           </form>
         </div>
        <section style={{ padding: "0 1rem" }}>
