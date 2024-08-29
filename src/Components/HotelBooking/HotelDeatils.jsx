@@ -2,12 +2,19 @@ import React from 'react';
 import { FaCalendarAlt, FaUser, FaBed, FaArrowLeft } from 'react-icons/fa';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const HotelDetails = () => {
+  const navigate = useNavigate();
+
+    const goBack = () => {
+        navigate(-1);
+    };
+
   return (
     <div style={{ padding: '5%', backgroundColor: '#F3E8D6', }}>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10%' }}>
-        <FaArrowLeft 
+        <FaArrowLeft onClick={goBack}
           style={{ color: '#ff5f00', fontSize: '20px', marginRight: '15px', marginTop: '10%' }} 
         />
         <h3 style={{ color: 'black', marginTop: '11%' }}>Hotel Details</h3>

@@ -17,12 +17,18 @@ import { FaPersonSwimming } from "react-icons/fa6";
 import { SiWebmoney } from "react-icons/si";
 import { FaWifi } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const RoomsAvailability = () => {
+  const navigate = useNavigate();
+
+    const goBack = () => {
+        navigate(-1);
+    };
   return (
     <div style={{ padding: '20px', backgroundColor: '#F3E8D6', }}>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
-        <FaArrowLeft 
+        <FaArrowLeft onClick={goBack}
           style={{ color: '#ff5f00', fontSize: '20px', marginRight: '15px' }} 
         />
         <h3 style={{ color: 'black' }}>Rooms Available</h3>

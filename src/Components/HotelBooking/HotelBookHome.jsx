@@ -15,16 +15,17 @@ import { FaLocationDot } from "react-icons/fa6";
 
 
 function HotelBookHome() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const goBack = () => {
-    navigate(-1);
-  };
+  // const goBack = () => {
+  //   navigate(-1);
+  // };
   return (
-    <div style={{backgroundColor: '#F3E8D6',}}>
-      <header style={{display:'flex',justifyContent:'space-between',paddingTop:'4rem'}}>
+    <div style={{ backgroundColor: '#F3E8D6', }}>
+      <header style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '4rem' }}>
         <div className="d-flex align-items-center mb-4">
-          <FaArrowLeft className="fs-4 me-3 text-warning" onClick={goBack} />
+          <Link to='/BookTickets'>
+            <FaArrowLeft className="fs-4 me-3 text-warning" /></Link>
           <h2 className="text-dark">Hotel Booking</h2>
         </div>
         <div>
@@ -33,10 +34,10 @@ function HotelBookHome() {
           <span><FaLocationDot />Chennai</span>
         </div>
       </header>
-      <section style={{display:'flex',justifyContent:'space-between',gap:'1rem',padding:'1rem'}}>
-      <Button style={{ width: '100%', backgroundColor: "#f08e2d", border: '0', borderRadius: '10px', color: 'black' }}>Hotel</Button>
-      <Button style={{ width: '100%', backgroundColor: "#f08e2d", border: '0', borderRadius: '10px', color: 'black' }}>Homestay</Button>
-      <Button style={{ width: '100%', backgroundColor: "#f08e2d", border: '0', borderRadius: '10px', color: 'black' }}>Apartment</Button>
+      <section style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', padding: '1rem' }}>
+        <Button style={{ width: '100%', backgroundColor: "#f08e2d", border: '0', borderRadius: '10px', color: 'black' }}>Hotel</Button>
+        <Button style={{ width: '100%', backgroundColor: "#f08e2d", border: '0', borderRadius: '10px', color: 'black' }}>Homestay</Button>
+        <Button style={{ width: '100%', backgroundColor: "#f08e2d", border: '0', borderRadius: '10px', color: 'black' }}>Apartment</Button>
       </section>
       <section style={{ padding: "1rem" }}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -51,32 +52,41 @@ function HotelBookHome() {
 
         >
           <SwiperSlide>
-            <img
-              src={indiangate}
-              alt=""
-              style={{ width: "100%", height: "130px", borderRadius: "1rem" }}
-            />
+            <Link to='/Hotelrooms'>
+              <img
+                src={indiangate}
+                alt="Indian Gate"
+                style={{ width: "100%", height: "130px", borderRadius: "1rem" }}
+              />
+            </Link>
           </SwiperSlide>
           <SwiperSlide>
-            <img
-              src={bengalurupalace}
-              alt=""
-              style={{ width: "100%", height: "130px", borderRadius: "1rem" }}
-            />
+            <Link to='/Hotelrooms'>
+              <img
+                src={bengalurupalace}
+                alt="Bengaluru Palace"
+                style={{ width: "100%", height: "130px", borderRadius: "1rem" }}
+              />
+            </Link>
           </SwiperSlide>
+
           <SwiperSlide>
+          <Link to='/Hotelrooms'>
             <img
               src={marinabeach}
               alt=""
               style={{ width: "100%", height: "130px", borderRadius: "1rem" }}
             />
+            </Link>
           </SwiperSlide>
           <SwiperSlide>
+          <Link to='/Hotelrooms'>
             <img
               src={fortkochi}
               alt=""
               style={{ width: "100%", height: "130px", borderRadius: "1rem" }}
             />
+            </Link>
           </SwiperSlide>
         </Swiper>
       </section>
@@ -87,30 +97,34 @@ function HotelBookHome() {
         </div>
         <br />
         <div style={{ display: 'grid', gap: '1rem' }}>
-          <img
-            src={indiangate}
-            alt=""
-            style={{ width: "100%", height: "150px", borderRadius: "1rem" }}
-          />
-          <img
-            src={bengalurupalace}
-            alt=""
-            style={{ width: "100%", height: "150px", borderRadius: "1rem" }}
-          />
-          <img
-            src={marinabeach}
-            alt=""
-            style={{ width: "100%", height: "150px", borderRadius: "1rem" }}
-          />
-          <img
-            src={fortkochi}
-            alt=""
-            style={{ width: "100%", height: "150px", borderRadius: "1rem" }}
-          />
+          <Link to='/Hotelrooms'>
+            <img
+              src={indiangate}
+              alt=""
+              style={{ width: "100%", height: "150px", borderRadius: "1rem" }}
+            /></Link>
+          <Link to='/Hotelrooms'>
+            <img
+              src={bengalurupalace}
+              alt=""
+              style={{ width: "100%", height: "150px", borderRadius: "1rem" }}
+            /></Link>
+          <Link to='/Hotelrooms'>
+            <img
+              src={marinabeach}
+              alt=""
+              style={{ width: "100%", height: "150px", borderRadius: "1rem" }}
+            /></Link>
+          <Link to='/Hotelrooms'>
+            <img
+              src={fortkochi}
+              alt=""
+              style={{ width: "100%", height: "150px", borderRadius: "1rem" }}
+            /></Link>
         </div>
         <br />
         <Link to='/HotelViewTicket'>
-        <Button style={{ width: '100%', backgroundColor: "#f08e2d", border: '0', borderRadius: '10px', color: 'black' }}>View Ticket</Button>
+          <Button style={{ width: '100%', backgroundColor: "#f08e2d", border: '0', borderRadius: '10px', color: 'black' }}>View Ticket</Button>
         </Link>
       </section>
     </div>
