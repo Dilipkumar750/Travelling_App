@@ -9,16 +9,23 @@ import { FaArrowLeft } from 'react-icons/fa';
 import hotel from '../../assets/popular_hotel2.jpeg';
 import slide from '../../assets/hotelrooms.png';
 import { MdOutlineKingBed } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 import { CiUser } from "react-icons/ci";
 // import 'swiper/swiper-bundle.min.css'; // Ensure Swiper styles are imported
 
 const HotelRooms = () => {
   const [fromLocation] = useState("");
 
+    const navigate = useNavigate();
+  
+    const goBack = () => {
+      navigate(-1);
+    };
+
   return (
-    <div style={{backgroundColor: '#F3E8D6',}}>
+    <div style={{backgroundColor: '#F3E8D6', height: '100%'}}>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '2%' }}>
-        <FaArrowLeft 
+        <FaArrowLeft onClick={goBack}
           style={{ color: '#ff5f00', fontSize: '20px', marginRight: '15px', marginTop: '4%' }} 
         />
         <h3 style={{ color: 'black', marginTop: '5%' }}>Hotel Details</h3>
@@ -41,7 +48,7 @@ const HotelRooms = () => {
               <p style={{ fontSize: '10px', marginRight: '10%' }}>
                 <CiUser /> UP TO 3 GUESTS
               </p>
-              <Link to='/RoomsAvailability'>
+              <Link to='/HotelDeatils'>
                 <Button style={{ ...styles.bookButton, width: '100%' }}>Book</Button>
               </Link>
             </div>

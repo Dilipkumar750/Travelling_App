@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Button, Container, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import visa from "../../assets/visa.png";
 import mastercard from "../../assets/maestro.png";
@@ -17,12 +17,17 @@ const paymentMethods = [
 ];
 
 const Payment = () => {
+  const navigate = useNavigate();
+
+    const goBack = () => {
+        navigate(-1);
+    };
   return (
     <div>
       <Container className="mt-1 mb-4" style={{ padding: '25px', backgroundColor: '#F3E8D6' }}>
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
           <Link to="/Homepage">
-            <FaArrowLeft style={{ fontSize: '24px', marginRight: '15px', color: '#ff5f00' }} />
+            <FaArrowLeft style={{ fontSize: '24px', marginRight: '15px', color: '#ff5f00' }} onClick={goBack} />
           </Link>
           <h2 className="text-right" style={{ color: 'black' }}>
             Payment
@@ -80,7 +85,7 @@ const Payment = () => {
         {/* Continue Button */}
         <Row className="justify-content-center mt-5">
           <Col md={6} className="text-center">
-          <Link to='/Done/flight'>
+          <Link to='/Done'>
             <Button
               style={{
                 backgroundColor: '#f08e2d',

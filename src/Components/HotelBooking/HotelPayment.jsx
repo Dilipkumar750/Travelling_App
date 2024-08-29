@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from "react-icons/fa6";
 import hotel from '../../assets/popular_hotel2.jpeg';
 
@@ -20,11 +20,17 @@ const guestInfo = [
 const HotelPayment = () => {
   const totalAmount = '$406';
 
+  const navigate = useNavigate();
+
+    const goBack = () => {
+        navigate(-1);
+    };
+
   return (
     <div style={{ padding: '20px', maxWidth: '600px', margin: 'auto', border: '1px solid #ddd', borderRadius: '8px', fontSize: '14px', backgroundColor: '#F3E8D6', }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '600px', margin: '0 auto', marginBottom: '10px' }}>
         <Link to="/Homepage">
-          <FaArrowLeft style={{ fontSize: '24px', color: '#ff5f00' }} />
+          <FaArrowLeft style={{ fontSize: '24px', color: '#ff5f00' }} onClick={goBack}/>
         </Link>
         <h2 style={{ color: 'black', marginRight: '40%', fontSize: '15px' }}>Hotel Confirmation</h2>
       </div>
