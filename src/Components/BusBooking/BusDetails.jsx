@@ -1,23 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react'
 import { Card, Button, Container, Row, Col, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom'; // Ensure this is imported if using Link
-import { FaArrowLeft } from 'react-icons/fa'; // Ensure this is imported if using FaArrowLeft
+import { Link, useParams,useNavigate} from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa'; 
 import Ticketcards from "../TicketCard";
-import bus from "../../assets/bus-color.png"; // Replace with your image path
+import bus from "../../assets/bus-color.png"; 
+import { API_URL } from '../../constant';
+import axios from 'axios';
 
 const BusDetails = () => {
+  const { id } = useParams();
+  const [array, setArray] = useState([])
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    handleSubmit()
+  }, [])
+
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/booking/bus/get/${id}`);
+      setArray(response?.data[0])
+    } catch (err) {
+      console.log(err);
+    }
+  };
+// console.log(array)
+  const goBack = () => {
+    navigate(-1);
+  };
   return (
     <Container className="mt-1 mb-1" style={{ backgroundColor: '#F3E8D6', padding: '20px', borderRadius: '10px',height:'100vh' }}>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px',  }}>
-        <Link to="/Homepage">
-          <FaArrowLeft style={{ fontSize: '24px', marginRight: '15px', color: '#ff5f00' }} />
-        </Link>
+          <FaArrowLeft style={{ fontSize: '24px', marginRight: '15px', color: '#ff5f00' }} onClick={goBack} />
         <h2 style={{ color: 'black' }}>Bus Details</h2>
       </div>
       <Row className="justify-content-center">
         <Col md={8}>
           {/* Ticket Card */}
-          <Ticketcards color="red" width="100%" borderRadius="15%" />
+          <Ticketcards data={array} color="red" width="100%" borderRadius="15%" />
 
           {/* Ticket Details Card */}
           <Card style={{ padding: '15px', backgroundColor: '#FFFFFF', marginTop: '20px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' }}>
@@ -35,9 +55,9 @@ const BusDetails = () => {
                     boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
                   }}
                 >
-                  CHE
+                  {array.fromcode}
                 </Button>
-                <p style={{ fontSize: '15px', margin: '5px 0 0 0' }}>(Koyambedu)</p>
+                <p style={{ fontSize: '15px', margin: '5px 0 0 0' }}>{array.fromaddress}</p>
               </Col>
 
               <Col className="text-center" style={{ position: 'relative' }}>
@@ -56,9 +76,9 @@ const BusDetails = () => {
                     boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
                   }}
                 >
-                  BLR
+                  {array.tocode}
                 </Button>
-                <p style={{ fontSize: '15px', margin: '5px 0 0 0' }}>(Electronic_City)</p>
+                <p style={{ fontSize: '15px', margin: '5px 0 0 0' }}>{array.toaddress}</p>
               </Col>
             </Row>
 
@@ -69,7 +89,7 @@ const BusDetails = () => {
             <Row className="mb-3 d-flex">
               <Col className="d-flex flex-column">
                 <strong>Date</strong>
-                <Form.Control type="date" defaultValue="2023-05-26" />
+                <Form.Control type="date" defaultValue="2024-05-26" />
               </Col>
               <Col className="d-flex flex-column">
                 <strong>Time</strong>
@@ -83,7 +103,7 @@ const BusDetails = () => {
             {/* Price Display */}
             <Row className="mb-2">
               <Col><strong>Price</strong></Col>
-              <Col className="text-end"><strong style={{ color: 'red' }}>₹ 1,700</strong></Col>
+              <Col className="text-end"><strong style={{ color: 'red' }}>₹ {array.price}</strong></Col>
             </Row>
           </Card>
         </Col>
@@ -116,7 +136,7 @@ const BusDetails = () => {
           Cancel
         </Button>
         </Link>
-        <Link to='/Busseats'>
+        <Link to={`/Busseats/${id}`}>
         <Button
           style={{
             backgroundColor: '#f08e2d',

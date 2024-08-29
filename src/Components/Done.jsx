@@ -6,22 +6,22 @@ const Done = () => {
   const navigate = useNavigate();
   const { title } = useParams();
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (title==='flight') {
-        navigate("/FlightViewTicket");
-      }
-      else if(title==='train'){
-        navigate("/TrainViewTicket");
-      }
-      else{
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     if (title==='flight') {
+  //       navigate("/FlightViewTicket");
+  //     }
+  //     else if(title==='train'){
+  //       navigate("/TrainViewTicket");
+  //     }
+  //     else{
         
-      }
-    }, 2000);
+  //     }
+  //   }, 2000);
 
-    // Clear the timeout if the component unmounts to prevent memory leaks
-    return () => clearTimeout(timer);
-  }, [navigate]);
+  //   // Clear the timeout if the component unmounts to prevent memory leaks
+  //   return () => clearTimeout(timer);
+  // }, [navigate]);
 
 
   return (
@@ -31,7 +31,7 @@ const Done = () => {
         alt="Done"
         style={{ width: '100%', height: 'auto', marginTop: '50%', marginBottom: '20px' }}
       /><br/>
-      {/* <button
+      <button
         onClick={() => window.location.href = '/BookTickets'} 
         style={{
           backgroundColor: '#f08e2d', 
@@ -45,7 +45,7 @@ const Done = () => {
         }}
       >
         Back To Home
-      </button> */}
+      </button>
     </div>
   );
 }

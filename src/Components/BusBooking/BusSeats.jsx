@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { FaArrowLeft } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import ecomonyseat from '../../assets/ecomonyseat.png'
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { Button } from 'react-bootstrap';
-
+import { API_URL } from '../../constant';
+import axios from 'axios';
 
 const BusSeats = () => {
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const [flightData, setFlightData] = useState()
+  const storedData = JSON.parse(localStorage.getItem("user"));
 
-  const reservedSeats = [5, 7, 12,26];
+  const reservedSeats = flightData?.seats || [];
 
   const [selectedSeats, setSelectedseats] = useState([]); // Initialize the state as an empty array
 
@@ -32,12 +37,38 @@ const BusSeats = () => {
     });
   };
 
+  useEffect(() => {
+    handleSubmit()
+  }, [])
+
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/booking/bus/get/${id}`);
+      setFlightData(response?.data[0])
+    } catch (err) {
+      alert('something went wrong , try again');
+    }
+  };
+
+  // console.log(storedData)
+
+  const handleSeatBook = async () => {
+    storedData.selectedSeats = selectedSeats;
+    storedData.vehicleId = flightData?._id;
+    storedData.vehicleName = flightData?.name;
+    storedData.duration = flightData.duration;
+    localStorage.setItem('user', JSON.stringify(storedData));
+    navigate(`/BusPayment/${id}`)
+  };
+
+  const goBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div style={{backgroundColor:'#F3E8D6',height:'100%',paddingTop:'3rem'}}>
       <div className="d-flex align-items-center mb-4 ps-4">
-        <Link to="/Homepage">
-          <FaArrowLeft className="fs-4 me-3 text-warning" />
-        </Link>
+          <FaArrowLeft className="fs-4 me-3 text-warning" onClick={goBack} />
         <h2 className="text-dark">Select Seats</h2>
       </div>
       <section style={{padding:'0 2rem'}}>
@@ -473,7 +504,7 @@ const BusSeats = () => {
         </div>
       </section>
         <div style={{padding:'1rem 2rem'}}>
-          <Button style={{ backgroundColor: '#f08e2d'  , width:'100%'}}>Continue</Button>
+          <Button style={{ backgroundColor: '#f08e2d'  , width:'100%'}} onClick={handleSeatBook}>Continue</Button>
         </div>
   
     </div>
