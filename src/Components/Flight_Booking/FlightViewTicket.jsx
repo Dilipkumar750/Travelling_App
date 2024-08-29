@@ -95,7 +95,7 @@ const ViewTicket = () => {
   };
 
   return (
-    <div style={{ padding: '2px', textAlign: 'center', marginTop: '10px' }}>
+    <div style={{ padding: '20px', textAlign: 'center', marginTop: '10px', backgroundColor: '#F3E8D6', }}>
       {/* Back Button and Header (Outside the Card) */}
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px', maxWidth: '600px', margin: '0 auto' }}>
         <Link to="/Homepage">

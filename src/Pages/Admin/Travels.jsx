@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const Travels = () => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', backgroundColor: '#F3E8D6', }}>
       <Header title='Travel' arrow={false}/>
       <div style={{ flex: '1', padding: '1rem 2rem', display: 'grid', gap: '1rem' }}>
         <Form.Control

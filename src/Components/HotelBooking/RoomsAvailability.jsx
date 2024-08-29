@@ -20,7 +20,7 @@ import { Link } from "react-router-dom";
 
 const RoomsAvailability = () => {
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: '20px', backgroundColor: '#F3E8D6', }}>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
         <FaArrowLeft 
           style={{ color: '#ff5f00', fontSize: '20px', marginRight: '15px' }} 

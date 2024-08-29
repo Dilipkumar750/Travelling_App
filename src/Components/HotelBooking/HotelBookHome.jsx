@@ -21,7 +21,7 @@ function HotelBookHome() {
     navigate(-1);
   };
   return (
-    <div>
+    <div style={{backgroundColor: '#F3E8D6',}}>
       <header style={{display:'flex',justifyContent:'space-between',paddingTop:'4rem'}}>
         <div className="d-flex align-items-center mb-4">
           <FaArrowLeft className="fs-4 me-3 text-warning" onClick={goBack} />
