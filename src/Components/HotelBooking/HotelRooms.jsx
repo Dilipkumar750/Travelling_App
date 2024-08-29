@@ -5,32 +5,53 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import fifteen from '../../assets/fifteenoffer.svg';
 import twintythreeoffer from '../../assets/twintythreeoffer.svg';
 import { Link } from "react-router-dom";
+import { FaArrowLeft } from 'react-icons/fa';
 import hotel from '../../assets/popular_hotel2.jpeg';
-// import 'swiper/swiper-bundle.min.css'; // Make sure you import Swiper styles
+import slide from '../../assets/hotelrooms.png';
+import { MdOutlineKingBed } from "react-icons/md";
+import { CiUser } from "react-icons/ci";
+// import 'swiper/swiper-bundle.min.css'; // Ensure Swiper styles are imported
 
-const FlightBookHome = () => {
+const HotelRooms = () => {
   const [fromLocation] = useState("");
 
   return (
     <div>
-      <Header />
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '2%' }}>
+        <FaArrowLeft 
+          style={{ color: '#ff5f00', fontSize: '20px', marginRight: '15px', marginTop: '4%' }} 
+        />
+        <h3 style={{ color: 'black', marginTop: '5%' }}>Hotel Details</h3>
+      </div>
       <img src={hotel} alt="Popular hotel" style={styles.hotelImage} />
+      <img src={slide} alt="Hotel rooms" style={{ ...styles.hotelImage, marginTop: '2%' }} />
       <section style={{ padding: "1rem" }}>
         <div style={styles.headerSection}>
           <div>
             <h2>Beach House Studio</h2>
-            <p>Oceanfront rooms and studios offering unparalleled beachfront living (530-565 sq. ft.)</p>
+            <p style={{ fontSize: '12px'}}>Oceanfront rooms and studios offering unparalleled beachfront living (530-565 sq. ft.)</p>
+            <h6>Room Details</h6>
             <p><strong>BEST AVAILABLE RATE</strong></p>
-            <p>$2,770 <br /> Average per night, before taxes and fees</p>
-            <p>1 Bed / 1 Extra Bed Available <br /> UP TO 3 GUESTS</p>
-            <Button style={styles.bookButton}>Book</Button>
+            <p style={{ fontSize: '20px', fontWeight: 'bold', marginTop: '-5%'}}>$2,770 </p>
+            <h6 style={{ fontSize: '12px'}}> Average per night, before taxes and fees</h6>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <p style={{ fontSize: '10px', marginRight: '1px' }}>
+                <MdOutlineKingBed /> 1 Bed / 1 Extra<br /> Bed Available
+              </p>
+              <p style={{ fontSize: '10px', marginRight: '10%' }}>
+                <CiUser /> UP TO 3 GUESTS
+              </p>
+              <Link to='/RoomsAvailability'>
+                <Button style={{ ...styles.bookButton, width: '100%' }}>Book</Button>
+              </Link>
+            </div>
           </div>
         </div>
-        
+
         <div style={styles.offersSection}>
           <div style={styles.offerHeader}>
             <h6><strong>Hot Offer</strong></h6>
-            <p style={{ color: "red" }}>See all</p>
+            <p style={{ color: "red", cursor: "pointer" }}>See all</p>
           </div>
           <Swiper slidesPerView={1} spaceBetween={20} className="mySwiper">
             <SwiperSlide>
@@ -64,7 +85,7 @@ const FlightBookHome = () => {
               </div>
             </SwiperSlide>
           </Swiper>
-          <Link to='/flightviewticket'>
+          <Link to='/hotelviewticket'>
             <Button style={styles.viewTicketButton}>View Ticket</Button>
           </Link>
         </div>
@@ -111,9 +132,12 @@ const styles = {
     color: 'black',
   },
   hotelImage: {
-    width: '90%',
+    width: '100%',
     height: 'auto',
+    marginTop: '10px',
+    padding: '10px',
+    borderRadius: '30px',
   }
 };
 
-export default FlightBookHome;
+export default HotelRooms;

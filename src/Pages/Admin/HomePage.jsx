@@ -9,7 +9,7 @@ import BookTickets from './BookTickets'
 
 const HomePage = () => {
   return (
-    <div>
+    <div style={{backgroundColor: '#F3E8D6',}}>
       <Header title='Home' arrow={false}/>
       <section style={{padding:"0 10px"}}>
       <h3>Recommend For You </h3>
@@ -43,7 +43,9 @@ const HomePage = () => {
         </div>
         </Link>
       </section>
-      <div style={{position:'absolute',bottom:'10px',width:'100%'}}><Footer/></div>
+      <div style={{position:'absolute',bottom:'0',width:'100%', }}>
+        <Footer/>
+        </div>
     </div>
   )
 }
