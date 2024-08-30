@@ -239,7 +239,7 @@ const TrainUpdate = () => {
       <Row className="mt-4">
         <Col>
           <div className="d-flex align-items-center">
-            <div className="alert alert-info" role="alert" style={{ backgroundColor: 'gray', color: 'white', borderColor: 'gray' }}>
+            <div className="console.log console.log-info" role="console.log" style={{ backgroundColor: 'gray', color: 'white', borderColor: 'gray' }}>
               <strong>At Kumbakonam</strong><br />
               Updated few seconds ago
             </div>

@@ -14,9 +14,21 @@ function Header({ title, arrow }) {
   const goBack = () => {
     navigate(-1);
   };
+  const logout = () => {
+    localStorage.removeItem('trainSearchData');
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    localStorage.removeItem('hotelData');
+    localStorage.removeItem('flightSearchData');
+    localStorage.removeItem('BusSearchData');
+
+  };
+
+  
 
   return (
-    <header style={{ backgroundColor: '##F08E2D', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '0 0 70px 70px' }}>
+    <header style={{ backgroundColor: '#F08E2D', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '0 0 70px 70px' }}>
+
       <div style={{ width: '80%', display: 'flex', justifyContent: 'space-between' }}>
         {arrow ? (
           <AiOutlineArrowLeft style={{ color: 'white', fontSize: '1.5rem', fontWeight: '500', marginTop: '8px' }} onClick={goBack} />
@@ -24,7 +36,7 @@ function Header({ title, arrow }) {
           <IoMenu style={{ color: 'white', fontSize: '1.5rem', fontWeight: '500', marginTop: '8px' }} onClick={handleShow} />
         )}
         <p style={{ flexBasis: '80%', color: 'white', fontSize: '1.5rem', fontWeight: '500' }}>{title}</p>
-        <AiOutlineUser style={{ color: 'white', fontSize: '1.5rem', fontWeight: '500', marginTop: '8px' }} />
+        <Link to='/Profile'><AiOutlineUser style={{ color: 'white', fontSize: '1.5rem', fontWeight: '500', marginTop: '8px' }} /></Link>
       </div>
 
       {/* Offcanvas Sidebar */}
@@ -41,7 +53,7 @@ function Header({ title, arrow }) {
               { name: 'Logout', path: '/login' }
             ].map((item, index) => (
               <li key={index} style={{ color: 'white', marginBottom: '1rem' }}>
-                <Link to={item.path} style={{ color: 'inherit', textDecoration: 'none' }}>
+                <Link to={item.path} onClick={item.name==='Logout' &&logout} style={{ color: 'inherit', textDecoration: 'none' }}>
                   {item.name}
                 </Link>
                 <hr style={{ borderColor: 'white' }} />

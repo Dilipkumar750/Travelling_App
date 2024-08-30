@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import Header from "../header/Header";
-import { LuPlaneTakeoff, LuPlaneLanding, LuCalendarDays } from "react-icons/lu";
+import {LuCalendarDays } from "react-icons/lu";
 import { Button } from "react-bootstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Link,useNavigate } from "react-router-dom";
 import fifteen from '../../assets/fifteenoffer.svg';
 import twintythreeoffer from '../../assets/twintythreeoffer.svg';
+import { FaTrainSubway } from "react-icons/fa6";
 
 const TrainBookHome = () => {
   const navigate = useNavigate()
@@ -58,7 +59,7 @@ const TrainBookHome = () => {
               <div className="input-group mb-2">
                 <div className="input-group-prepend">
                   <div className="input-group-text">
-                    <LuPlaneTakeoff />
+                    <FaTrainSubway />
                   </div>
                 </div>
                 <select
@@ -88,7 +89,7 @@ const TrainBookHome = () => {
               <div className="input-group mb-2">
                 <div className="input-group-prepend">
                   <div className="input-group-text">
-                    <LuPlaneLanding />
+                    <FaTrainSubway />
                   </div>
                 </div>
                 <select

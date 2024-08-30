@@ -34,7 +34,7 @@ const BusPayment = () => {
       const response = await axios.get(`${API_URL}/booking/bus/get/${id}`);
       setFlightData(response?.data[0])
     } catch (err) {
-      alert('something went wrong , try again');
+      console.log('something went wrong , try again');
     }
   };
 
@@ -53,18 +53,12 @@ const BusPayment = () => {
         vehicleName:storedData.vehicleName,
         duration:storedData.duration
       });
-      console.log(response)
-      storedData.selectedSeats = [];
-      storedData.vehicleId = '';
-      storedData.vehicleName = '';
-      storedData.duration = '';
-      storedData.fromLocation = '';
-      storedData.toLocation = '';
-      localStorage.setItem('user', JSON.stringify(storedData));
+      // console.log(response)
+      localStorage.removeItem('BusSearchData');
       navigate('/Done')
     } catch (err) {
-      console.log(err)
-      alert('something went wrong , try again');
+      // console.log(err)
+      console.log('something went wrong , try again');
     }
   };
 

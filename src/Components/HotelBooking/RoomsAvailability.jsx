@@ -21,6 +21,8 @@ import { useNavigate } from "react-router-dom";
 
 const RoomsAvailability = () => {
   const navigate = useNavigate();
+  const storedData = JSON.parse(localStorage.getItem("hotelData"));
+// console.log(storedData?.formdata?.checkInDate)
 
     const goBack = () => {
         navigate(-1);
@@ -43,7 +45,7 @@ const RoomsAvailability = () => {
           <h5 style={{ fontWeight: 'bold' }}>Hotel Description</h5>
         </div>
         <p style={{ fontSize: '14px', textAlign: 'center' }}>
-          Set in landscaped gardens overlooking the Ébrié lagoon, this upscale hotel featuring contemporary local art and architectural touches is 3 km from Mosquée de la riviéra and 17 km from Banco National Park.
+          {storedData?.description}
         </p>
 
         <div style={{ marginBottom: '20px' }}>
@@ -73,9 +75,9 @@ const RoomsAvailability = () => {
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
             <p><FaCalendarAlt />
-            Checkin 12 PM</p>
+            Checkin <br/> {storedData?.formdata?.checkInDate}</p>
             <p><FaCalendarAlt />
-            Checkout 11 AM</p>
+            Checkout <br/> {storedData?.formdata?.checkOutDate}</p>
           </div>
         </div>
         <hr />
@@ -113,9 +115,9 @@ const RoomsAvailability = () => {
           <hr />
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px' }}>
             <p><FaUserGroup />
-            2 Adults</p>
+            {storedData?.formdata?.personCount} Adults</p>
             <p>0 Children</p>
-            <p>1 Room</p>
+            <p>{storedData?.formdata?.bedsRequired} beds</p>
           </div>
           <Link to="/Hotelpayment">
           <Button style={{ backgroundColor: '#f08e2d', color: 'black', width: '100%', marginTop: '10px' }}>

@@ -21,7 +21,7 @@ const TrainDetails = () => {
       const response = await axios.get(`${API_URL}/booking/train/get/${id}`);
       setArray(response?.data[0])
     } catch (err) {
-      alert('something went wrong , try again');
+      console.log('something went wrong , try again');
     }
   };
 
@@ -29,7 +29,7 @@ const TrainDetails = () => {
     navigate(-1);
   };
   return (
-    <Container className="mt-1 mb-1 p-4 rounded" style={{ backgroundColor: '#F3E8D6',height: "100vh" }}>
+    <Container className="mt-1 mb-1 p-4 rounded" style={{ backgroundColor: '#F3E8D6',height: "100%" }}>
       <div className="d-flex align-items-center mb-4">
           <FaArrowLeft className="fs-4 me-3 text-warning" onClick={goBack} />
         <h2 className="text-dark">Train Details</h2>

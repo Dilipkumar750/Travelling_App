@@ -1,11 +1,29 @@
 // Settings.js
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import BootstrapSwitchButton from 'bootstrap-switch-button-react';
+import { API_URL } from '../constant';
+import axios from 'axios'; // Make sure to import axios
 
 const Settings = () => {
+  const navigate = useNavigate(); // For navigation after successful login
+  const user = JSON.parse(localStorage.getItem("user"));
+  const [email, setemail] = useState(user.email)
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.delete(`${API_URL}/user/delete`, {
+        data: { email }
+      });
+      // console.log(response)
+        navigate('/Login');
+    } catch (err) {
+      console.log(err)
+    }
+  };
+
+
   // Initialize state from localStorage or default to true
   const [notificationsEnabled, setNotificationsEnabled] = useState(() => {
     const saved = localStorage.getItem('notificationsEnabled');
@@ -55,9 +73,9 @@ const Settings = () => {
               </Link>
             </p>
             <p style={{ color: 'red', fontSize: '18px', marginLeft: '15px' }}>
-              <Link to="/login" className="text-decoration-none" style={{ color: 'red' }}>
+              <p onClick={handleSubmit} className="text-decoration-none" style={{ color: 'red' }}>
                 Delete My Account
-              </Link>
+              </p>
             </p>
           </div>
         </Col>

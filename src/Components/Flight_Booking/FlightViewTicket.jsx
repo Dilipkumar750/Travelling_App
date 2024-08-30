@@ -23,11 +23,11 @@ const ViewTicket = () => {
   const handleSubmit = async () => {
     try {
       const response = await axios.get(`${API_URL}/user/getUser/${storedData.email}`);
-      const lastItem = response?.data.booking[response?.data.booking.length - 1];
+      const lastItem = response?.data?.flightbooking?.length==1? response?.data?.flightbooking[0]:response?.data?.flightbooking[response?.data?.flightbooking?.length - 1];
       setVihicleid(lastItem)
 
     } catch (err) {
-      console.log('something went wrong , try again');
+      console.log(err);
     }
   };
   const handleGetBooking = async () => {
@@ -35,7 +35,7 @@ const ViewTicket = () => {
       const response = await axios.get(`${API_URL}/booking/getBookingById/get/${vihicleid}`);
       setDetails(response.data)
     } catch (err) {
-      console.log('something went wrong , try again');
+      console.log(err);
     }
   };
 
@@ -76,29 +76,13 @@ const ViewTicket = () => {
     date: '26/May/2023',
   };
 
-  const flightInfo = [
-    { time: '08:30', location: 'CHENNAI' },
-    { time: '1 hour', location: '' },
-    { time: '09:30', location: 'BANGALORE' }
-  ];
 
-  const detailss = [
-    { label: 'Class', value: 'Economy' },
-    { label: 'Gate', value: '17 D' },
-    { label: 'Terminal', value: '4' },
-    { label: 'Flight', value: 'DJ017' }
-  ];
-
-  const passenger = {
-    name: '22 years, Male',
-    seat: '17 D'
-  };
 
   return (
     <div style={{ padding: '20px', textAlign: 'center', marginTop: '10px', backgroundColor: '#F3E8D6', }}>
       {/* Back Button and Header (Outside the Card) */}
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px', maxWidth: '600px', margin: '0 auto' }}>
-        <Link to="/Homepage">
+        <Link to="/BookTickets">
           <FaArrowLeft style={{ fontSize: '24px', color: '#ff5f00' }} />
         </Link>
         <h2 style={{ color: 'black', marginRight: '45%' }}>

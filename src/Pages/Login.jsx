@@ -23,8 +23,13 @@ const Login = () => {
         email,
         password
       });
+      // console.log(response.data.user)
+      if(response.data.user.role==='admin'){
+        navigate('/UserHomePage');
+      }else{
+        navigate('/HomePage');
+      }
       localStorage.setItem('user', JSON.stringify(response.data.user));
-      navigate('/HomePage');
     } catch (err) {
       setError('Login failed. Please check your credentials and try again.');
     }

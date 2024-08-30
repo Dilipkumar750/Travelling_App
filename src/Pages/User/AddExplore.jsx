@@ -3,11 +3,21 @@ import Header from '../../Components/header/Header';
 import Footer from '../../Components/footer/Footer';
 import { Form, Button, Container, Card } from 'react-bootstrap';
 import plus from '../../assets/plus.png';
+import Modal from 'react-bootstrap/Modal';
+import { useNavigate } from 'react-router-dom';
 
 const AddExplore = () => {
   // Use state to store selected images
   const [selectedImages, setSelectedImages] = useState([]);
   const fileInputRefs = useRef([]);
+  const [show, setShow] = useState(false);
+  const navigate = useNavigate()
+
+  const handleClose = () => {
+    setShow(false)
+    navigate('/UserHomePage')
+  };
+  const handleShow = () => setShow(true);
 
   // Handle file input click
   const handleCardClick = (index) => {
@@ -39,7 +49,7 @@ const AddExplore = () => {
   return (
     <div>
       <Header title='Add Explore' arrow={false} />
-      <Container className="mt-2 mb-2">
+      <Container className="mt-2 pb-5 mb-5">
         <Form>
           {/* City of Landmark */}
           <Form.Group controlId="formCity">
@@ -99,15 +109,31 @@ const AddExplore = () => {
 
           <Button
             variant="primary"
-            type="submit"
             className="w-100 rounded-3"
             style={{ backgroundColor: '#f08e2d' }}
+            onClick={handleShow}
           >
             Submit
           </Button>
         </Form>
       </Container>
-      <Footer />
+      <div style={{bottom: 0, position:'fixed', width: '100%'}}>
+        <Footer/> 
+        </div>
+        <Modal show={show} onHide={handleClose} style={{marginTop:'15rem'}}>
+        <Modal.Header closeButton>
+          <Modal.Title>Success</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>successfully added</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Done
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

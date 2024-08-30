@@ -8,6 +8,8 @@ import paypal from "../../assets/paypal.png";
 import phonepe from "../../assets/phonepe.png";
 import Ticketcards from "../TicketCard";
 import Hotel from "../../assets/hotel-color.png";
+import { API_URL } from '../../constant';
+import axios from 'axios';
 
 const paymentMethods = [
   { img: visa, alt: "Visa" },
@@ -18,10 +20,39 @@ const paymentMethods = [
 
 const Payment = () => {
   const navigate = useNavigate();
+const storedData = JSON.parse(localStorage.getItem("hotelData"));
+const user = JSON.parse(localStorage.getItem("user"));
+// console.log(storedData)
+    const goBack = () => {
+        navigate(-1);
+    };
+
+    const handleSeatBook = async () => {
+      try {
+        const response = await axios.post(`${API_URL}/booking/hotel/book`, {
+          storedData,user
+        });
+        // console.log(response)
+        // storedData.selectedSeats = [];
+        // storedData.vehicleId = '';
+        // storedData.vehicleName = '';
+        // storedData.duration = '';
+        // storedData.fromLocation = '';
+        // storedData.toLocation = '';
+        // localStorage.setItem('user', JSON.stringify(storedData));
+        // localStorage.removeItem('trainSearchData');
+        navigate('/HotelViewTicket')
+      } catch (err) {
+        console.log(err)
+        console.log('something went wrong , try again');
+      }
+    };
+
 
     const goBack = () => {
         navigate(-1);
     };
+
   return (
     <div>
       <Container className="mt-1 mb-4" style={{ padding: '25px', backgroundColor: '#F3E8D6' }}>
@@ -37,7 +68,25 @@ const Payment = () => {
         {/* Ticket Card Section */}
         <Row className="mt-4 justify-content-center">
           <Col md={8}>
-            <Ticketcards color='red' image={Hotel} width='150px' /> {/* Fixed width prop syntax */}
+          <section style={{backgroundColor:'white',padding:'1rem',position:'relative',height:'130px',borderRadius:'1rem'}}>
+            <div className='cardTop'>
+                <div style={{display:'flex',justifyContent:'space-between'}}>
+                    <b>{storedData?.formdata?.checkInDate}</b>
+                    <p></p>
+                    <b>{storedData?.formdata?.checkOutDate}</b>
+                </div>
+                <div style={{display:'flex',justifyContent:'space-between'}}>
+                    <b style={{color:'gray'}}>Check In</b>
+                    <p></p>
+                    <b style={{color:'gray'}}>Check Out</b>
+                </div>
+            </div>
+            <div style={{display:'grid', gridTemplateColumns:'auto auto auto', justifyContent:'space-between',borderTop:'1px dotted black',padding:'0.5rem'}}>
+                <b>Total </b>
+                <img src={''} alt="" style={{width:"100%",height:'40%'}} />
+                <b>{storedData?.price * storedData?.formdata?.bedsRequired + (storedData?.price * storedData?.formdata?.bedsRequired * storedData?.tax / 100)}</b>
+            </div>
+        </section>
           </Col>
         </Row>
 
@@ -47,7 +96,7 @@ const Payment = () => {
             <Card className="mb-2" style={{ backgroundColor: '#FAD1D1', padding: '15px' }}>
               <Row className="d-flex justify-content-between align-items-center">
                 <Col><strong>Total</strong></Col>
-                <Col className="text-end"><strong>₹ 1,500</strong></Col>
+                <Col className="text-end"><strong>₹ {storedData?.price * storedData?.formdata?.bedsRequired + (storedData?.price * storedData?.formdata?.bedsRequired * storedData?.tax / 100)}</strong></Col>
               </Row>
             </Card>
           </Col>
@@ -85,7 +134,8 @@ const Payment = () => {
         {/* Continue Button */}
         <Row className="justify-content-center mt-5">
           <Col md={6} className="text-center">
-          <Link to='/Done'>
+          {/* <Link to='/HotelViewTicket'> */}
+
             <Button
               style={{
                 backgroundColor: '#f08e2d',
@@ -95,10 +145,11 @@ const Payment = () => {
                 borderRadius: '10px',
                 boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
               }}
+              onClick={handleSeatBook}
             >
               Continue
             </Button>
-            </Link>
+            {/* </Link> */}
           </Col>
         </Row>
       </Container>

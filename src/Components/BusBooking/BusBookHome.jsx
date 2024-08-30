@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import Header from "../header/Header";
-import { LuPlaneTakeoff, LuPlaneLanding, LuCalendarDays } from "react-icons/lu";
+import { LuCalendarDays } from "react-icons/lu";
 import { Button } from "react-bootstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
 import fifteen from '../../assets/fifteenoffer.svg'
 import twintythreeoffer from '../../assets/twintythreeoffer.svg';
 import { Link ,useNavigate} from 'react-router-dom';
+import { FaBus } from "react-icons/fa";
 
 
 const BusBookHome = () => {
@@ -59,7 +60,7 @@ const BusBookHome = () => {
               <div class="input-group mb-2">
                 <div class="input-group-prepend">
                   <div class="input-group-text">
-                    <LuPlaneTakeoff />
+                    <FaBus />
                   </div>
                 </div>
                 <select
@@ -89,7 +90,7 @@ const BusBookHome = () => {
               <div class="input-group mb-2">
                 <div class="input-group-prepend">
                   <div class="input-group-text">
-                    <LuPlaneLanding />
+                    <FaBus />
                   </div>
                 </div>
                 <select

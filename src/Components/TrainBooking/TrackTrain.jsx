@@ -40,7 +40,9 @@ const TrackTrain = () => {
     localStorage.setItem("trainSearchData", JSON.stringify(formData));
     navigate('/TrainDate')
   };
-
+  const goBack = () => {
+    navigate(-1);
+  };
 
   return (
     <div className="d-flex flex-column align-items-center" style={{ backgroundColor: '#F3E8D6', minHeight: '100vh' }}>
@@ -48,7 +50,7 @@ const TrackTrain = () => {
       {/* Header Section */}
       <div className="d-flex align-items-center w-100" style={{ backgroundColor: customColor, height: '10vh' }}>
         <button className="btn" style={{ backgroundColor: customColor, color: 'white', border: 'none', height: '90%', width: '60px' }}>
-          <FaArrowLeft size={24} />
+          <FaArrowLeft size={24} onClick={goBack} />
         </button>
         <h1 style={{ marginLeft: '-1%' }} className="text-white">Train Details</h1>
       </div>

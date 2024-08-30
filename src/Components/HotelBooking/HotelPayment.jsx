@@ -19,6 +19,15 @@ const guestInfo = [
 
 const HotelPayment = () => {
   const totalAmount = '$406';
+  const storedData = JSON.parse(localStorage.getItem("hotelData"));
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  const navigate = useNavigate();
+
+    const goBack = () => {
+        navigate(-1);
+    };
+
 
   const navigate = useNavigate();
 
@@ -38,28 +47,52 @@ const HotelPayment = () => {
 
       <div style={{ marginBottom: '1px' }}>
         <h5 style={{ fontSize: '18px', marginBottom: '10px' }}>Room Info</h5>
-        {roomInfo.map((item, index) => (
+        {/* {roomInfo.map((item, index) => (
           <div key={index} style={{ display: 'flex', justifyContent: 'space-between',  padding: '5px', borderRadius: '4px', marginBottom: '5px' }}>
             <p>{item.label}:</p>
             <p><strong>{item.amount ? `${item.value} = ${item.amount}` : item.value}</strong></p>
           </div>
-        ))}
+        ))} */}
+          <div style={{ display: 'flex', justifyContent: 'space-between',  padding: '5px', borderRadius: '4px', marginBottom: '5px' }}>
+            <p>No. of rooms</p>
+            <p><strong>{storedData?.formdata?.bedsRequired}</strong></p>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between',  padding: '5px', borderRadius: '4px', marginBottom: '5px' }}>
+            <p>Room type</p>
+            <p><strong>Air conditioned</strong></p>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between',  padding: '5px', borderRadius: '4px', marginBottom: '5px' }}>
+            <p>Room</p>
+            <p><strong>{storedData?.price * storedData?.formdata?.bedsRequired}</strong></p>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between',  padding: '5px', borderRadius: '4px', marginBottom: '5px' }}>
+            <p>Taxes</p>
+            <p><strong>{storedData?.tax}%</strong></p>
+          </div>
         <hr />
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <strong>Total:</strong>
-          <strong>{totalAmount}</strong>
+          <strong>{storedData?.price * storedData?.formdata?.bedsRequired + (storedData?.price * storedData?.formdata?.bedsRequired * storedData?.tax / 100)}</strong>
         </div>
       </div>
       <hr />
 
       <div style={{ marginBottom: '15%' }}>
         <h5 style={{ fontSize: '18px', marginBottom: '10px' }}>Guest Info</h5>
-        {guestInfo.map((item, index) => (
-          <div key={index} style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: '#F3E8D6', padding: '5px', borderRadius: '4px', marginBottom: '5px' }}>
-            <p>{item.label}:</p>
-            <p><strong>{item.value}</strong></p>
+        {/* {guestInfo.map((item, index) => ( */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: '#F3E8D6', padding: '5px', borderRadius: '4px', marginBottom: '5px' }}>
+            <p>name:</p>
+            <p><strong>{user.username}</strong></p>
           </div>
-        ))}
+          <div style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: '#F3E8D6', padding: '5px', borderRadius: '4px', marginBottom: '5px' }}>
+            <p>email:</p>
+            <p><strong>{user.email}</strong></p>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: '#F3E8D6', padding: '5px', borderRadius: '4px', marginBottom: '5px' }}>
+            <p>mobile no:</p>
+            <p><strong>{user.contactNo}</strong></p>
+          </div>
+        {/* ))} */}
       </div>
 
       <div style={{ marginBottom: '1px' }}>

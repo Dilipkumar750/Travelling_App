@@ -43,7 +43,7 @@ const HomePage = () => {
         </div>
         </Link>
       </section>
-      <div style={{position:'absolute',bottom:'0',width:'100%', }}>
+      <div style={{position:'fixed',bottom:'0',width:'100%', }}>
         <Footer/>
         </div>
     </div>

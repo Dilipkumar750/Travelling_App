@@ -9,7 +9,6 @@ import BusTicket from './Components/BusBooking/BusTicket';
 import BusViewTicket from './Components/BusBooking/BusViewTicket';
 import FlightBookHome from './Components/Flight_Booking/FlightBookHome';
 import FlightBusiness from './Components/Flight_Booking/FlightBusiness';
-import FlightTicket from './Components/Flight_Booking/FlightTicket';
 import FlightDetails from './Components/Flight_Booking/FlightDetails';
 import FlightEconomy from './Components/Flight_Booking/FlightEconomy';
 import FlightPayment from './Components/Flight_Booking/Payment';
@@ -35,9 +34,11 @@ import Travel from './Components/Home/Travel';
 import Welcome from './Components/Home/Welcome';
 import BookTickets from './Pages/Admin/BookTickets';
 import Explore from './Pages/Admin/Explore';
+// this is user home page not admin home page, afmin folder is user folder and user folder is admin
 import HomePage from './Pages/Admin/HomePage';
 import Travels from './Pages/Admin/Travels';
 import AddExplore from './Pages/User/AddExplore';
+// this is admin home page not user home page
 import UserHomePage from './Pages/User/UserHomepage';
 import Services from './Pages/User/Services';
 import Login from './Pages/Login';
@@ -75,7 +76,6 @@ function App(){
       <Route path='/FlightBookHome' element={<FlightBookHome/>}/>
       <Route path='/FlightList' element={<FlightList/>}/>
       <Route path='/FlightBusiness/:id' element={<FlightBusiness/>}/>
-      <Route path='/FlightTicket' element={<FlightTicket/>}/>
       <Route path='/FlightDetails/:id' element={<FlightDetails/>}/>
       <Route path='/FlightEconomy/:id' element={<FlightEconomy/>}/>
       <Route path='/FlightPayment/:id' element={<FlightPayment/>}/>
@@ -118,8 +118,8 @@ function App(){
       <Route path='/Done' element={<Done/>}/>
       <Route path='/AddAccomadation' element={<AddAccomadation/>}/>
       <Route path='/' element={<JourneyJoyHome/>}/>
-      <Route path='/Approve' element={<Approve/>}/>
-      <Route path='/Reject' element={<Reject/>}/>
+      <Route path='/Approve/:id' element={<Approve/>}/>
+      <Route path='/Reject/:id' element={<Reject/>}/>
     </Routes>
     </>
   )
