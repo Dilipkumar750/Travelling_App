@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link ,useNavigate} from 'react-router-dom'; // Import Link from react-router-dom
 import LoginImage from '../assets/login image.png';
 import axios from 'axios';
 import { API_URL } from '../constant';
@@ -12,6 +12,7 @@ const Signup = () => {
   const [username, setUsername] = useState('');
   const [contactNo, setContactNo] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate(); // For navigation after successful login
 
   const handleSubmit = async (event) => {
 
@@ -28,7 +29,7 @@ const Signup = () => {
       navigate('/Login');
     } catch (err) {
       // console.log(err);
-      setError('Register failed. Please check your credentials and try again.')
+      setError(err)
     }
   };
 
@@ -41,7 +42,7 @@ const Signup = () => {
             src={LoginImage} 
             alt="login" 
             className="mb-4" 
-            style={{ width: '170px', display: 'block', margin: 'auto', marginTop: '25%' }} 
+            style={{ width: '170px', display: 'block', margin: 'auto', marginTop: '15%' }} 
           />
           <h2 className="text-left my-4">Sign Up Details</h2>
           <Form onSubmit={handleSubmit}>

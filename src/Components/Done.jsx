@@ -32,7 +32,7 @@ const Done = () => {
         style={{ width: '100%', height: 'auto', marginTop: '50%', marginBottom: '20px' }}
       /><br/>
       <button
-        onClick={() => window.location.href = '/BookTickets'} 
+        onClick={() => navigate('/BookTickets')} 
         style={{
           backgroundColor: '#f08e2d', 
           color: 'white',

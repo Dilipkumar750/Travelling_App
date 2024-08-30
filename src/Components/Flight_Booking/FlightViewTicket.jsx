@@ -23,11 +23,11 @@ const ViewTicket = () => {
   const handleSubmit = async () => {
     try {
       const response = await axios.get(`${API_URL}/user/getUser/${storedData.email}`);
-      const lastItem = response?.data.booking[response?.data.booking.length - 1];
+      const lastItem = response?.data?.flightbooking?.length==1? response?.data?.flightbooking[0]:response?.data?.flightbooking[response?.data?.flightbooking?.length - 1];
       setVihicleid(lastItem)
 
     } catch (err) {
-      console.log('something went wrong , try again');
+      console.log(err);
     }
   };
   const handleGetBooking = async () => {
@@ -35,7 +35,7 @@ const ViewTicket = () => {
       const response = await axios.get(`${API_URL}/booking/getBookingById/get/${vihicleid}`);
       setDetails(response.data)
     } catch (err) {
-      console.log('something went wrong , try again');
+      console.log(err);
     }
   };
 

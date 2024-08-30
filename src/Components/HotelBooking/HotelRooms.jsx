@@ -9,39 +9,47 @@ import { FaArrowLeft } from 'react-icons/fa';
 import hotel from '../../assets/popular_hotel2.jpeg';
 import slide from '../../assets/hotelrooms.png';
 import { MdOutlineKingBed } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 import { CiUser } from "react-icons/ci";
 // import 'swiper/swiper-bundle.min.css'; // Ensure Swiper styles are imported
 
 const HotelRooms = () => {
   const [fromLocation] = useState("");
 
+    const navigate = useNavigate();
+  
+    const goBack = () => {
+      navigate(-1);
+    };
+    const storedData = JSON.parse(localStorage.getItem("hotelData"));
+// console.log(storedData)
   return (
-    <div style={{backgroundColor: '#F3E8D6',}}>
+    <div style={{backgroundColor: '#F3E8D6', height: '100%'}}>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '2%' }}>
-        <FaArrowLeft 
+        <FaArrowLeft onClick={goBack}
           style={{ color: '#ff5f00', fontSize: '20px', marginRight: '15px', marginTop: '4%' }} 
         />
-        <h3 style={{ color: 'black', marginTop: '5%' }}>Hotel Details</h3>
+        <h3 style={{ color: 'black', marginTop: '5%' }}>{storedData.type} Details</h3>
       </div>
       <img src={hotel} alt="Popular hotel" style={styles.hotelImage} />
       <img src={slide} alt="Hotel rooms" style={{ ...styles.hotelImage, marginTop: '2%' }} />
       <section style={{ padding: "1rem" }}>
         <div style={styles.headerSection}>
           <div>
-            <h2>Beach House Studio</h2>
-            <p style={{ fontSize: '12px'}}>Oceanfront rooms and studios offering unparalleled beachfront living (530-565 sq. ft.)</p>
+            <h2>{storedData?.name}</h2>
+            <p style={{ fontSize: '12px'}}>{storedData?.description}</p>
             <h6>Room Details</h6>
             <p><strong>BEST AVAILABLE RATE</strong></p>
-            <p style={{ fontSize: '20px', fontWeight: 'bold', marginTop: '-5%'}}>$2,770 </p>
+            <p style={{ fontSize: '20px', fontWeight: 'bold', marginTop: '-5%'}}>${storedData?.price} </p>
             <h6 style={{ fontSize: '12px'}}> Average per night, before taxes and fees</h6>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <p style={{ fontSize: '10px', marginRight: '1px' }}>
                 <MdOutlineKingBed /> 1 Bed / 1 Extra<br /> Bed Available
               </p>
               <p style={{ fontSize: '10px', marginRight: '10%' }}>
-                <CiUser /> UP TO 3 GUESTS
+                <CiUser /> UP TO {storedData?.guests} GUESTS
               </p>
-              <Link to='/RoomsAvailability'>
+              <Link to='/HotelDeatils'>
                 <Button style={{ ...styles.bookButton, width: '100%' }}>Book</Button>
               </Link>
             </div>
@@ -85,7 +93,7 @@ const HotelRooms = () => {
               </div>
             </SwiperSlide>
           </Swiper>
-          <Link to='/hotelviewticket'>
+          <Link to='/HotelViewTicket'>
             <Button style={styles.viewTicketButton}>View Ticket</Button>
           </Link>
         </div>

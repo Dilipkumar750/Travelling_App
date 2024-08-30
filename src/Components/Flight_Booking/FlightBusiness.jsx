@@ -55,7 +55,7 @@ const FlightBusiness = () => {
   const goBack = () => {
     navigate(-1);
   };
-console.log(flightData)
+// console.log(flightData)
   const handleSeatBook = async () => {
     storedData.selectedSeats = selectedSeats;
     storedData.vehicleId = flightData._id;

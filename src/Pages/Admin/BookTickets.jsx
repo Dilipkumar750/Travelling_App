@@ -19,7 +19,7 @@ const BookTickets = () => {
   return (
     <>
       <Header title='Book Tickets' arrow={false}/>
-      <Container style={{ padding: '20px', maxWidth: '600px', }}>
+      <Container style={{ padding: '20px', maxWidth: '600px', marginBottom:'3rem' }}>
         {/* Search Bar */}
         <Form.Control style={{backgroundColor: '#F3E8D6'}}
           type="text"
@@ -48,7 +48,7 @@ const BookTickets = () => {
         <Row>
           {transportOptions.map((option, index) => (
             <Col key={index} xs={6} className="mb-3">
-              <Link to={option.link}>
+              <Link to={option.link} style={{textDecoration:'none'}}>
                 <Card style={{ borderRadius: '15px', textAlign: 'center', backgroundColor: '#F3E8D6' }}>
                   <Card.Img
                     variant="top"
@@ -64,7 +64,9 @@ const BookTickets = () => {
           ))}
         </Row>
       </Container>
-      <Footer />
+      <div style={{bottom: 0, position:'fixed', width: '100%'}}>
+        <Footer/> 
+        </div>
     </>
   );
 };

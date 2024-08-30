@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 function Footer() {
     // State to track the active icon
     const [activeIcon, setActiveIcon] = useState(null);
+    const user = JSON.parse(localStorage.getItem("user"));
 
     // Function to handle icon click
     const handleClick = (icon) => {
@@ -29,39 +30,51 @@ function Footer() {
 
     return (
         <div style={{ backgroundColor: '#ffe3e0', display: 'flex', justifyContent: "space-between", alignItems: 'center', height: '50px', fontSize: '3rem',padding:"2rem",width:'100%', }}>
-            <Link to='/HomePage'>
+            <Link to={user.role =='admin'? '/UserHomePage' :'/HomePage'}>
                 <AiFillHome
                     style={iconStyle('home')}
                     onClick={() => handleClick('home')}
                 />
             </Link>
-            <Link to='/Travels'>
-                <HiLocationMarker
-                    style={iconStyle('location')}
-                    onClick={() => handleClick('location')}
-                />
-            </Link>
-            <Link to='/BookTickets'>
-                <HiDocumentCheck
-                    style={iconStyle('document')}
-                    onClick={() => handleClick('document')}
-                />
-            </Link>
-            <Link to=''>
+        {
+            user.role=='admin'?
+            <>
+                <Link to='/addExplore'>
+                    <HiOutlineLink
+                        style={iconStyle('link')}
+                        onClick={() => handleClick('link')}
+                    />
+                </Link>
+                <Link to='/PendingRequests'>
+                    <HiChatBubbleLeftRight
+                        style={iconStyle('chat')}
+                        onClick={() => handleClick('chat')}
+                    />
+                </Link>
+            </>
+            :
+           <>
+                <Link to='/Travels'>
+                    <HiLocationMarker
+                        style={iconStyle('location')}
+                        onClick={() => handleClick('location')}
+                    />
+                </Link>
+                <Link to='/BookTickets'>
+                    <HiDocumentCheck
+                        style={iconStyle('document')}
+                        onClick={() => handleClick('document')}
+                    />
+                </Link>
+           </>
+
+        }
+            <Link to='/Profile'>
                 <BiSolidUserCircle
                     style={iconStyle('user')}
                     onClick={() => handleClick('user')}
                 />
             </Link>
-            {/* Uncomment and add styles for these icons as needed */}
-            {/* <HiOutlineLink
-                style={iconStyle('link')}
-                onClick={() => handleClick('link')}
-            />
-            <HiChatBubbleLeftRight
-                style={iconStyle('chat')}
-                onClick={() => handleClick('chat')}
-            /> */}
         </div>
     );
 }

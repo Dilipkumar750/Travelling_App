@@ -13,7 +13,7 @@ const TrainViewTicket = () => {
   const storedData = JSON.parse(localStorage.getItem("user"));
   const [vihicleid, setVihicleid] = useState()
   const [details, setDetails] = useState()
-// console.log(details)
+// console.log(storedData.email)
   useEffect(() => {
     handleSubmit()
     if(setVihicleid){
@@ -23,12 +23,13 @@ const TrainViewTicket = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.get(`${API_URL}/user/getUser/${storedData.email}`);
-      const lastItem = response?.data.booking[response?.data.booking.length - 1];
+      const response = await axios.get(`${API_URL}/user/getUser/${storedData?.email}`);
+      // const lastItem = response?.data?.trainbooking[response?.data?.booking?.length - 1];
+      const lastItem = response?.data?.trainbooking?.length==1? response?.data?.trainbooking[0]:response?.data?.trainbooking[response?.data?.trainbooking?.length - 1];
       setVihicleid(lastItem)
 
     } catch (err) {
-      console.log('something went wrong , try again');
+      console.log(err);
     }
   };
   const handleGetBooking = async () => {

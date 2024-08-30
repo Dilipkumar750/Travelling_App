@@ -24,7 +24,7 @@ const BusViewTicket = () => {
   const handleSubmit = async () => {
     try {
       const response = await axios.get(`${API_URL}/user/getUser/${storedData.email}`);
-      const lastItem = response?.data.booking[response?.data.booking.length - 1];
+      const lastItem = response?.data?.busbooking?.length==1? response?.data?.busbooking[0]:response?.data?.busbooking[response?.data?.busbooking?.length - 1];
       setVihicleid(lastItem)
 
     } catch (err) {

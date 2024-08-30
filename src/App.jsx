@@ -34,9 +34,11 @@ import Travel from './Components/Home/Travel';
 import Welcome from './Components/Home/Welcome';
 import BookTickets from './Pages/Admin/BookTickets';
 import Explore from './Pages/Admin/Explore';
+// this is user home page not admin home page, afmin folder is user folder and user folder is admin
 import HomePage from './Pages/Admin/HomePage';
 import Travels from './Pages/Admin/Travels';
 import AddExplore from './Pages/User/AddExplore';
+// this is admin home page not user home page
 import UserHomePage from './Pages/User/UserHomepage';
 import Services from './Pages/User/Services';
 import Login from './Pages/Login';
@@ -116,8 +118,8 @@ function App(){
       <Route path='/Done' element={<Done/>}/>
       <Route path='/AddAccomadation' element={<AddAccomadation/>}/>
       <Route path='/' element={<JourneyJoyHome/>}/>
-      <Route path='/Approve' element={<Approve/>}/>
-      <Route path='/Reject' element={<Reject/>}/>
+      <Route path='/Approve/:id' element={<Approve/>}/>
+      <Route path='/Reject/:id' element={<Reject/>}/>
     </Routes>
     </>
   )

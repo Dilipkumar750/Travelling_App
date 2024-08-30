@@ -5,6 +5,7 @@ import journey from '../../assets/JourneyJoy.jpeg';
 
 const JourneyJoyHome = () => {
   return (
+    <Link to="/welcome" style={{ textDecoration: 'none', color: 'inherit' }}>
     <Container
       fluid
       className="d-flex align-items-center justify-content-center text-center"
@@ -19,7 +20,6 @@ const JourneyJoyHome = () => {
         minHeight: '100vh',
       }}
     >
-      <Link to="/welcome" style={{ textDecoration: 'none', color: 'inherit' }}>
         <Row className="justify-content-center" style={{ backdropFilter: 'blur(70px)', marginTop: '-50%' }}>
           <Col md={6}>
             <h4 className="mb-3" style={{ fontFamily: 'Shojumaru', boxShadow: 'black' }}>
@@ -28,8 +28,8 @@ const JourneyJoyHome = () => {
             <p>Your Travel Companion, Anytime, Anywhere.</p>
           </Col>
         </Row>
-      </Link>
     </Container>
+      </Link>
   );
 };
 

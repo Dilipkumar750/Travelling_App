@@ -53,18 +53,11 @@ const BusPayment = () => {
         vehicleName:storedData.vehicleName,
         duration:storedData.duration
       });
-      console.log(response)
-      storedData.selectedSeats = [];
-      storedData.vehicleId = '';
-      storedData.vehicleName = '';
-      storedData.duration = '';
-      storedData.fromLocation = '';
-      storedData.toLocation = '';
-      localStorage.setItem('user', JSON.stringify(storedData));
+      // console.log(response)
       localStorage.removeItem('BusSearchData');
       navigate('/Done')
     } catch (err) {
-      console.log(err)
+      // console.log(err)
       console.log('something went wrong , try again');
     }
   };
