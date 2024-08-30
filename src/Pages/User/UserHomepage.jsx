@@ -109,6 +109,7 @@ const UserHomepage = () => {
       <div style={{ bottom: 0, position: 'fixed', width: '100%' }}>
         <Footer />
       </div>
+
     </div>
   );
 }

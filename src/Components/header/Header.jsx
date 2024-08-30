@@ -28,6 +28,7 @@ function Header({ title, arrow }) {
 
   return (
     <header style={{ backgroundColor: '#F08E2D', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '0 0 70px 70px' }}>
+
       <div style={{ width: '80%', display: 'flex', justifyContent: 'space-between' }}>
         {arrow ? (
           <AiOutlineArrowLeft style={{ color: 'white', fontSize: '1.5rem', fontWeight: '500', marginTop: '8px' }} onClick={goBack} />

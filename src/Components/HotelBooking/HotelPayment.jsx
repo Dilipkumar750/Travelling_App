@@ -29,6 +29,12 @@ const HotelPayment = () => {
     };
 
 
+  const navigate = useNavigate();
+
+    const goBack = () => {
+        navigate(-1);
+    };
+
   return (
     <div style={{ padding: '20px', maxWidth: '600px', margin: 'auto', border: '1px solid #ddd', borderRadius: '8px', fontSize: '14px', backgroundColor: '#F3E8D6', }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '600px', margin: '0 auto', marginBottom: '10px' }}>

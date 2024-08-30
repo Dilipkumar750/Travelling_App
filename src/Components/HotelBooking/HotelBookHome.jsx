@@ -36,14 +36,11 @@ const [data, setData] = useState([])
 
   const navigate = useNavigate();
 
+
   // const goBack = () => {
   //   navigate(-1);
   // };
 
-  const hotelDataSave = (data) => {
-    localStorage.setItem('hotelData', JSON.stringify(data));
-    navigate('/Hotelrooms');
-  };
   return (
     <div style={{ backgroundColor: '#F3E8D6', }}>
       <header style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '4rem' }}>
@@ -62,6 +59,7 @@ const [data, setData] = useState([])
         <Button style={{ width: '100%', backgroundColor: "#f08e2d", border: '0', borderRadius: '10px', color: 'black' }} onClick={()=>{setType('Hotel')}}>Hotel</Button>
         <Button style={{ width: '100%', backgroundColor: "#f08e2d", border: '0', borderRadius: '10px', color: 'black' }} onClick={()=>{setType('Homestay')}}>Homestay</Button>
         <Button style={{ width: '100%', backgroundColor: "#f08e2d", border: '0', borderRadius: '10px', color: 'black' }} onClick={()=>{setType('Apartment')}}>Apartment</Button>
+
       </section>
       <section style={{ padding: "1rem" }}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -93,6 +91,8 @@ const [data, setData] = useState([])
           </SwiperSlide>
           })}
           {/* <SwiperSlide>
+
+          <SwiperSlide>
             <Link to='/Hotelrooms'>
               <img
                 src={bengalurupalace}
@@ -119,7 +119,8 @@ const [data, setData] = useState([])
               style={{ width: "100%", height: "130px", borderRadius: "1rem" }}
             />
             </Link>
-          </SwiperSlide> */}
+
+          </SwiperSlide>
         </Swiper>
       </section>
       <section style={{ padding: "1rem" }}>
@@ -145,6 +146,8 @@ const [data, setData] = useState([])
           /></div>
           })}
           {/* <Link to='/Hotelrooms'>
+
+          <Link to='/Hotelrooms'>
             <img
               src={indiangate}
               alt=""
@@ -167,7 +170,8 @@ const [data, setData] = useState([])
               src={fortkochi}
               alt=""
               style={{ width: "100%", height: "150px", borderRadius: "1rem" }}
-            /></Link> */}
+
+            /></Link>
         </div>
         <br />
         <Link to='/HotelViewTicket'>

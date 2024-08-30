@@ -6,6 +6,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 import { API_URL } from '../constant';
 import axios from 'axios';
 
+
 const notifications = [
   { id: 1, title: 'New Request', time: '30 Min', text: 'User has requested your service' },
   { id: 2, title: 'Cash Received', time: '30 Min', text: 'Received ₹10,000.00 from User.' },
@@ -107,6 +108,7 @@ const Notifications = () => {
               </>
             }
             </>
+
           ) : (
             <p style={{ textAlign: 'center', color: 'red', marginTop: '20px' }}>Notifications are Off</p>
           )}

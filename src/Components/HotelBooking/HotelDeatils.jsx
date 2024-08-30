@@ -33,6 +33,7 @@ const HotelDetails = () => {
     navigate(-1);
   };
 
+
   return (
     <div style={{ padding: '5%', backgroundColor: '#F3E8D6',height:'100vh' }}>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10%' }}>

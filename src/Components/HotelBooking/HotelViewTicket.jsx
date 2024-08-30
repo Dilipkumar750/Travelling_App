@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import { Link, useNavigate } from 'react-router-dom';
 import QR from '../../assets/qr.png';
 import HotelLogo from '../../assets/merdian.png'; // Import the correct logo
@@ -75,14 +76,12 @@ const HotelTicket = () => {
   };
   const navigate = useNavigate();
 
-    const goBack = () => {
-        navigate(-1);
-    };
     const goDone = () => {
       localStorage.removeItem('hotelData');
 
         navigate('/Done');
     };
+
 
   return (
     <div style={{ padding: '20px', textAlign: 'center', marginTop: '10px', backgroundColor: '#F3E8D6', }}>
@@ -90,6 +89,7 @@ const HotelTicket = () => {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '600px', margin: '0 auto', marginBottom: '10px' }}>
         <Link to="/BookTickets">
           <FaArrowLeft style={{ fontSize: '24px', color: '#ff5f00' }} />
+
         </Link>
         <h2 style={{ color: 'black', marginRight: '45%' }}>Hotel Ticket</h2>
       </div>

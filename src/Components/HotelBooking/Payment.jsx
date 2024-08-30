@@ -48,6 +48,11 @@ const user = JSON.parse(localStorage.getItem("user"));
       }
     };
 
+
+    const goBack = () => {
+        navigate(-1);
+    };
+
   return (
     <div>
       <Container className="mt-1 mb-4" style={{ padding: '25px', backgroundColor: '#F3E8D6' }}>
@@ -130,6 +135,7 @@ const user = JSON.parse(localStorage.getItem("user"));
         <Row className="justify-content-center mt-5">
           <Col md={6} className="text-center">
           {/* <Link to='/HotelViewTicket'> */}
+
             <Button
               style={{
                 backgroundColor: '#f08e2d',

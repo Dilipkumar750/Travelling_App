@@ -76,6 +76,7 @@ const PendingRequests = () => {
                 <Col xs="auto">
                   <Link to={`/Reject/${item._id}`}><Button variant="danger" className="me-2 rounded-5" style={{ height: '35px' }}>Reject</Button></Link>
                   <Link to={`/Approve/${item._id}`}><Button variant="success" className='rounded-5' style={{ height: '35px' }}>Approve</Button></Link>
+
                 </Col>
               </Row>
             </Card>))}

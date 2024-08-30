@@ -23,6 +23,7 @@ const Settings = () => {
     }
   };
 
+
   // Initialize state from localStorage or default to true
   const [notificationsEnabled, setNotificationsEnabled] = useState(() => {
     const saved = localStorage.getItem('notificationsEnabled');

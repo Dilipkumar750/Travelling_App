@@ -23,6 +23,7 @@ const RoomsAvailability = () => {
   const navigate = useNavigate();
   const storedData = JSON.parse(localStorage.getItem("hotelData"));
 // console.log(storedData?.formdata?.checkInDate)
+
     const goBack = () => {
         navigate(-1);
     };

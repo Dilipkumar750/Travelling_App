@@ -23,6 +23,7 @@ const HotelRooms = () => {
     };
     const storedData = JSON.parse(localStorage.getItem("hotelData"));
 // console.log(storedData)
+
   return (
     <div style={{backgroundColor: '#F3E8D6', height: '100%'}}>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '2%' }}>
